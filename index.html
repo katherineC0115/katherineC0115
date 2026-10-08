@@ -39,7 +39,8 @@
       background:var(--background);
       color:var(--foreground);
       font-family:var(--sans);
-      -webkit-font-smoothing:antialiased
+      -webkit-font-smoothing:antialiased;
+      overflow-x:hidden
     }
     a {
       color:inherit;
@@ -85,7 +86,7 @@
       letter-spacing:.16em;
       text-transform:uppercase
     }
-    nav {
+    .desktop-nav {
       display:flex;
       align-items:center;
       gap:26px;
@@ -94,7 +95,7 @@
       text-transform:uppercase;
       color:var(--muted-foreground)
     }
-    nav a:hover,.detail-link:hover {
+    .desktop-nav a:hover,.detail-link:hover {
       color:var(--primary)
     }
     .contact-pill {
@@ -103,11 +104,57 @@
       color:var(--primary-foreground);
       padding:6px 12px
     }
-    .mobile-contact {
+    .mobile-nav {
       display:none;
-      font:500 11px var(--mono);
-      letter-spacing:.14em;
+      position:relative
+    }
+    .mobile-nav summary {
+      min-width:64px;
+      min-height:44px;
+      display:grid;
+      place-items:center;
+      border:1px solid var(--border);
+      border-radius:999px;
+      background:var(--card);
+      color:var(--primary);
+      font:600 11px var(--mono);
+      letter-spacing:.12em;
       text-transform:uppercase;
+      cursor:pointer;
+      list-style:none
+    }
+    .mobile-nav summary::-webkit-details-marker {
+      display:none
+    }
+    .mobile-nav[open] summary {
+      background:var(--foreground);
+      color:var(--primary-foreground)
+    }
+    .mobile-nav nav {
+      position:absolute;
+      top:calc(100% + 9px);
+      right:0;
+      width:min(280px,calc(100vw - 32px));
+      display:grid;
+      padding:10px;
+      border:1px solid var(--border);
+      border-radius:12px;
+      background:var(--background);
+      box-shadow:var(--shadow)
+    }
+    .mobile-nav nav a {
+      min-height:44px;
+      display:flex;
+      align-items:center;
+      padding:0 12px;
+      border-radius:8px;
+      color:var(--foreground);
+      font:600 12px var(--mono);
+      letter-spacing:.1em;
+      text-transform:uppercase
+    }
+    .mobile-nav nav a:hover,.mobile-nav nav a:focus-visible {
+      background:var(--secondary);
       color:var(--primary)
     }
     .hero {
@@ -156,6 +203,7 @@
       display:inline-flex;
       align-items:center;
       justify-content:center;
+      min-height:44px;
       border-radius:9px;
       padding:11px 20px;
       font-size:14px;
@@ -489,7 +537,7 @@
     .reveal {
       animation:rise .7s cubic-bezier(.19,1,.22,1) both
     }
-    /* Single-file project "pages". JavaScript swaps the portfolio out for this view. */ #project-page[hidden] {
+    #project-page[hidden] {
       display:none
     }
     #project-page {
@@ -607,7 +655,7 @@
       width:100%;
       height:100%;
       display:block;
-      object-fit:cover;
+      object-fit:contain;
       object-position:center;
       background:var(--image-canvas)
     }
@@ -666,12 +714,14 @@
       color:var(--muted-foreground)
     }
     .carousel-dot {
-      width:7px;
-      height:7px;
+      width:24px;
+      height:24px;
       padding:0;
-      border:0;
+      border:8px solid transparent;
       border-radius:50%;
       background:var(--border);
+      background-clip:content-box;
+      box-sizing:border-box;
       cursor:pointer
     }
     .carousel-dot.active {
@@ -780,11 +830,16 @@
       color:var(--muted-foreground)
     }
     @media (max-width:900px) {
-      nav {
+      .desktop-nav {
         display:none
       }
-      .mobile-contact {
+      .mobile-nav {
         display:block
+      }
+      .topbar {
+        min-height:64px;
+        height:auto;
+        gap:16px
       }
       .hero {
         grid-template-columns:1fr;
@@ -821,15 +876,20 @@
       }
       .hero .hero-copy {
         grid-row:4;
-        margin-top:0
+        justify-self:center;
+        margin-top:0;
+        text-align:center
       }
       .hero .buttons {
         grid-row:5;
+        justify-content:center;
         margin-top:0
       }
       .hero .facts {
         grid-row:6;
-        margin-top:0
+        justify-content:center;
+        margin-top:0;
+        text-align:center
       }
       .future-grid {
         grid-template-columns:1fr
@@ -866,8 +926,8 @@
         justify-content:center;
         flex-wrap:wrap
       }
-      .project-page-details p,.carousel-caption {
-        text-align:center
+      .project-page-details p {
+        text-align:left
       }
       .container {
         width:min(100% - 32px,1152px)
@@ -899,9 +959,15 @@
         width:min(100% - 36px,768px);
         padding:44px 0 72px
       }
+      .project-page-title,.project-page-summary,.project-page-section>h2 {
+        overflow-wrap:anywhere
+      }
+      .project-page-cover img.contain {
+        padding:16px
+      }
       .carousel-arrow {
-        width:38px;
-        height:38px;
+        width:44px;
+        height:44px;
         font-size:24px
       }
       .carousel-arrow.prev {
@@ -912,6 +978,58 @@
       }
       .lightbox-inner {
         padding:52px 12px 18px
+      }
+      .socials a,.theme-toggle {
+        min-height:44px;
+        display:inline-flex;
+        align-items:center
+      }
+    }
+    @media (max-width:420px) {
+      .container {
+        width:min(100% - 24px,1152px)
+      }
+      .brand {
+        max-width:18ch;
+        font-size:10px;
+        line-height:1.35
+      }
+      .hero {
+        padding:48px 0
+      }
+      .hero h1 {
+        font-size:32px
+      }
+      .hero>.portrait {
+        max-width:320px
+      }
+      .hero-copy {
+        font-size:16px;
+        line-height:1.65
+      }
+      .buttons {
+        width:100%
+      }
+      .buttons .btn {
+        flex:1 1 100%
+      }
+      .facts {
+        flex-direction:column
+      }
+      .facts .dot {
+        display:none
+      }
+      .card,.project-card,.job,.future-card,.project-page-highlight {
+        padding:20px
+      }
+      footer h2 {
+        font-size:32px
+      }
+      .project-page-title {
+        font-size:34px
+      }
+      .project-page-shell {
+        width:min(100% - 24px,768px)
       }
     }
     .honor-static {
@@ -1080,10 +1198,15 @@
 <header id="site-header">
   <div class="container topbar">
     <a class="brand" href="#top">KATHERINE CONTRERAS</a>
-    <nav aria-label="Primary navigation">
+    <nav class="desktop-nav" aria-label="Primary navigation">
       <a href="#coursework">Coursework</a><a href="#honors">Honors</a><a href="#projects">Projects</a><a href="#employment">Employment</a><a href="#clubs">Clubs</a><a href="#credentials">Credentials</a><a href="#future">Future</a><a class="contact-pill" href="#contact">Contact</a>
     </nav>
-    <a class="mobile-contact" href="#contact">Contact</a>
+    <details class="mobile-nav">
+      <summary>Menu</summary>
+      <nav aria-label="Mobile navigation">
+        <a href="#coursework">Coursework</a><a href="#honors">Honors</a><a href="#projects">Projects</a><a href="#employment">Employment</a><a href="#clubs">Clubs</a><a href="#credentials">Credentials</a><a href="#future">Future</a><a href="#contact">Contact</a>
+      </nav>
+    </details>
   </div>
 </header>
 
@@ -1105,9 +1228,9 @@
   <section id="employment" class="portfolio-section"><div class="section-head"><span class="section-index">04 / Employment</span><h2>Employment</h2></div><div class="timeline" id="employment-content"></div></section>
   <section id="clubs" class="portfolio-section"><div class="section-head"><span class="section-index">05 / Clubs</span><h2>Club Involvement</h2></div><div class="cards" id="clubs-content"></div></section>
   <section id="credentials" class="portfolio-section"><div class="section-head"><span class="section-index">06 / Credentials</span><h2>Licenses &amp; Certifications</h2></div><div class="cards" id="credentials-content"></div></section>
-  <section id="future" class="portfolio-section"><div class="section-head"><span class="section-index">07 / Future</span><h2>Future Outlook</h2></div><div class="future-grid"><div class="future-card"><span>2027</span><h3>Finance Bachelor’s Degree</h3></div><div class="future-card"><span>2027</span><h3>CIS Bachelor’s Degree</h3></div><div class="future-card"><span>2028</span><h3>MBA Track</h3></div></div></section>
+  <section id="future" class="portfolio-section"><div class="section-head"><span class="section-index">07 / Future</span><h2>Future Outlook</h2></div><div class="future-grid"><div class="future-card"><span>2027</span><h3>Bachelor’s Degree in Finance</h3></div><div class="future-card"><span>2027</span><h3>Bachelor’s Degree in Computer Information Systems</h3></div><div class="future-card"><span>2028</span><h3>Master of Business Administration</h3></div></div></section>
 
-  <footer id="contact"><div class="footer-grid"><div><h2>Let’s talk about <span class="primary">what’s next.</span></h2><p class="muted">I’m currently seeking internships in finance or information technology starting in February 2027.</p></div><div class="contact-block"><details class="contact-form-panel">
+  <footer id="contact"><div class="footer-grid"><div><h2>Let’s talk about <span class="primary">what’s next.</span></h2><p class="muted">I’m currently seeking internship opportunities in finance, business technology, analytics, and information systems.</p></div><div class="contact-block"><details class="contact-form-panel">
   <summary class="email">Contact me!</summary>
   <form id="contact-form" class="contact-form" action="https://formspree.io/f/xaenpkll" method="POST" aria-describedby="contact-help">
     <p id="contact-help">Send me a message using the form below. Include a way to reach you if you would like a reply. Submissions are processed by Formspree.</p>
@@ -1120,7 +1243,7 @@
     <button class="btn btn-dark" type="submit">Send message</button>
     <p class="contact-form-status" id="contact-status" role="status"></p>
   </form>
-</details><div class="socials"><a href="https://www.linkedin.com/in/katherinecontreras2/" target="_blank" rel="noreferrer noopener">LinkedIn</a><a href="https://github.com/katherineC0115" target="_blank" rel="noopener noreferrer">GitHub</a><a href="assets/resume.pdf" download="Contreras_Katherine_Resume.pdf" aria-label="Download resume (PDF)">Resume</a></div><p class="copyright">© 2027 - KATHERINE CONTRERAS</p></div></div></footer>
+</details><div class="socials"><a href="https://www.linkedin.com/in/katherinecontreras2/" target="_blank" rel="noreferrer noopener">LinkedIn</a><a href="https://github.com/katherineC0115" target="_blank" rel="noopener noreferrer">GitHub</a><a href="assets/resume.pdf" download="Contreras_Katherine_Resume.pdf" aria-label="Download resume (PDF)">Resume</a></div><p class="copyright">© 2026 - KATHERINE CONTRERAS</p></div></div></footer>
 </main>
 
 <main id="project-page" hidden="" aria-live="polite"></main>
@@ -1168,21 +1291,21 @@ const honors = [
     "year": "April 2026",
     "title": "Financial Management Association National Honor Society",
     "org": "Financial Management Association International",
-    "summary": "National honor society recognizing academic excellence and engagement in finance."
+    "summary": "Member of the Financial Management Association National Honor Society."
   },
   {
     "slug": "beta-gamma-sigma",
     "year": "April 2026",
     "title": "Beta Gamma Sigma International Business Honor Society",
     "org": "AACSB-accredited business programs",
-    "summary": "International honor society recognizing the top 10% of undergraduate business students."
+    "summary": "Inducted into the Beta Gamma Sigma International Business Honor Society in April 2026."
   },
   {
     "slug": "quinnipiac-honors-program",
     "year": "August 2024",
     "title": "Quinnipiac University Honors Program",
     "org": "Quinnipiac University",
-    "summary": "Invitation-only academic program for students admitted with distinguished academic records."
+    "summary": "Member of the Quinnipiac University Honors Program."
   }
 ];
 
@@ -1207,11 +1330,12 @@ const projects = [
     "title": "The Grove Residence Hall Poster Project",
     "date": "APRIL 2025, APRIL 2026",
     "asset": "assets/embedded-003.png",
-    "summary": "As a mentee, I supported mentors in coordinating and running university-wide events that connect students to communities beyond Quinnipiac University. At the end of the academic year, I helped present my group’s work to those communities.",
+    "summary": "As a mentee in the Grove Community Engagement Program, I helped coordinate two service experiences that connected Quinnipiac students with the local community. One of those experiences became our university-wide Paws for a Cause event.",
     "details": [
       "The poster photographed above is the poster presentation I worked on with my group. Our goal was to raise awareness of and support for shelter dogs in nonprofit, no-kill animal shelters. To do so, we created a university-wide event called “Paws for a Cause.”",
       "For “Paws for a Cause,” we partnered with Where the Love Is, a local animal shelter in Hamden, CT, to show the student body what they do. The shelter is a nonprofit, no-kill shelter, meaning everything they do is centered on supporting their animals. For our event, Where the Love Is was kind enough to let us borrow one of their shelter dogs. Her name is Baby, and she brought a lot of happiness and positivity to students and passersby. We also sold small stuffed dogs and adoption certificates to mimic the adoption process people go through when adopting a shelter dog, with all proceeds going to Where the Love Is.",
-      "Through this event, we raised roughly $275 to support the shelter’s cause. After the event, my team analyzed our results and presented them on the poster."
+      "Through this event, we raised roughly $275 to support the shelter’s cause. After the event, my team analyzed our results and presented them on the poster.",
+      "For my other mentee experience, my group volunteered for approximately four hours at Where the Love Is during its Paws and Play event. We helped organize the shelter’s garage sale and spent time socializing puppies so they could gain positive exposure to people while waiting to be adopted."
     ],
     "gallery": [
       [
@@ -1233,12 +1357,12 @@ const projects = [
     ]
   },
   {
-    "slug": "third-project",
+    "slug": "reservequ-space-reservation-prototype",
     "title": "Rapid Application Development Challenge",
     "date": "APRIL 2026",
     "asset": "assets/embedded-007.png",
     "imageContain": true,
-    "summary": "My team and I were challenged to solve a business problem using AI and a rapid application development platform called Google AppSheet. Using Agile methodology, we built a prototype for a new room reservation system for Quinnipiac University.",
+    "summary": "My teammate and I were challenged to solve a business problem using Claude and a rapid application development platform named Google AppSheet. I built the ReserveQU prototype, while also applying feedback for revisions given from my teammate who tested the system's features and functionality. Claude was used to resolve troubleshooting issues and optimizing my work to improve the system's perfomance (e.g. loading speeds).",
     "details": [
       "My team and I named the space reservation system “ReserveQU,” which can be shortened to “ResQU” (pronounced “rescue,” a nod to the university’s current Event Management System, EMS). The prototype addresses how difficult it is for students to reserve a space efficiently with the current EMS. Limited search filters, an unfriendly interface, and complicated reservation instructions were the issues we tackled with this project. Per our assignment instructions, we had to use a rapid application development (RAD) platform, which ended up being Google AppSheet.",
       "Working in Google AppSheet was challenging. Because of the limited time we had to test the feasibility of our project on the platform, my team and I were not able to deliver every feature we originally scoped. Despite this, we were still able to deliver a functional system that:\n- Creates different views for each user (students, faculty, and admins)\n- Allows users to reserve two different space types: regular spaces (study rooms, team collaboration spaces, etc.) and special spaces (auditoriums, outdoor spaces, vendor areas)\n- Simplifies reservation forms\n- Stores reservation information\n- Contains conflict detection\n- Organizes available spaces by building for easier searches\n- Shows only the spaces each user can access\n- Emails users with updates to their reservations (reservation confirmations, admin modifications to reservations, cancellations, approvals for requests, denials, or deletions)\n- Makes it easier for admins to manage spaces and student access\n- Supports bulk uploads from CSV files (inspired by the opening of Quinnipiac's two new academic buildings)\n- Is mobile-friendly\n- Allows admins to easily manage space reservation requests\n- Allows admins to add, modify, delete, show, or hide spaces, both individually and in bulk",
@@ -1342,7 +1466,7 @@ const projects = [
         "Behind the scenes: The security filters that enforce conflict detection and control which spaces each user can see."
       ]
     ],
-    "hasDemoVideo": true,
+    "hasDemoVideo": false,
     "highlights": [
       "Rapid Application Development",
       "Excel"
@@ -1356,8 +1480,8 @@ const employment = [
     "role": "Student Mentor",
     "org": "Quinnipiac University Grove Residence Hall, Hamden, CT",
     "bullets": [
-      "Assist first-year students with their year-long Community Experiential Learning Project (CELP)",
-      "Manage one impactful project initiative with local organizations for community engagement"
+      "Guide seven first-year students as they plan a year-long Community Experiential Learning Project (CELP)",
+      "Help mentees generate and refine project ideas by connecting them with university resources that support their interests and creativity"
     ]
   },
   {
@@ -1374,7 +1498,7 @@ const employment = [
 
 const clubs = [
   {
-    "role": "MEMBER / JANUARY 2026 - PRESENT",
+    "role": "MEMBER / FALL 2025 - PRESENT",
     "org": "Girls Who Invest",
     "body": "Gained additional experience in investing and managing stocks through simulated experiences that reflect actual market behavior."
   },
@@ -1387,10 +1511,16 @@ const clubs = [
 
 const credentials = [
   {
+    "issuer": "Google",
+    "title": "Google AI Professional Certificate",
+    "date": "IN PROGRESS · 4 OF 8 MODULES COMPLETED",
+    "body": "Currently completing the eight-module Google AI Professional Certificate."
+  },
+  {
     "issuer": "Bloomberg",
     "title": "Bloomberg Market Concepts (BMC)",
     "date": "OCTOBER 2025",
-    "body": "Bloomberg for Education offers a series of credentials that will boost your knowledge and strengthen your job applications. These e-learning courses provide a self-paced, interactive way to explore different areas of finance deeply.",
+    "body": "Earned the Bloomberg Market Concepts certificate.",
     "link": "https://portal.bloombergforeducation.com/certificates/VfgXsFK6Qpvx5SVCmXDFP3wX"
   },
   {
@@ -1407,12 +1537,12 @@ const assetBox=(src,caption='',contain=false)=>`<div class="asset-wrap"><img src
 
 document.getElementById('coursework-content').innerHTML=coursework.map(c=>`<div><span class="subhead">${esc(c.section)}</span><ul class="course-list">${c.courses.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div>`).join('');
 document.getElementById('honors-content').innerHTML=honors.map(h=>{const body=`<span class="card-date">${esc(h.year)}</span><h3>${esc(h.title)}</h3><p>${esc(h.summary)}</p>`;return h.slug==='deans-list'?`<a class="card" href="#honor/deans-list">${body}<span class="detail-link">View details &rarr;</span></a>`:`<article class="card honor-static">${body}</article>`}).join('');
-const projectOrder = ['third-project', 'grove-residence-hall-poster', 'one-dollar-pop-up-shop'];
+const projectOrder = ['reservequ-space-reservation-prototype', 'grove-residence-hall-poster', 'one-dollar-pop-up-shop'];
 projects.sort((a, b) => projectOrder.indexOf(a.slug) - projectOrder.indexOf(b.slug));
 document.getElementById('projects-content').innerHTML=projects.map((p)=>`<a class="project-card" href="#project/${encodeURIComponent(p.slug)}"><div class="project-image">${assetBox(p.asset,'',p.imageContain)}</div><span class="date">${esc(p.date)}</span><h3>${esc(p.title)}</h3><p>${esc(p.summary)}</p><div class="tags">${p.highlights.map(t=>`<span class="tag">${esc(t)}</span>`).join('')}</div><span class="detail-link">View details →</span></a>`).join('');
 document.getElementById('employment-content').innerHTML=employment.map(e=>`<article class="job"><span class="dates">${esc(e.dates)}</span><h3>${esc(e.role)}</h3><div class="org">${esc(e.org)}</div><ul>${e.bullets.map(b=>`<li>${esc(b)}</li>`).join('')}</ul></article>`).join('');
 document.getElementById('clubs-content').innerHTML=clubs.map(c=>`<article class="card" style="cursor:default"><h3>${esc(c.org)}</h3><span class="card-date" style="color:var(--accent);display:block;margin-top:7px">${esc(c.role)}</span><p>${esc(c.body)}</p></article>`).join('');
-document.getElementById('credentials-content').innerHTML=credentials.map(c=>`<a class="card" href="${esc(c.link)}" target="_blank" rel="noreferrer noopener"><span class="card-date">${esc(c.issuer)} · ${esc(c.date)}</span><h3>${esc(c.title)}</h3><p>${esc(c.body)}</p><span class="detail-link">View certificate →</span></a>`).join('');
+document.getElementById('credentials-content').innerHTML=credentials.map(c=>{const body=`<span class="card-date">${esc(c.issuer)} · ${esc(c.date)}</span><h3>${esc(c.title)}</h3><p>${esc(c.body)}</p>`;return c.link?`<a class="card" href="${esc(c.link)}" target="_blank" rel="noreferrer noopener">${body}<span class="detail-link">View certificate →</span></a>`:`<article class="card honor-static">${body}</article>`}).join('');
 
 let carouselSeq=0;
 function projectGalleryBlock(title,items,emptyText){
@@ -1423,12 +1553,12 @@ function projectGalleryBlock(title,items,emptyText){
 }
 function renderProjectPage(p){
   const projectPage=document.getElementById('project-page');
-  projectPage.innerHTML=`<div class="project-page-shell"><a class="project-page-back" href="#projects">← Projects</a><p class="project-page-meta">Completed ${esc(p.date)}</p><h1 class="project-page-title">${esc(p.title)}</h1><p class="project-page-summary">${esc(p.summary)}</p><div class="project-page-cover" data-lightbox-src="${esc(p.asset)}" data-lightbox-caption="${esc(p.title)} project cover" role="button" tabindex="0" aria-label="Enlarge ${esc(p.title)} project cover">${assetBox(p.asset,'',p.imageContain)}</div><div class="project-page-details">${p.details.map(x=>`<p>${esc(x)}</p>`).join('')}</div>${projectGalleryBlock('Event Gallery',p.gallery)}${projectGalleryBlock('Desktop View',p.desktopGallery)}${projectGalleryBlock('Mobile App View', p.mobileGallery,'IMAGES COMING SOON')}${projectGalleryBlock('Behind the Scenes',p.behindGallery)}${p.hasDemoVideo?`<section class="project-page-section"><h2>Demo Video</h2><div style="position:relative;aspect-ratio:16/9;margin-top:18px;border-radius:12px;overflow:hidden;background:#000"><iframe src="https://player.vimeo.com/video/1228981500" title="ReserveQU Project Showcase" loading="lazy" allow="fullscreen; picture-in-picture; encrypted-media" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:0"></iframe></div><p style="margin-top:12px;font-size:13px;line-height:1.6"><a href="https://vimeo.com/1228981500" target="_blank" rel="noopener noreferrer" style="text-decoration:underline;text-underline-offset:3px">Watch the ReserveQU showcase on Vimeo</a></p></section>`:''}${p.highlights.length?`<div class="project-page-highlight"><h2>Highlights</h2><div class="tags">${p.highlights.map(x=>`<span class="tag">${esc(x)}</span>`).join('')}</div></div>`:''}</div>`;
+  projectPage.innerHTML=`<div class="project-page-shell"><a class="project-page-back" href="#projects">← Projects</a><p class="project-page-meta">Completed ${esc(p.date)}</p><h1 class="project-page-title">${esc(p.title)}</h1><p class="project-page-summary">${esc(p.summary)}</p><div class="project-page-cover" data-lightbox-src="${esc(p.asset)}" data-lightbox-caption="${esc(p.title)} project cover" role="button" tabindex="0" aria-label="Enlarge ${esc(p.title)} project cover">${assetBox(p.asset,'',p.imageContain)}</div><div class="project-page-details">${p.details.map(x=>`<p>${esc(x)}</p>`).join('')}</div>${projectGalleryBlock('Event Gallery',p.gallery)}${projectGalleryBlock('Desktop View',p.desktopGallery)}${projectGalleryBlock('Behind the Scenes',p.behindGallery)}${p.hasDemoVideo?`<section class="project-page-section"><h2>Demo Video</h2><div style="position:relative;aspect-ratio:16/9;margin-top:18px;border-radius:12px;overflow:hidden;background:#000"><iframe src="https://player.vimeo.com/video/1228981500" title="ReserveQU Project Showcase" loading="lazy" allow="fullscreen; picture-in-picture; encrypted-media" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:0"></iframe></div><p style="margin-top:12px;font-size:13px;line-height:1.6"><a href="https://vimeo.com/1228981500" target="_blank" rel="noopener noreferrer" style="text-decoration:underline;text-underline-offset:3px">Watch the ReserveQU showcase on Vimeo</a></p></section>`:''}${p.highlights.length?`<div class="project-page-highlight"><h2>Highlights</h2><div class="tags">${p.highlights.map(x=>`<span class="tag">${esc(x)}</span>`).join('')}</div></div>`:''}</div>`;
   document.querySelector('[data-portfolio-view]').hidden=true;
   document.getElementById('site-header').hidden=true;
   projectPage.hidden=false;
   document.title=`${p.title} — Katherine Contreras`;
-  if(p.slug==='third-project'){
+  if(p.slug==='reservequ-space-reservation-prototype'){
     projectPage.querySelectorAll('.project-carousel').forEach(carousel=>{
       const hint=document.createElement('p');
       hint.className='carousel-view-hint';
@@ -1548,5 +1678,9 @@ document.getElementById('contact-form').addEventListener('submit',async function
     button.disabled=false;button.textContent='Send message';form.removeAttribute('aria-busy');
   }
 });
+</script>
+
+<script>
+(()=>{const menu=document.querySelector('.mobile-nav');if(!menu)return;menu.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>menu.removeAttribute('open')));document.addEventListener('click',event=>{if(menu.open&&!menu.contains(event.target))menu.removeAttribute('open')});window.addEventListener('resize',()=>{if(innerWidth>900)menu.removeAttribute('open')})})();
 </script>
 </body></html>
