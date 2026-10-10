@@ -9,7 +9,7 @@ Come see my portifolio LIVE! ----> https://katherinec0115.github.io/katherineC01
 ## The Professional Socials:
 
 - [LinkedIn](https://www.linkedin.com/in/katherinecontreras2/)
-- [GitHub] (you're already here!)
+- GitHub: (you're already here!)
 
 ---
 
