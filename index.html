@@ -34,6 +34,9 @@
     html {
       scroll-behavior:smooth
     }
+    html.project-view {
+      scroll-behavior:auto
+    }
     body {
       margin:0;
       background:var(--background);
@@ -630,6 +633,32 @@
       letter-spacing:.18em;
       text-transform:uppercase;
       color:var(--muted-foreground)
+    }
+    .project-download-copy {
+      max-width:650px;
+      margin:16px 0 20px;
+      color:var(--muted-foreground);
+      font-size:14px;
+      line-height:1.7
+    }
+    .project-download {
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:44px;
+      padding:0 18px;
+      border:1px solid var(--primary);
+      border-radius:999px;
+      color:var(--primary);
+      font:600 11px var(--mono);
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      transition:background .2s,color .2s,transform .2s
+    }
+    .project-download:hover {
+      background:var(--primary);
+      color:var(--background);
+      transform:translateY(-1px)
     }
     .project-carousel {
       margin-top:22px
@@ -1335,6 +1364,42 @@ const honors = [
 
 const projects = [
   {
+    "slug": "hypothetical-company-financial-model",
+    "title": "Hypothetical Company Financial Modeling & Valuation",
+    "date": "SUMMER 2026",
+    "asset": "assets/financial-model-dcf.png",
+    "imageContain": true,
+    "summary": "For my FIN 320 final project, I created a five-year financial model for a hypothetical company in Microsoft Excel. I used the completed projections to perform a discounted cash flow (DCF) valuation and see how changes in my assumptions affected the company’s estimated enterprise value.",
+    "details": [
+      "For this project, I was given a set of assumptions that I used to create linked pro forma income statements, balance sheets, and cash flow statements covering a five-year period. I also had to account for changes in working capital, capital expenditures, depreciation, and taxes so that the statements would remain connected throughout the model.",
+      "One issue I had to address was how the model handled debt. I added a cash sweep so that the company’s free cash flow would repay its debt without allowing the debt balance to become negative. Once the debt was fully repaid, the remaining cash was allowed to accumulate on the balance sheet instead.",
+      "After completing the projected statements, I calculated unlevered free cash flow and used it to perform a DCF valuation. I also created a two-variable Excel What-If Data Table to serve as a sensitivity analysis to see how different discount rates and terminal growth rates changed the estimated enterprise value. Because Excel does not allow this type of What-If analysis to use input cells from another worksheet, the live Data Table is located on the Assumptions sheet. I then linked its results to a separate Sensitivity Analysis sheet so they would be easier to find and access.",
+      "Note: This is only a FIN 320 course project. The company and valuation are both hypothetical."
+    ],
+    "modelGallery": [
+      [
+        "assets/financial-model-dcf.png",
+        "The DCF valuation combines the present value of the five-year free cash flow forecast with the present value of terminal value."
+      ],
+      [
+        "assets/financial-model-sensitivity.png",
+        "The two-variable sensitivity analysis shows how enterprise value changes across discount-rate and terminal-growth assumptions."
+      ],
+      [
+        "assets/financial-model-balance-sheet.png",
+        "The linked pro forma balance sheet uses a cash sweep so free cash flow repays debt before excess cash accumulates."
+      ]
+    ],
+    "downloadAsset": "assets/Contreras_Katherine_FIN320_Final_Valuation_Model.xlsx",
+    "downloadName": "Contreras_Katherine_FIN320_Final_Valuation_Model.xlsx",
+    "highlights": [
+      "Microsoft Excel",
+      "Financial Modeling",
+      "DCF Valuation",
+      "Sensitivity Analysis"
+    ]
+  },
+  {
     "slug": "one-dollar-pop-up-shop",
     "title": "One Dollar Pop-Up Shop",
     "date": "MAY 2025",
@@ -1561,7 +1626,7 @@ const assetBox=(src,caption='',contain=false)=>`<div class="asset-wrap"><img src
 
 document.getElementById('coursework-content').innerHTML=coursework.map(c=>`<div><span class="subhead">${esc(c.section)}</span><ul class="course-list">${c.courses.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div>`).join('');
 document.getElementById('honors-content').innerHTML=honors.map(h=>{const body=`<span class="card-date">${esc(h.year)}</span><h3>${esc(h.title)}</h3><p>${esc(h.summary)}</p>`;return h.slug==='deans-list'?`<a class="card" href="#honor/deans-list">${body}<span class="detail-link">View details &rarr;</span></a>`:`<article class="card honor-static">${body}</article>`}).join('');
-const projectOrder = ['reservequ-space-reservation-prototype', 'grove-residence-hall-poster', 'one-dollar-pop-up-shop'];
+const projectOrder = ['hypothetical-company-financial-model', 'reservequ-space-reservation-prototype', 'grove-residence-hall-poster', 'one-dollar-pop-up-shop'];
 projects.sort((a, b) => projectOrder.indexOf(a.slug) - projectOrder.indexOf(b.slug));
 document.getElementById('projects-content').innerHTML=projects.map((p)=>`<a class="project-card" href="#project/${encodeURIComponent(p.slug)}"><div class="project-image">${assetBox(p.asset,'',p.imageContain)}</div><span class="date">${esc(p.date)}</span><h3>${esc(p.title)}</h3><p>${esc(p.summary)}</p><div class="tags">${p.highlights.map(t=>`<span class="tag">${esc(t)}</span>`).join('')}</div><span class="detail-link">View details →</span></a>`).join('');
 document.getElementById('employment-content').innerHTML=employment.map(e=>`<article class="job"><span class="dates">${esc(e.dates)}</span><h3>${esc(e.role)}</h3><div class="org">${esc(e.org)}</div><ul>${e.bullets.map(b=>`<li>${esc(b)}</li>`).join('')}</ul></article>`).join('');
@@ -1576,8 +1641,9 @@ function projectGalleryBlock(title,items,emptyText){
   return `<section class="project-page-section"><h2>${esc(title)}</h2><div class="project-carousel" data-carousel id="${id}"><div class="carousel-stage">${items.map(([src,cap],i)=>`<figure class="carousel-slide" data-slide="${i}" ${i?'hidden':''}><button type="button" class="carousel-image-button" data-lightbox-src="${esc(src)}" data-lightbox-caption="${esc(cap)}" aria-label="Enlarge image ${i+1} of ${items.length}">${assetBox(src,'')}</button><figcaption class="carousel-caption">${esc(cap)}</figcaption></figure>`).join('')}${items.length>1?`<button type="button" class="carousel-arrow prev" data-carousel-prev aria-label="Previous image">‹</button><button type="button" class="carousel-arrow next" data-carousel-next aria-label="Next image">›</button>`:''}</div><div class="carousel-meta"><span data-carousel-count>1 / ${items.length}</span>${items.length>1?`<span aria-hidden="true">·</span><span>${items.map((_,i)=>`<button type="button" class="carousel-dot ${i===0?'active':''}" data-carousel-dot="${i}" aria-label="Go to image ${i+1}"></button>`).join('')}</span>`:''}</div></div></section>`;
 }
 function renderProjectPage(p){
+  document.documentElement.classList.add('project-view');
   const projectPage=document.getElementById('project-page');
-  projectPage.innerHTML=`<div class="project-page-shell"><a class="project-page-back" href="#projects">← Projects</a><p class="project-page-meta">Completed ${esc(p.date)}</p><h1 class="project-page-title">${esc(p.title)}</h1><p class="project-page-summary">${esc(p.summary)}</p><div class="project-page-cover" data-lightbox-src="${esc(p.asset)}" data-lightbox-caption="${esc(p.title)} project cover" role="button" tabindex="0" aria-label="Enlarge ${esc(p.title)} project cover">${assetBox(p.asset,'',p.imageContain)}</div><div class="project-page-details">${p.details.map(x=>`<p>${esc(x)}</p>`).join('')}</div>${projectGalleryBlock('Event Gallery',p.gallery)}${projectGalleryBlock('Desktop View',p.desktopGallery)}${projectGalleryBlock('Behind the Scenes',p.behindGallery)}${p.hasDemoVideo?`<section class="project-page-section"><h2>Demo Video</h2><div style="position:relative;aspect-ratio:16/9;margin-top:18px;border-radius:12px;overflow:hidden;background:#000"><iframe src="https://player.vimeo.com/video/1228981500" title="ReserveQU Project Showcase" loading="lazy" allow="fullscreen; picture-in-picture; encrypted-media" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:0"></iframe></div><p style="margin-top:12px;font-size:13px;line-height:1.6"><a href="https://vimeo.com/1228981500" target="_blank" rel="noopener noreferrer" style="text-decoration:underline;text-underline-offset:3px">Watch the ReserveQU showcase on Vimeo</a></p></section>`:''}${p.highlights.length?`<div class="project-page-highlight"><h2>Highlights</h2><div class="tags">${p.highlights.map(x=>`<span class="tag">${esc(x)}</span>`).join('')}</div></div>`:''}</div>`;
+  projectPage.innerHTML=`<div class="project-page-shell"><a class="project-page-back" href="#projects">← Projects</a><p class="project-page-meta">Completed ${esc(p.date)}</p><h1 class="project-page-title">${esc(p.title)}</h1><p class="project-page-summary">${esc(p.summary)}</p><div class="project-page-cover" data-lightbox-src="${esc(p.asset)}" data-lightbox-caption="${esc(p.title)} project cover" role="button" tabindex="0" aria-label="Enlarge ${esc(p.title)} project cover">${assetBox(p.asset,'',p.imageContain)}</div><div class="project-page-details">${p.details.map(x=>`<p>${esc(x)}</p>`).join('')}</div>${p.downloadAsset?`<section class="project-page-section"><h2>Project File</h2><p class="project-download-copy">Download the completed Excel workbook to review the linked forecasts, DCF valuation, cash sweep, and sensitivity analysis.</p><a class="project-download" href="${esc(p.downloadAsset)}" download="${esc(p.downloadName||'')}">Download Excel model ↓</a></section>`:''}${projectGalleryBlock('Model Screenshots',p.modelGallery)}${projectGalleryBlock('Event Gallery',p.gallery)}${projectGalleryBlock('Desktop View',p.desktopGallery)}${projectGalleryBlock('Behind the Scenes',p.behindGallery)}${p.hasDemoVideo?`<section class="project-page-section"><h2>Demo Video</h2><div style="position:relative;aspect-ratio:16/9;margin-top:18px;border-radius:12px;overflow:hidden;background:#000"><iframe src="https://player.vimeo.com/video/1228981500" title="ReserveQU Project Showcase" loading="lazy" allow="fullscreen; picture-in-picture; encrypted-media" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:0"></iframe></div><p style="margin-top:12px;font-size:13px;line-height:1.6"><a href="https://vimeo.com/1228981500" target="_blank" rel="noopener noreferrer" style="text-decoration:underline;text-underline-offset:3px">Watch the ReserveQU showcase on Vimeo</a></p></section>`:''}${p.highlights.length?`<div class="project-page-highlight"><h2>Highlights</h2><div class="tags">${p.highlights.map(x=>`<span class="tag">${esc(x)}</span>`).join('')}</div></div>`:''}</div>`;
   document.querySelector('[data-portfolio-view]').hidden=true;
   document.getElementById('site-header').hidden=true;
   projectPage.hidden=false;
@@ -1592,6 +1658,7 @@ function renderProjectPage(p){
   }
   initProjectInteractions(projectPage);
   window.scrollTo(0,0);
+  setTimeout(()=>window.scrollTo(0,0),50);
 }
 const imageLightbox=document.getElementById('image-lightbox');
 const lightboxImg=imageLightbox.querySelector('.lightbox-image');
@@ -1630,6 +1697,7 @@ imageLightbox.addEventListener('click',e=>{const r=imageLightbox.getBoundingClie
 imageLightbox.addEventListener('close',()=>{lightboxImg.removeAttribute('src');lightboxCaption.textContent=''});
 
 function showPortfolio(){
+  document.documentElement.classList.remove('project-view');
   const projectPage=document.getElementById('project-page');
   projectPage.hidden=true;
   projectPage.innerHTML='';
@@ -1638,6 +1706,7 @@ function showPortfolio(){
   document.title='Katherine Contreras — Finance & CIS Portfolio';
 }
 function renderDeansList(){
+ document.documentElement.classList.add('project-view');
  const page=document.getElementById('project-page');
  const awards=[['Fall 2024',true],['Spring 2025',false],['Fall 2025',false],['Spring 2026',true]];
  const medal='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="8" r="5"/><path d="m8 12-2 9 6-3 6 3-2-9"/></svg>';
