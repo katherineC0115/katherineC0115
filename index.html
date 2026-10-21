@@ -39,7 +39,11 @@
     }
     body {
       margin:0;
-      background:var(--background);
+      background:
+        radial-gradient(circle at 8% 18%,color-mix(in srgb,var(--accent) 8%,transparent),transparent 28%),
+        radial-gradient(circle at 92% 82%,color-mix(in srgb,var(--primary) 7%,transparent),transparent 30%),
+        var(--background);
+      background-attachment:fixed;
       color:var(--foreground);
       font-family:var(--sans);
       -webkit-font-smoothing:antialiased;
@@ -161,11 +165,16 @@
       color:var(--primary)
     }
     .hero {
+      position:relative;
       display:grid;
       grid-template-columns:1fr 380px;
       align-items:center;
       gap:48px;
       padding:112px 0
+    }
+    .hero>*:not(.doodle) {
+      position:relative;
+      z-index:1
     }
     .eyebrow {
       display:flex;
@@ -287,17 +296,159 @@
       background:linear-gradient(145deg,color-mix(in srgb,var(--secondary) 70%,white),white)
     }
     section.portfolio-section {
+      --section-accent:var(--accent);
       scroll-margin-top:80px;
+      position:relative;
+      isolation:isolate;
       display:grid;
       grid-template-columns:200px 1fr;
       gap:32px;
-      border-top:1px solid var(--border);
-      padding:64px 0
+      margin:20px 0;
+      border:1px solid color-mix(in srgb,var(--section-accent) 24%,var(--border));
+      border-radius:24px;
+      padding:64px 28px;
+      background:
+        radial-gradient(circle at 88% 14%,color-mix(in srgb,var(--section-accent) 13%,transparent),transparent 34%),
+        linear-gradient(145deg,color-mix(in srgb,var(--card) 92%,var(--section-accent)),color-mix(in srgb,var(--background) 94%,var(--section-accent)));
+      box-shadow:inset 0 1px 0 color-mix(in srgb,var(--foreground) 5%,transparent)
+    }
+    section.portfolio-section>* {
+      position:relative;
+      z-index:1
+    }
+    section.portfolio-section::before,section.portfolio-section::after {
+      content:"";
+      position:absolute;
+      inset:0;
+      z-index:0;
+      border-radius:inherit;
+      pointer-events:none;
+      overflow:hidden
+    }
+    #coursework {
+      --section-accent:var(--accent)
+    }
+    #coursework::before {
+      background-image:
+        linear-gradient(color-mix(in srgb,var(--accent) 18%,transparent) 1px,transparent 1px),
+        linear-gradient(90deg,color-mix(in srgb,var(--accent) 18%,transparent) 1px,transparent 1px);
+      background-size:26px 26px;
+      opacity:.34;
+      mask-image:linear-gradient(100deg,transparent 36%,#000 100%)
+    }
+    #honors {
+      --section-accent:var(--primary)
+    }
+    #honors::before {
+      background:
+        radial-gradient(circle at 84% 28%,transparent 0 46px,color-mix(in srgb,var(--primary) 22%,transparent) 47px 48px,transparent 49px),
+        radial-gradient(circle at 72% 74%,transparent 0 18px,color-mix(in srgb,var(--accent) 20%,transparent) 19px 20px,transparent 21px),
+        radial-gradient(circle at 94% 82%,color-mix(in srgb,var(--primary) 25%,transparent) 0 3px,transparent 4px)
+    }
+    #projects {
+      --section-accent:color-mix(in srgb,var(--accent) 62%,var(--primary))
+    }
+    #projects::after,#credentials::after {
+      box-sizing:border-box;
+      content:"01001011 01000011 00100000 01000110 01001001 01001110 00100000 01000011 01001001 01010011 00100000 01000100 01000001 01010100 01000001";
+      padding:24px 20px 20px 42%;
+      color:var(--section-accent);
+      font:600 12px/2.15 var(--mono);
+      letter-spacing:.2em;
+      word-spacing:.55em;
+      text-align:right;
+      opacity:.1;
+      transform:rotate(-2deg) scale(1.05)
+    }
+    #employment {
+      --section-accent:var(--primary)
+    }
+    #employment::before {
+      background:repeating-linear-gradient(118deg,transparent 0 22px,color-mix(in srgb,var(--primary) 13%,transparent) 23px 24px,transparent 25px 47px);
+      opacity:.42;
+      mask-image:linear-gradient(90deg,transparent 42%,#000)
+    }
+    #clubs {
+      --section-accent:var(--accent)
+    }
+    #clubs::before {
+      background:
+        radial-gradient(circle at 82% 45%,transparent 0 76px,color-mix(in srgb,var(--accent) 18%,transparent) 77px 78px,transparent 79px),
+        radial-gradient(circle at 82% 45%,transparent 0 112px,color-mix(in srgb,var(--primary) 14%,transparent) 113px 114px,transparent 115px)
+    }
+    #credentials {
+      --section-accent:color-mix(in srgb,var(--primary) 66%,var(--accent))
+    }
+    #credentials::after {
+      content:"00110010 00110000 00110010 00110110 00100000 01000001 01001001 00100000 01000010 01001101 01000011";
+      padding-left:38%;
+      transform:rotate(2deg) scale(1.05)
+    }
+    #future {
+      --section-accent:color-mix(in srgb,var(--accent) 72%,var(--primary))
+    }
+    #future::before {
+      background:
+        linear-gradient(140deg,transparent 56%,color-mix(in srgb,var(--accent) 12%,transparent) 56% 58%,transparent 58%),
+        linear-gradient(155deg,transparent 67%,color-mix(in srgb,var(--primary) 12%,transparent) 67% 69%,transparent 69%)
     }
     .section-head {
       position:sticky;
       top:96px;
       align-self:start
+    }
+    .doodle {
+      display:block;
+      pointer-events:none;
+      overflow:visible
+    }
+    .doodle path,.doodle circle {
+      vector-effect:non-scaling-stroke
+    }
+    .doodle-line {
+      fill:none;
+      stroke:var(--primary);
+      stroke-width:1.65;
+      stroke-linecap:round;
+      stroke-linejoin:round
+    }
+    .doodle-accent-line {
+      stroke:var(--accent)
+    }
+    .doodle-dash {
+      stroke-dasharray:4 7
+    }
+    .hero-star-cluster,.hero-swirl {
+      position:absolute;
+      z-index:0;
+      opacity:.62
+    }
+    .hero-star-cluster {
+      width:82px;
+      left:-26px;
+      top:64px;
+      transform:rotate(-7deg)
+    }
+    .hero-swirl {
+      width:172px;
+      right:330px;
+      top:50px;
+      transform:rotate(8deg)
+    }
+    .section-doodle {
+      width:112px;
+      height:auto;
+      margin-top:18px;
+      opacity:.72
+    }
+    #honors .section-doodle,#clubs .section-doodle {
+      transform:scaleX(-1)
+    }
+    .footer-doodle {
+      width:178px;
+      max-width:56%;
+      margin-top:28px;
+      opacity:.7
     }
     .section-index {
       font:600 17px var(--mono);
@@ -553,12 +704,65 @@
       display:none
     }
     #project-page {
-      min-height:100vh
+      min-height:100vh;
+      position:relative;
+      isolation:isolate;
+      overflow:hidden;
+      background:
+        radial-gradient(circle at 10% 8%,color-mix(in srgb,var(--accent) 12%,transparent),transparent 28%),
+        radial-gradient(circle at 92% 34%,color-mix(in srgb,var(--primary) 11%,transparent),transparent 31%),
+        var(--background)
+    }
+    #project-page::before {
+      position:absolute;
+      inset:0;
+      z-index:0;
+      pointer-events:none;
+      overflow:hidden;
+      color:var(--accent);
+      opacity:.07;
+      font:600 13px/2.4 var(--mono);
+      letter-spacing:.28em;
+      word-spacing:.8em;
+      white-space:normal
+    }
+    #project-page[data-page-type="project"]::before {
+      content:"01001011 01000001 01010100 00100000 01000110 01001001 01001110 01000001 01001110 01000011 01000101 00100000 01000011 01001001 01010011 00100000 01000001 01001110 01000001 01001100 01011001 01010100 01001001 01000011 01010011";
+      width:54%;
+      right:-5%;
+      left:auto;
+      padding-top:84px;
+      transform:rotate(5deg)
+    }
+    #project-page[data-page-type="honor"]::before {
+      content:"✦   ✧        ✦      ·   ✧       ✦        ✧    ·       ✦";
+      padding:70px 5%;
+      color:var(--primary);
+      font-size:42px;
+      line-height:3.2;
+      letter-spacing:.65em;
+      opacity:.11;
+      transform:rotate(-6deg)
     }
     .project-page-shell {
       width:min(768px,calc(100% - 48px));
       margin:0 auto;
-      padding:64px 0 96px
+      padding:64px 0 96px;
+      position:relative;
+      z-index:1
+    }
+    .project-page-shell::before {
+      content:"";
+      position:absolute;
+      z-index:-1;
+      top:36px;
+      left:-36px;
+      right:-36px;
+      height:430px;
+      border:1px solid color-mix(in srgb,var(--accent) 24%,var(--border));
+      border-radius:28px;
+      background:linear-gradient(145deg,color-mix(in srgb,var(--card) 94%,var(--accent)),color-mix(in srgb,var(--background) 95%,var(--primary)));
+      box-shadow:var(--shadow)
     }
     .project-page-back {
       display:inline-block;
@@ -610,8 +814,11 @@
     }
     .project-page-details {
       margin-top:32px;
-      border-top:1px solid var(--border);
-      padding-top:32px;
+      border:1px solid color-mix(in srgb,var(--accent) 20%,var(--border));
+      border-radius:18px;
+      padding:28px;
+      background:color-mix(in srgb,var(--card) 92%,transparent);
+      backdrop-filter:blur(8px);
       display:grid;
       gap:18px
     }
@@ -624,8 +831,11 @@
     }
     .project-page-section {
       margin-top:48px;
-      border-top:1px solid var(--border);
-      padding-top:32px
+      border:1px solid color-mix(in srgb,var(--primary) 18%,var(--border));
+      border-radius:18px;
+      padding:28px;
+      background:color-mix(in srgb,var(--card) 91%,transparent);
+      backdrop-filter:blur(8px)
     }
     .project-page-section>h2 {
       margin:0;
@@ -886,7 +1096,18 @@
       .hero {
         gap:24px
       }
-      .hero>div:first-child {
+      .hero-star-cluster {
+        width:64px;
+        left:2px;
+        top:26px
+      }
+      .hero-swirl {
+        width:130px;
+        right:0;
+        top:45%;
+        opacity:.4
+      }
+      .hero>div:first-of-type {
         display:contents
       }
       .hero h1 {
@@ -983,10 +1204,16 @@
       }
       section.portfolio-section {
         grid-template-columns:1fr;
-        padding:50px 0
+        margin:14px 0;
+        border-radius:18px;
+        padding:46px 20px
       }
       .section-head {
         position:static
+      }
+      .section-doodle {
+        width:96px;
+        margin:14px auto 0
       }
       .two-col,.cards,.projects-grid {
         grid-template-columns:1fr
@@ -1078,11 +1305,24 @@
       footer h2 {
         font-size:32px
       }
+      .footer-doodle {
+        margin:24px auto 0
+      }
       .project-page-title {
         font-size:34px
       }
       .project-page-shell {
         width:min(100% - 24px,768px)
+      }
+      .project-page-shell::before {
+        left:-6px;
+        right:-6px;
+        top:24px;
+        height:410px;
+        border-radius:20px
+      }
+      .project-page-details,.project-page-section {
+        padding:20px
       }
     }
     .honor-static {
@@ -1109,10 +1349,22 @@
       margin-top:36px
     }
     .deans-award {
+      position:relative;
+      overflow:hidden;
       padding:28px;
       border:1px solid var(--border);
       border-radius:13px;
-      background:var(--card)
+      background:linear-gradient(145deg,color-mix(in srgb,var(--card) 92%,var(--primary)),var(--card))
+    }
+    .deans-award::after {
+      content:"✦";
+      position:absolute;
+      right:14px;
+      bottom:-16px;
+      color:var(--primary);
+      font-size:72px;
+      opacity:.08;
+      transform:rotate(12deg)
     }
     .deans-award h2 {
       font-size:22px;
@@ -1265,6 +1517,8 @@
 
 <main id="top" class="container" data-portfolio-view="">
   <section class="hero">
+    <svg class="doodle hero-star-cluster" viewBox="0 0 82 82" aria-hidden="true"><path class="doodle-line" d="m27 5 3.2 9.1 9.6 2-9.6 2-3.2 9.1-3.2-9.1-9.6-2 9.6-2Z"/><path class="doodle-line doodle-accent-line" d="m59 36 2.4 7 7.1 1.5-7.1 1.5-2.4 7-2.5-7-7-1.5 7-1.5Z"/><circle class="doodle-line doodle-accent-line" cx="15" cy="54" r="3.5"/><path class="doodle-line" d="M35 65c8-8 20-8 28 0"/></svg>
+    <svg class="doodle hero-swirl" viewBox="0 0 172 92" aria-hidden="true"><path class="doodle-line doodle-dash" d="M4 58c22-39 70-46 105-19 23 18 3 44-19 30-20-13 3-35 32-30 20 3 32 16 46 31"/><path class="doodle-line doodle-accent-line" d="m148 64 3 8.5 9 1.8-9 1.9-3 8.5-3-8.5-9-1.9 9-1.8Z"/></svg>
     <div class="reveal">
       <div class="eyebrow"><span class="primary">CLASS OF 2027</span></div>
       <h1><span class="hero-name">Katherine Contreras</span><span class="hero-title">Finance <span class="primary">&amp;</span> Computer Information Systems at <span class="primary">Quinnipiac University</span>.</span></h1>
@@ -1275,15 +1529,15 @@
     <div class="portrait reveal"><img src="assets/embedded-001.png" alt="Katherine Contreras headshot" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><div class="asset-placeholder" style="display:none">Image unavailable</div></div>
   </section>
 
-  <section id="coursework" class="portfolio-section"><div class="section-head"><span class="section-index">01 / Coursework</span><h2>Coursework</h2></div><div class="two-col" id="coursework-content"></div></section>
-  <section id="honors" class="portfolio-section"><div class="section-head"><span class="section-index">02 / Honors</span><h2>Honors &amp; Awards</h2></div><div class="cards" id="honors-content"></div></section>
-  <section id="projects" class="portfolio-section"><div class="section-head"><span class="section-index">03 / Projects</span><h2>Projects</h2></div><div class="projects-grid" id="projects-content"></div></section>
-  <section id="employment" class="portfolio-section"><div class="section-head"><span class="section-index">04 / Employment</span><h2>Employment</h2></div><div class="timeline" id="employment-content"></div></section>
-  <section id="clubs" class="portfolio-section"><div class="section-head"><span class="section-index">05 / Clubs</span><h2>Club Involvement</h2></div><div class="cards" id="clubs-content"></div></section>
-  <section id="credentials" class="portfolio-section"><div class="section-head"><span class="section-index">06 / Credentials</span><h2>Licenses &amp; Certifications</h2></div><div class="cards" id="credentials-content"></div></section>
-  <section id="future" class="portfolio-section"><div class="section-head"><span class="section-index">07 / Future</span><h2>Future Outlook</h2></div><div class="future-grid"><div class="future-card"><span>2027</span><h3>Bachelor’s Degree in Finance</h3></div><div class="future-card"><span>2027</span><h3>Bachelor’s Degree in Computer Information Systems</h3></div><div class="future-card"><span>2028</span><h3>Master of Business Administration</h3></div></div></section>
+  <section id="coursework" class="portfolio-section"><div class="section-head"><span class="section-index">01 / Coursework</span><h2>Coursework</h2><svg class="doodle section-doodle" viewBox="0 0 112 44" aria-hidden="true"><path class="doodle-line doodle-dash" d="M3 28C21 5 43 41 65 20s34-8 44 4"/><path class="doodle-line doodle-accent-line" d="m82 5 2.4 6.7 6.7 1.4-6.7 1.4-2.4 6.7-2.3-6.7-6.8-1.4 6.8-1.4Z"/></svg></div><div class="two-col" id="coursework-content"></div></section>
+  <section id="honors" class="portfolio-section"><div class="section-head"><span class="section-index">02 / Honors</span><h2>Honors &amp; Awards</h2><svg class="doodle section-doodle" viewBox="0 0 112 44" aria-hidden="true"><path class="doodle-line doodle-dash" d="M3 28C21 5 43 41 65 20s34-8 44 4"/><path class="doodle-line doodle-accent-line" d="m82 5 2.4 6.7 6.7 1.4-6.7 1.4-2.4 6.7-2.3-6.7-6.8-1.4 6.8-1.4Z"/></svg></div><div class="cards" id="honors-content"></div></section>
+  <section id="projects" class="portfolio-section"><div class="section-head"><span class="section-index">03 / Projects</span><h2>Projects</h2><svg class="doodle section-doodle" viewBox="0 0 112 44" aria-hidden="true"><path class="doodle-line doodle-dash" d="M3 28C21 5 43 41 65 20s34-8 44 4"/><path class="doodle-line doodle-accent-line" d="m82 5 2.4 6.7 6.7 1.4-6.7 1.4-2.4 6.7-2.3-6.7-6.8-1.4 6.8-1.4Z"/></svg></div><div class="projects-grid" id="projects-content"></div></section>
+  <section id="employment" class="portfolio-section"><div class="section-head"><span class="section-index">04 / Employment</span><h2>Employment</h2><svg class="doodle section-doodle" viewBox="0 0 112 44" aria-hidden="true"><path class="doodle-line doodle-dash" d="M3 28C21 5 43 41 65 20s34-8 44 4"/><path class="doodle-line doodle-accent-line" d="m82 5 2.4 6.7 6.7 1.4-6.7 1.4-2.4 6.7-2.3-6.7-6.8-1.4 6.8-1.4Z"/></svg></div><div class="timeline" id="employment-content"></div></section>
+  <section id="clubs" class="portfolio-section"><div class="section-head"><span class="section-index">05 / Clubs</span><h2>Club Involvement</h2><svg class="doodle section-doodle" viewBox="0 0 112 44" aria-hidden="true"><path class="doodle-line doodle-dash" d="M3 28C21 5 43 41 65 20s34-8 44 4"/><path class="doodle-line doodle-accent-line" d="m82 5 2.4 6.7 6.7 1.4-6.7 1.4-2.4 6.7-2.3-6.7-6.8-1.4 6.8-1.4Z"/></svg></div><div class="cards" id="clubs-content"></div></section>
+  <section id="credentials" class="portfolio-section"><div class="section-head"><span class="section-index">06 / Credentials</span><h2>Licenses &amp; Certifications</h2><svg class="doodle section-doodle" viewBox="0 0 112 44" aria-hidden="true"><path class="doodle-line doodle-dash" d="M3 28C21 5 43 41 65 20s34-8 44 4"/><path class="doodle-line doodle-accent-line" d="m82 5 2.4 6.7 6.7 1.4-6.7 1.4-2.4 6.7-2.3-6.7-6.8-1.4 6.8-1.4Z"/></svg></div><div class="cards" id="credentials-content"></div></section>
+  <section id="future" class="portfolio-section"><div class="section-head"><span class="section-index">07 / Future</span><h2>Future Outlook</h2><svg class="doodle section-doodle" viewBox="0 0 112 44" aria-hidden="true"><path class="doodle-line doodle-dash" d="M3 28C21 5 43 41 65 20s34-8 44 4"/><path class="doodle-line doodle-accent-line" d="m82 5 2.4 6.7 6.7 1.4-6.7 1.4-2.4 6.7-2.3-6.7-6.8-1.4 6.8-1.4Z"/></svg></div><div class="future-grid"><div class="future-card"><span>2027</span><h3>Bachelor’s Degree in Finance</h3></div><div class="future-card"><span>2027</span><h3>Bachelor’s Degree in Computer Information Systems</h3></div><div class="future-card"><span>2028</span><h3>Master of Business Administration</h3></div></div></section>
 
-  <footer id="contact"><div class="footer-grid"><div><h2>Let’s talk about <span class="primary">what’s next.</span></h2><p class="muted">I’m currently seeking internship opportunities in finance, business technology, analytics, and information systems.</p></div><div class="contact-block"><details class="contact-form-panel">
+  <footer id="contact"><div class="footer-grid"><div><h2>Let’s talk about <span class="primary">what’s next.</span></h2><p class="muted">I’m currently seeking internship opportunities in finance, business technology, analytics, and information systems.</p><svg class="doodle footer-doodle" viewBox="0 0 178 70" aria-hidden="true"><path class="doodle-line doodle-dash" d="M3 48c24-45 68-24 59 2-7 20-31 5-21-12 13-23 52-23 73-1 15 16 34 20 60 3"/><path class="doodle-line doodle-accent-line" d="m129 8 3.1 8.8 8.8 1.9-8.8 1.8-3.1 8.9-3.1-8.9-8.8-1.8 8.8-1.9Z"/><circle class="doodle-line doodle-accent-line" cx="160" cy="19" r="3.5"/></svg></div><div class="contact-block"><details class="contact-form-panel">
   <summary class="email">Contact me!</summary>
   <form id="contact-form" class="contact-form" action="https://formspree.io/f/xaenpkll" method="POST" aria-describedby="contact-help">
     <p id="contact-help">Send me a message using the form below. Include a way to reach you if you would like a reply. Submissions are processed by Formspree.</p>
@@ -1369,12 +1623,12 @@ const projects = [
     "date": "SUMMER 2026",
     "asset": "assets/financial-model-dcf.png",
     "imageContain": true,
-    "summary": "For my FIN 320 final project, I created a five-year financial model for a hypothetical company in Microsoft Excel. I used the completed projections to perform a discounted cash flow (DCF) valuation and see how changes in my assumptions affected the company’s estimated enterprise value.",
+    "summary": "For my FIN 320 final project, I built an Excel-based five-year forecast for a hypothetical company and used it to estimate enterprise value through a discounted cash flow analysis.",
     "details": [
-      "For this project, I was given a set of assumptions that I used to create linked pro forma income statements, balance sheets, and cash flow statements covering a five-year period. I also had to account for changes in working capital, capital expenditures, depreciation, and taxes so that the statements would remain connected throughout the model.",
-      "One issue I had to address was how the model handled debt. I added a cash sweep so that the company’s free cash flow would repay its debt without allowing the debt balance to become negative. Once the debt was fully repaid, the remaining cash was allowed to accumulate on the balance sheet instead.",
-      "After completing the projected statements, I calculated unlevered free cash flow and used it to perform a DCF valuation. I also created a two-variable Excel What-If Data Table to serve as a sensitivity analysis to see how different discount rates and terminal growth rates changed the estimated enterprise value. Because Excel does not allow this type of What-If analysis to use input cells from another worksheet, the live Data Table is located on the Assumptions sheet. I then linked its results to a separate Sensitivity Analysis sheet so they would be easier to find and access.",
-      "Note: This is only a FIN 320 course project. The company and valuation are both hypothetical."
+      "Starting with a set of provided assumptions, I developed linked pro forma income statements, balance sheets, and cash flow statements covering a five-year forecast. I also modeled working capital, capital expenditures, depreciation, taxes, and a cash sweep that uses free cash flow to repay debt before allowing excess cash to accumulate.",
+      "I used the forecast to calculate unlevered free cash flow and complete a discounted cash flow valuation. The model estimates enterprise value by combining the present value of the five-year forecast with the present value of terminal value.",
+      "To test how key assumptions affect the result, I built a two-variable Excel What-If Data Table that compares enterprise value under different discount rates and terminal growth rates. This project strengthened my ability to connect financial statements, interpret model assumptions, and explain how those assumptions affect valuation results.",
+      "This is a hypothetical FIN 320 course project and does not represent a valuation of a real company."
     ],
     "modelGallery": [
       [
@@ -1643,7 +1897,9 @@ function projectGalleryBlock(title,items,emptyText){
 function renderProjectPage(p){
   document.documentElement.classList.add('project-view');
   const projectPage=document.getElementById('project-page');
-  projectPage.innerHTML=`<div class="project-page-shell"><a class="project-page-back" href="#projects">← Projects</a><p class="project-page-meta">Completed ${esc(p.date)}</p><h1 class="project-page-title">${esc(p.title)}</h1><p class="project-page-summary">${esc(p.summary)}</p><div class="project-page-cover" data-lightbox-src="${esc(p.asset)}" data-lightbox-caption="${esc(p.title)} project cover" role="button" tabindex="0" aria-label="Enlarge ${esc(p.title)} project cover">${assetBox(p.asset,'',p.imageContain)}</div><div class="project-page-details">${p.details.map(x=>`<p>${esc(x)}</p>`).join('')}</div>${p.downloadAsset?`<section class="project-page-section"><h2>Project File</h2><p class="project-download-copy">Download the completed Excel workbook to review the linked forecasts, DCF valuation, cash sweep, and sensitivity analysis.</p><a class="project-download" href="${esc(p.downloadAsset)}" download="${esc(p.downloadName||'')}">Download Excel model ↓</a></section>`:''}${projectGalleryBlock('Model Screenshots',p.modelGallery)}${projectGalleryBlock('Event Gallery',p.gallery)}${projectGalleryBlock('Desktop View',p.desktopGallery)}${projectGalleryBlock('Behind the Scenes',p.behindGallery)}${p.hasDemoVideo?`<section class="project-page-section"><h2>Demo Video</h2><div style="position:relative;aspect-ratio:16/9;margin-top:18px;border-radius:12px;overflow:hidden;background:#000"><iframe src="https://player.vimeo.com/video/1228981500" title="ReserveQU Project Showcase" loading="lazy" allow="fullscreen; picture-in-picture; encrypted-media" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:0"></iframe></div><p style="margin-top:12px;font-size:13px;line-height:1.6"><a href="https://vimeo.com/1228981500" target="_blank" rel="noopener noreferrer" style="text-decoration:underline;text-underline-offset:3px">Watch the ReserveQU showcase on Vimeo</a></p></section>`:''}${p.highlights.length?`<div class="project-page-highlight"><h2>Highlights</h2><div class="tags">${p.highlights.map(x=>`<span class="tag">${esc(x)}</span>`).join('')}</div></div>`:''}</div>`;
+  projectPage.dataset.pageType='project';
+  projectPage.dataset.projectSlug=p.slug;
+  projectPage.innerHTML=`<div class="project-page-shell"><a class="project-page-back" href="#projects">← Projects</a><p class="project-page-meta">Completed ${esc(p.date)}</p><h1 class="project-page-title">${esc(p.title)}</h1><p class="project-page-summary">${esc(p.summary)}</p><div class="project-page-cover" data-lightbox-src="${esc(p.asset)}" data-lightbox-caption="${esc(p.title)} project cover" role="button" tabindex="0" aria-label="Enlarge ${esc(p.title)} project cover">${assetBox(p.asset,'',p.imageContain)}</div><div class="project-page-details">${p.details.map(x=>`<p>${esc(x)}</p>`).join('')}</div>${p.downloadAsset?`<section class="project-page-section"><h2>Project File</h2><p class="project-download-copy">Download the completed Excel workbook to review the linked forecasts, DCF valuation, cash sweep, and sensitivity analysis.</p><a class="project-download" href="${esc(p.downloadAsset)}" download="${esc(p.downloadName||'')}">Download Excel model ↓</a></section>`:''}${projectGalleryBlock('Model Views',p.modelGallery)}${projectGalleryBlock('Event Gallery',p.gallery)}${projectGalleryBlock('Desktop View',p.desktopGallery)}${projectGalleryBlock('Behind the Scenes',p.behindGallery)}${p.hasDemoVideo?`<section class="project-page-section"><h2>Demo Video</h2><div style="position:relative;aspect-ratio:16/9;margin-top:18px;border-radius:12px;overflow:hidden;background:#000"><iframe src="https://player.vimeo.com/video/1228981500" title="ReserveQU Project Showcase" loading="lazy" allow="fullscreen; picture-in-picture; encrypted-media" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:0"></iframe></div><p style="margin-top:12px;font-size:13px;line-height:1.6"><a href="https://vimeo.com/1228981500" target="_blank" rel="noopener noreferrer" style="text-decoration:underline;text-underline-offset:3px">Watch the ReserveQU showcase on Vimeo</a></p></section>`:''}${p.highlights.length?`<div class="project-page-highlight"><h2>Highlights</h2><div class="tags">${p.highlights.map(x=>`<span class="tag">${esc(x)}</span>`).join('')}</div></div>`:''}</div>`;
   document.querySelector('[data-portfolio-view]').hidden=true;
   document.getElementById('site-header').hidden=true;
   projectPage.hidden=false;
@@ -1699,6 +1955,8 @@ imageLightbox.addEventListener('close',()=>{lightboxImg.removeAttribute('src');l
 function showPortfolio(){
   document.documentElement.classList.remove('project-view');
   const projectPage=document.getElementById('project-page');
+  delete projectPage.dataset.pageType;
+  delete projectPage.dataset.projectSlug;
   projectPage.hidden=true;
   projectPage.innerHTML='';
   document.querySelector('[data-portfolio-view]').hidden=false;
@@ -1708,6 +1966,8 @@ function showPortfolio(){
 function renderDeansList(){
  document.documentElement.classList.add('project-view');
  const page=document.getElementById('project-page');
+ page.dataset.pageType='honor';
+ delete page.dataset.projectSlug;
  const awards=[['Fall 2024',true],['Spring 2025',false],['Fall 2025',false],['Spring 2026',true]];
  const medal='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="8" r="5"/><path d="m8 12-2 9 6-3 6 3-2-9"/></svg>';
  const star='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2-5.6-3-5.6 3 1.1-6.2L3 9.6l6.2-.9Z"/></svg>';
