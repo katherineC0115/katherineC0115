@@ -96,11 +96,35 @@
     .desktop-nav {
       display:flex;
       align-items:center;
-      gap:26px;
+      gap:18px;
       font:500 11px var(--mono);
       letter-spacing:.14em;
       text-transform:uppercase;
       color:var(--muted-foreground)
+    }
+    .desktop-nav a:not(.contact-pill) {
+      position:relative;
+      padding:20px 0
+    }
+    .desktop-nav a:not(.contact-pill)::after {
+      content:"";
+      position:absolute;
+      right:0;
+      bottom:12px;
+      left:0;
+      height:2px;
+      border-radius:999px;
+      background:var(--accent);
+      opacity:0;
+      transform:scaleX(.35);
+      transition:.2s opacity,.2s transform
+    }
+    .desktop-nav a[aria-current="location"] {
+      color:var(--foreground)
+    }
+    .desktop-nav a[aria-current="location"]::after {
+      opacity:1;
+      transform:scaleX(1)
     }
     .desktop-nav a:hover,.detail-link:hover {
       color:var(--primary)
@@ -164,13 +188,21 @@
       background:var(--secondary);
       color:var(--primary)
     }
+    .mobile-nav nav a[aria-current="location"] {
+      background:var(--secondary);
+      color:var(--primary)
+    }
+    .contact-pill[aria-current="location"] {
+      outline:2px solid var(--accent);
+      outline-offset:2px
+    }
     .hero {
       position:relative;
       display:grid;
-      grid-template-columns:1fr 380px;
+      grid-template-columns:1fr 340px;
       align-items:center;
-      gap:48px;
-      padding:112px 0
+      gap:40px;
+      padding:72px 0
     }
     .hero>*:not(.doodle) {
       position:relative;
@@ -180,7 +212,7 @@
       display:flex;
       align-items:center;
       gap:12px;
-      margin-bottom:24px;
+      margin-bottom:18px;
       font:600 11px var(--mono);
       text-transform:uppercase;
       letter-spacing:.18em
@@ -202,23 +234,23 @@
     .hero-title {
       display:block;
       max-width:18ch;
-      margin-top:20px;
+      margin-top:16px;
       font-size:clamp(34px,3.7vw,50px);
       line-height:1.06;
       letter-spacing:-.035em
     }
     .hero-copy {
-      margin-top:28px;
+      margin-top:20px;
       max-width:46ch;
       font-size:18px;
-      line-height:1.75;
+      line-height:1.6;
       color:var(--muted-foreground)
     }
     .buttons {
       display:flex;
       flex-wrap:wrap;
       gap:12px;
-      margin-top:34px
+      margin-top:24px
     }
     .btn {
       display:inline-flex;
@@ -245,7 +277,7 @@
       flex-wrap:wrap;
       align-items:center;
       gap:16px;
-      margin-top:36px;
+      margin-top:26px;
       font:500 11px var(--mono);
       letter-spacing:.12em;
       text-transform:uppercase;
@@ -259,6 +291,7 @@
     }
     .portrait {
       aspect-ratio:4/5;
+      max-height:430px;
       border-radius:18px;
       border:1px solid var(--border);
       background:linear-gradient(145deg,var(--secondary),#fff);
@@ -301,12 +334,12 @@
       position:relative;
       isolation:isolate;
       display:grid;
-      grid-template-columns:200px 1fr;
-      gap:32px;
-      margin:20px 0;
+      grid-template-columns:168px 1fr;
+      gap:24px;
+      margin:14px 0;
       border:1px solid color-mix(in srgb,var(--section-accent) 24%,var(--border));
       border-radius:24px;
-      padding:64px 28px;
+      padding:42px 24px;
       background:
         radial-gradient(circle at 88% 14%,color-mix(in srgb,var(--section-accent) 13%,transparent),transparent 34%),
         linear-gradient(145deg,color-mix(in srgb,var(--card) 92%,var(--section-accent)),color-mix(in srgb,var(--background) 94%,var(--section-accent)));
@@ -392,7 +425,7 @@
         linear-gradient(140deg,transparent 56%,color-mix(in srgb,var(--accent) 12%,transparent) 56% 58%,transparent 58%),
         linear-gradient(155deg,transparent 67%,color-mix(in srgb,var(--primary) 12%,transparent) 67% 69%,transparent 69%)
     }
-    .section-head {
+    section.portfolio-section>.section-head {
       position:sticky;
       top:96px;
       align-self:start
@@ -436,9 +469,9 @@
       transform:rotate(8deg)
     }
     .section-doodle {
-      width:112px;
+      width:88px;
       height:auto;
-      margin-top:18px;
+      margin-top:14px;
       opacity:.72
     }
     #honors .section-doodle,#clubs .section-doodle {
@@ -451,20 +484,20 @@
       opacity:.7
     }
     .section-index {
-      font:600 17px var(--mono);
-      letter-spacing:.2em;
+      font:600 13px var(--mono);
+      letter-spacing:.16em;
       text-transform:uppercase;
       color:var(--primary)
     }
     h2 {
-      margin:8px 0 0;
-      font-size:24px;
+      margin:6px 0 0;
+      font-size:22px;
       letter-spacing:-.025em
     }
     .two-col {
       display:grid;
       grid-template-columns:repeat(2,minmax(0,1fr));
-      gap:40px
+      gap:28px
     }
     .subhead {
       font:600 11px var(--mono);
@@ -475,25 +508,25 @@
     .course-list {
       list-style:none;
       padding:0;
-      margin:16px 0 0;
+      margin:12px 0 0;
       display:grid;
-      gap:12px
+      gap:8px
     }
     .course-list li {
-      font-size:15px;
+      font-size:14px;
       font-weight:600;
       line-height:1.35
     }
     .cards {
       display:grid;
-      grid-template-columns:repeat(2,minmax(0,1fr));
-      gap:16px
+      grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+      gap:14px
     }
     .card {
       border:1px solid var(--border);
       background:var(--card);
       border-radius:13px;
-      padding:22px;
+      padding:18px;
       transition:.25s transform,.25s border-color;
       cursor:pointer
     }
@@ -508,20 +541,20 @@
       color:var(--primary)
     }
     .card h3 {
-      margin:12px 0 0;
-      font-size:18px;
+      margin:10px 0 0;
+      font-size:17px;
       line-height:1.25;
       letter-spacing:-.02em
     }
     .card p {
-      font-size:14px;
-      line-height:1.65;
+      font-size:13px;
+      line-height:1.55;
       color:var(--muted-foreground);
       margin:8px 0 0
     }
     .detail-link {
       display:block;
-      margin-top:18px;
+      margin-top:14px;
       font:500 10px var(--mono);
       letter-spacing:.18em;
       text-transform:uppercase;
@@ -529,14 +562,14 @@
     }
     .projects-grid {
       display:grid;
-      grid-template-columns:repeat(2,minmax(0,1fr));
-      gap:32px
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:20px
     }
     .project-card {
       cursor:pointer
     }
     .project-image {
-      aspect-ratio:16/9;
+      aspect-ratio:16/10;
       border-radius:13px;
       border:1px solid var(--border);
       overflow:hidden;
@@ -548,7 +581,7 @@
     }
     .project-card .date {
       display:block;
-      margin-top:16px;
+      margin-top:12px;
       font:500 10px var(--mono);
       letter-spacing:.18em;
       text-transform:uppercase;
@@ -556,14 +589,20 @@
     }
     .project-card h3 {
       margin:5px 0 0;
-      font-size:20px;
+      font-size:18px;
       letter-spacing:-.025em
     }
     .project-card p {
       margin:8px 0 0;
       font-size:14px;
-      line-height:1.6;
+      line-height:1.55;
       color:var(--muted-foreground)
+    }
+    .project-card>p {
+      display:-webkit-box;
+      overflow:hidden;
+      -webkit-box-orient:vertical;
+      -webkit-line-clamp:3
     }
     .tags {
       display:flex;
@@ -582,7 +621,7 @@
       border-left:1px solid var(--border);
       padding-left:32px;
       display:grid;
-      gap:48px
+      gap:32px
     }
     .job {
       position:relative
@@ -619,7 +658,8 @@
       padding-left:18px;
       color:var(--muted-foreground);
       font-size:14px;
-      line-height:1.6
+      line-height:1.55;
+      margin-bottom:0
     }
     .future-grid {
       display:grid;
@@ -630,7 +670,7 @@
       border:1px solid var(--border);
       background:var(--card);
       border-radius:13px;
-      padding:20px;
+      padding:18px;
       transition:.25s transform
     }
     .future-card:hover {
@@ -649,7 +689,7 @@
     footer {
       scroll-margin-top:80px;
       border-top:2px solid var(--foreground);
-      padding:80px 0
+      padding:56px 0
     }
     .footer-grid {
       display:grid;
@@ -686,6 +726,38 @@
       letter-spacing:.14em;
       text-transform:uppercase;
       color:var(--muted-foreground)
+    }
+    .back-to-top {
+      position:fixed;
+      right:20px;
+      bottom:20px;
+      z-index:40;
+      display:inline-flex;
+      align-items:center;
+      gap:7px;
+      min-height:42px;
+      padding:0 14px;
+      border:1px solid var(--border);
+      border-radius:999px;
+      background:color-mix(in srgb,var(--card) 92%,transparent);
+      box-shadow:0 10px 30px rgba(20,25,35,.12);
+      color:var(--foreground);
+      font:600 10px var(--mono);
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      backdrop-filter:blur(12px);
+      opacity:0;
+      pointer-events:none;
+      transform:translateY(10px);
+      transition:.2s opacity,.2s transform,.2s border-color
+    }
+    .back-to-top.is-visible {
+      opacity:1;
+      pointer-events:auto;
+      transform:none
+    }
+    .back-to-top:hover,.back-to-top:focus-visible {
+      border-color:var(--primary)
     }
     @keyframes rise {
       from {
@@ -1077,7 +1149,7 @@
       text-transform:uppercase;
       color:var(--muted-foreground)
     }
-    @media (max-width:900px) {
+    @media (max-width:1050px) {
       .desktop-nav {
         display:none
       }
@@ -1089,12 +1161,14 @@
         height:auto;
         gap:16px
       }
+    }
+    @media (max-width:900px) {
       .hero {
         grid-template-columns:1fr;
-        padding:80px 0
+        padding:56px 0
       }
       .hero {
-        gap:24px
+        gap:18px
       }
       .hero-star-cluster {
         width:64px;
@@ -1111,7 +1185,7 @@
         display:contents
       }
       .hero h1 {
-        grid-row:1;
+        grid-row:2;
         text-align:center;
         max-width:100%;
         justify-self:center
@@ -1127,13 +1201,13 @@
         line-height:1.12
       }
       .hero>.portrait {
-        grid-row:2;
+        grid-row:6;
         width:100%;
-        max-width:420px;
+        max-width:340px;
         justify-self:center
       }
       .hero .eyebrow {
-        grid-row:3;
+        grid-row:1;
         width:100%;
         justify-self:stretch;
         justify-content:center;
@@ -1145,24 +1219,21 @@
         line-height:1.6
       }
       .hero .hero-copy {
-        grid-row:4;
+        grid-row:3;
         justify-self:center;
         margin-top:0;
         text-align:center
       }
       .hero .buttons {
-        grid-row:5;
+        grid-row:4;
         justify-content:center;
         margin-top:0
       }
       .hero .facts {
-        grid-row:6;
+        grid-row:5;
         justify-content:center;
         margin-top:0;
         text-align:center
-      }
-      .future-grid {
-        grid-template-columns:1fr
       }
       .footer-grid {
         grid-template-columns:1fr
@@ -1204,28 +1275,67 @@
       }
       section.portfolio-section {
         grid-template-columns:1fr;
-        margin:14px 0;
+        gap:22px;
+        margin:10px 0;
         border-radius:18px;
-        padding:46px 20px
+        padding:32px 18px
       }
-      .section-head {
-        position:static
+      section.portfolio-section>.section-head {
+        position:static;
+        top:auto
       }
       .section-doodle {
-        width:96px;
-        margin:14px auto 0
+        width:72px;
+        margin:10px auto 0
       }
-      .two-col,.cards,.projects-grid {
-        grid-template-columns:1fr
+      #coursework .section-head::after,#honors .section-head::after,#projects .section-head::after,#employment .section-head::after,#clubs .section-head::after,#credentials .section-head::after,#future .section-head::after {
+        content:"Swipe to explore →";
+        display:block;
+        margin-top:12px;
+        color:var(--muted-foreground);
+        font:500 10px var(--mono);
+        letter-spacing:.12em;
+        text-transform:uppercase
+      }
+      .two-col,.cards,.projects-grid,#employment .timeline,.future-grid {
+        display:flex;
+        gap:14px;
+        margin-inline:-18px;
+        padding:0 18px 12px;
+        overflow-x:auto;
+        overscroll-behavior-inline:contain;
+        scroll-snap-type:inline mandatory;
+        scrollbar-width:thin;
+        scrollbar-color:var(--border) transparent;
+        text-align:left
+      }
+      .two-col>div,.cards>.card,.projects-grid>.project-card,#employment .timeline>.job,.future-grid>.future-card {
+        flex:0 0 min(82vw,330px);
+        scroll-snap-align:start
+      }
+      .two-col>div,#employment .timeline>.job {
+        padding:16px;
+        border:1px solid var(--border);
+        border-radius:13px;
+        background:var(--card)
+      }
+      .projects-grid>.project-card {
+        padding:14px;
+        border:1px solid var(--border);
+        border-radius:15px;
+        background:color-mix(in srgb,var(--card) 94%,var(--section-accent))
       }
       .hero {
-        padding:64px 0
+        padding:44px 0
+      }
+      .hero>.portrait {
+        max-width:230px
       }
       .facts {
         gap:12px
       }
       footer {
-        padding:56px 0
+        padding:44px 0
       }
       .email {
         font-size:15px;
@@ -1271,7 +1381,7 @@
         line-height:1.35
       }
       .hero {
-        padding:48px 0
+        padding:36px 0
       }
       .hero-name {
         font-size:42px
@@ -1281,7 +1391,7 @@
         font-size:28px
       }
       .hero>.portrait {
-        max-width:320px
+        max-width:250px
       }
       .hero-copy {
         font-size:16px;
@@ -1291,16 +1401,21 @@
         width:100%
       }
       .buttons .btn {
-        flex:1 1 100%
+        flex:1 1 0
       }
-      .facts {
-        flex-direction:column
+      .card,.job,.future-card,.project-page-highlight {
+        padding:16px
       }
-      .facts .dot {
-        display:none
+      section.portfolio-section {
+        padding:28px 16px
       }
-      .card,.project-card,.job,.future-card,.project-page-highlight {
-        padding:20px
+      .two-col,.cards,.projects-grid,#employment .timeline,.future-grid {
+        margin-inline:-16px;
+        padding-inline:16px
+      }
+      .back-to-top {
+        right:12px;
+        bottom:12px
       }
       footer h2 {
         font-size:32px
@@ -1391,9 +1506,14 @@
         text-align:center
       }
       #employment .timeline {
-        padding-left:0;
+        gap:14px;
+        margin-inline:-18px;
+        padding:0 18px 12px;
         border-left:0;
-        min-width:0
+        min-width:0;
+        overflow-x:auto;
+        scroll-snap-type:inline mandatory;
+        text-align:left
       }
       #employment .job::before {
         display:none
@@ -1463,7 +1583,7 @@
     #site-header {
       top:48px
     }
-    .section-head {
+    section.portfolio-section>.section-head {
       top:144px
     }
     section.portfolio-section,footer {
@@ -1536,6 +1656,8 @@
   <section id="clubs" class="portfolio-section"><div class="section-head"><span class="section-index">05 / Clubs</span><h2>Club Involvement</h2><svg class="doodle section-doodle" viewBox="0 0 112 44" aria-hidden="true"><path class="doodle-line doodle-dash" d="M3 28C21 5 43 41 65 20s34-8 44 4"/><path class="doodle-line doodle-accent-line" d="m82 5 2.4 6.7 6.7 1.4-6.7 1.4-2.4 6.7-2.3-6.7-6.8-1.4 6.8-1.4Z"/></svg></div><div class="cards" id="clubs-content"></div></section>
   <section id="credentials" class="portfolio-section"><div class="section-head"><span class="section-index">06 / Credentials</span><h2>Licenses &amp; Certifications</h2><svg class="doodle section-doodle" viewBox="0 0 112 44" aria-hidden="true"><path class="doodle-line doodle-dash" d="M3 28C21 5 43 41 65 20s34-8 44 4"/><path class="doodle-line doodle-accent-line" d="m82 5 2.4 6.7 6.7 1.4-6.7 1.4-2.4 6.7-2.3-6.7-6.8-1.4 6.8-1.4Z"/></svg></div><div class="cards" id="credentials-content"></div></section>
   <section id="future" class="portfolio-section"><div class="section-head"><span class="section-index">07 / Future</span><h2>Future Outlook</h2><svg class="doodle section-doodle" viewBox="0 0 112 44" aria-hidden="true"><path class="doodle-line doodle-dash" d="M3 28C21 5 43 41 65 20s34-8 44 4"/><path class="doodle-line doodle-accent-line" d="m82 5 2.4 6.7 6.7 1.4-6.7 1.4-2.4 6.7-2.3-6.7-6.8-1.4 6.8-1.4Z"/></svg></div><div class="future-grid"><div class="future-card"><span>2027</span><h3>Bachelor’s Degree in Finance</h3></div><div class="future-card"><span>2027</span><h3>Bachelor’s Degree in Computer Information Systems</h3></div><div class="future-card"><span>2028</span><h3>Master of Business Administration</h3></div></div></section>
+
+  <a class="back-to-top" href="#top" aria-label="Back to the top of the portfolio"><span aria-hidden="true">↑</span> Top</a>
 
   <footer id="contact"><div class="footer-grid"><div><h2>Let’s talk about <span class="primary">what’s next.</span></h2><p class="muted">I’m currently seeking internship opportunities in finance, business technology, analytics, and information systems.</p><svg class="doodle footer-doodle" viewBox="0 0 178 70" aria-hidden="true"><path class="doodle-line doodle-dash" d="M3 48c24-45 68-24 59 2-7 20-31 5-21-12 13-23 52-23 73-1 15 16 34 20 60 3"/><path class="doodle-line doodle-accent-line" d="m129 8 3.1 8.8 8.8 1.9-8.8 1.8-3.1 8.9-3.1-8.9-8.8-1.8 8.8-1.9Z"/><circle class="doodle-line doodle-accent-line" cx="160" cy="19" r="3.5"/></svg></div><div class="contact-block"><details class="contact-form-panel">
   <summary class="email">Contact me!</summary>
@@ -1871,7 +1993,7 @@ const employment = [
 const clubs = [
   {
     "role": "MEMBER / FALL 2025 - PRESENT",
-    "org": "Girls Who Invest",
+    "org": "Girls that Invest",
     "body": "Gained additional experience in investing and managing stocks through simulated experiences that reflect actual market behavior."
   },
   {
@@ -1991,6 +2113,9 @@ function showPortfolio(){
   document.querySelector('[data-portfolio-view]').hidden=false;
   document.getElementById('site-header').hidden=false;
   document.title='Katherine Contreras — Finance & CIS Portfolio';
+  const targetId=location.hash.replace(/^#/,'');
+  const target=document.getElementById(targetId);
+  if(target)setTimeout(()=>target.scrollIntoView({block:'start'}),50);
 }
 function renderDeansList(){
  document.documentElement.classList.add('project-view');
@@ -2064,5 +2189,28 @@ document.getElementById('contact-form').addEventListener('submit',async function
 
 <script>
 (()=>{const menu=document.querySelector('.mobile-nav');if(!menu)return;menu.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>menu.removeAttribute('open')));document.addEventListener('click',event=>{if(menu.open&&!menu.contains(event.target))menu.removeAttribute('open')});window.addEventListener('resize',()=>{if(innerWidth>900)menu.removeAttribute('open')})})();
+</script>
+<script>
+(()=>{
+  const topLink=document.querySelector('.back-to-top');
+  const tracked=[...document.querySelectorAll('.portfolio-section,footer[id]')];
+  const navLinks=[...document.querySelectorAll('#site-header a[href^="#"]')];
+  const updateNavigation=()=>{
+    topLink.classList.toggle('is-visible',scrollY>innerHeight*.75);
+    if(document.querySelector('[data-portfolio-view]').hidden)return;
+    const marker=scrollY+Math.min(180,innerHeight*.3);
+    let active='top';
+    tracked.forEach(section=>{if(section.offsetTop<=marker)active=section.id});
+    navLinks.forEach(link=>{
+      const current=link.getAttribute('href')===`#${active}`;
+      if(current)link.setAttribute('aria-current','location');
+      else link.removeAttribute('aria-current');
+    });
+  };
+  addEventListener('scroll',updateNavigation,{passive:true});
+  addEventListener('resize',updateNavigation);
+  addEventListener('hashchange',updateNavigation);
+  updateNavigation();
+})();
 </script>
 </body></html>
