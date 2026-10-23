@@ -1654,6 +1654,35 @@ const projects = [
     ]
   },
   {
+    "slug": "applied-ai-analytics-lab-website",
+    "title": "Applied AI & Analytics Lab Website",
+    "date": "FALL 2026 — IN PROGRESS",
+    "asset": "assets/applied-ai-lab-hero.jpg",
+    "summary": "For my CIS 440 course, my team and I are working with Quinnipiac University’s Applied AI & Analytics Lab to redesign its website. My main contribution has been designing and developing the Fellowship Pathway page, while also helping refine shared features and visual elements throughout the website.",
+    "details": [
+      "My team and I were challenged to redesign the Applied AI & Analytics Lab’s website so that students, faculty, and industry partners could more easily learn about the Lab and its opportunities. Because this is a team project, each member has been responsible for different parts of the website. My primary responsibility has been the Fellowship Pathway page.",
+      "For the Fellowship Pathway page, I created a responsive layout that introduces the program, showcases student fellows and their projects, and provides space for future application and participation information. I also developed an interactive student carousel and made sure the page worked across different screen sizes, supported light and dark modes, and included accessible navigation features. In addition to my page, I helped refine shared website elements, including the Lab’s animated logo and its transition back to the static logo.",
+      "Working on this project has been challenging because some of the Fellowship program’s information has not yet been confirmed by the client. Instead of filling those sections with information that might be inaccurate, I used clearly labeled placeholders so that my team could continue building and testing the website while waiting for client approval. Because the website is still being developed, some content and features may change before the final version is published.",
+      "This project has helped me gain more experience working with HTML, CSS, and JavaScript in a collaborative environment. It has also taught me how to design around incomplete requirements, incorporate feedback, and balance my individual work with the needs of a larger team project."
+    ],
+    "websiteGallery": [
+      [
+        "assets/applied-ai-lab-hero.jpg",
+        "The Fellowship Pathway hero introduces the student experience while clearly identifying program details that are still pending client confirmation."
+      ],
+      [
+        "assets/applied-ai-lab-fellows.jpg",
+        "The responsive student-fellows section uses an interactive carousel to feature students, their academic backgrounds, and their projects."
+      ]
+    ],
+    "githubUrl": "https://github.com/KatherineC0115",
+    "highlights": [
+      "HTML, CSS & JavaScript",
+      "Responsive Design",
+      "Team Collaboration"
+    ]
+  },
+  {
     "slug": "one-dollar-pop-up-shop",
     "title": "One Dollar Pop-Up Shop",
     "date": "MAY 2025",
@@ -1880,7 +1909,7 @@ const assetBox=(src,caption='',contain=false)=>`<div class="asset-wrap"><img src
 
 document.getElementById('coursework-content').innerHTML=coursework.map(c=>`<div><span class="subhead">${esc(c.section)}</span><ul class="course-list">${c.courses.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div>`).join('');
 document.getElementById('honors-content').innerHTML=honors.map(h=>{const body=`<span class="card-date">${esc(h.year)}</span><h3>${esc(h.title)}</h3><p>${esc(h.summary)}</p>`;return h.slug==='deans-list'?`<a class="card" href="#honor/deans-list">${body}<span class="detail-link">View details &rarr;</span></a>`:`<article class="card honor-static">${body}</article>`}).join('');
-const projectOrder = ['hypothetical-company-financial-model', 'reservequ-space-reservation-prototype', 'grove-residence-hall-poster', 'one-dollar-pop-up-shop'];
+const projectOrder = ['applied-ai-analytics-lab-website', 'hypothetical-company-financial-model', 'reservequ-space-reservation-prototype', 'grove-residence-hall-poster', 'one-dollar-pop-up-shop'];
 projects.sort((a, b) => projectOrder.indexOf(a.slug) - projectOrder.indexOf(b.slug));
 document.getElementById('projects-content').innerHTML=projects.map((p)=>`<a class="project-card" href="#project/${encodeURIComponent(p.slug)}"><div class="project-image">${assetBox(p.asset,'',p.imageContain)}</div><span class="date">${esc(p.date)}</span><h3>${esc(p.title)}</h3><p>${esc(p.summary)}</p><div class="tags">${p.highlights.map(t=>`<span class="tag">${esc(t)}</span>`).join('')}</div><span class="detail-link">View details →</span></a>`).join('');
 document.getElementById('employment-content').innerHTML=employment.map(e=>`<article class="job"><span class="dates">${esc(e.dates)}</span><h3>${esc(e.role)}</h3><div class="org">${esc(e.org)}</div><ul>${e.bullets.map(b=>`<li>${esc(b)}</li>`).join('')}</ul></article>`).join('');
@@ -1899,7 +1928,7 @@ function renderProjectPage(p){
   const projectPage=document.getElementById('project-page');
   projectPage.dataset.pageType='project';
   projectPage.dataset.projectSlug=p.slug;
-  projectPage.innerHTML=`<div class="project-page-shell"><a class="project-page-back" href="#projects">← Projects</a><p class="project-page-meta">Completed ${esc(p.date)}</p><h1 class="project-page-title">${esc(p.title)}</h1><p class="project-page-summary">${esc(p.summary)}</p><div class="project-page-cover" data-lightbox-src="${esc(p.asset)}" data-lightbox-caption="${esc(p.title)} project cover" role="button" tabindex="0" aria-label="Enlarge ${esc(p.title)} project cover">${assetBox(p.asset,'',p.imageContain)}</div><div class="project-page-details">${p.details.map(x=>`<p>${esc(x)}</p>`).join('')}</div>${p.downloadAsset?`<section class="project-page-section"><h2>Project File</h2><p class="project-download-copy">Download the completed Excel workbook to review the linked forecasts, DCF valuation, cash sweep, and sensitivity analysis.</p><a class="project-download" href="${esc(p.downloadAsset)}" download="${esc(p.downloadName||'')}">Download Excel model ↓</a></section>`:''}${projectGalleryBlock('Model Views',p.modelGallery)}${projectGalleryBlock('Event Gallery',p.gallery)}${projectGalleryBlock('Desktop View',p.desktopGallery)}${projectGalleryBlock('Behind the Scenes',p.behindGallery)}${p.hasDemoVideo?`<section class="project-page-section"><h2>Demo Video</h2><div style="position:relative;aspect-ratio:16/9;margin-top:18px;border-radius:12px;overflow:hidden;background:#000"><iframe src="https://player.vimeo.com/video/1228981500" title="ReserveQU Project Showcase" loading="lazy" allow="fullscreen; picture-in-picture; encrypted-media" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:0"></iframe></div><p style="margin-top:12px;font-size:13px;line-height:1.6"><a href="https://vimeo.com/1228981500" target="_blank" rel="noopener noreferrer" style="text-decoration:underline;text-underline-offset:3px">Watch the ReserveQU showcase on Vimeo</a></p></section>`:''}${p.highlights.length?`<div class="project-page-highlight"><h2>Highlights</h2><div class="tags">${p.highlights.map(x=>`<span class="tag">${esc(x)}</span>`).join('')}</div></div>`:''}</div>`;
+  projectPage.innerHTML=`<div class="project-page-shell"><a class="project-page-back" href="#projects">← Projects</a><p class="project-page-meta">${p.date.includes('IN PROGRESS')?esc(p.date):`Completed ${esc(p.date)}`}</p><h1 class="project-page-title">${esc(p.title)}</h1><p class="project-page-summary">${esc(p.summary)}</p><div class="project-page-cover" data-lightbox-src="${esc(p.asset)}" data-lightbox-caption="${esc(p.title)} project cover" role="button" tabindex="0" aria-label="Enlarge ${esc(p.title)} project cover">${assetBox(p.asset,'',p.imageContain)}</div><div class="project-page-details">${p.details.map(x=>`<p>${esc(x)}</p>`).join('')}</div>${p.downloadAsset?`<section class="project-page-section"><h2>Project File</h2><p class="project-download-copy">Download the completed Excel workbook to review the linked forecasts, DCF valuation, cash sweep, and sensitivity analysis.</p><a class="project-download" href="${esc(p.downloadAsset)}" download="${esc(p.downloadName||'')}">Download Excel model ↓</a></section>`:''}${p.githubUrl?`<section class="project-page-section"><h2>Project Link</h2><p class="project-download-copy">Visit my GitHub profile to see more of my coursework and development projects.</p><a class="project-download" href="${esc(p.githubUrl)}" target="_blank" rel="noopener noreferrer">View my GitHub profile ↗</a></section>`:''}${projectGalleryBlock('Website Screenshots',p.websiteGallery)}${projectGalleryBlock('Model Views',p.modelGallery)}${projectGalleryBlock('Event Gallery',p.gallery)}${projectGalleryBlock('Desktop View',p.desktopGallery)}${projectGalleryBlock('Behind the Scenes',p.behindGallery)}${p.hasDemoVideo?`<section class="project-page-section"><h2>Demo Video</h2><div style="position:relative;aspect-ratio:16/9;margin-top:18px;border-radius:12px;overflow:hidden;background:#000"><iframe src="https://player.vimeo.com/video/1228981500" title="ReserveQU Project Showcase" loading="lazy" allow="fullscreen; picture-in-picture; encrypted-media" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:0"></iframe></div><p style="margin-top:12px;font-size:13px;line-height:1.6"><a href="https://vimeo.com/1228981500" target="_blank" rel="noopener noreferrer" style="text-decoration:underline;text-underline-offset:3px">Watch the ReserveQU showcase on Vimeo</a></p></section>`:''}${p.highlights.length?`<div class="project-page-highlight"><h2>Highlights</h2><div class="tags">${p.highlights.map(x=>`<span class="tag">${esc(x)}</span>`).join('')}</div></div>`:''}</div>`;
   document.querySelector('[data-portfolio-view]').hidden=true;
   document.getElementById('site-header').hidden=true;
   projectPage.hidden=false;
