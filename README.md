@@ -4,11 +4,11 @@ Welcome to my GitHub Profile! I'm Kat, and I am a Finance and Computer Informati
 
 ## What Do I Do Here?
 
-I'm right now using GitHub to host my professional portifolio website, and also working on a team project for my Project Management course! In the future I plan to use GitHub to organize a couple of personal projects as well!
+I'm right now using GitHub to host my professional portfolio website, and also working on a team project for my Project Management course! In the future I plan to use GitHub to organize a couple of personal projects as well!
 
 ## Want To Get To Know Me Better?
 
-Come see my portifolio LIVE! ----> https://katherinec0115.github.io/katherineC0115/
+Come see my portfolio LIVE! ----> https://katherinec0115.github.io/katherineC0115/
 
 ## The Professional Socials:
 
