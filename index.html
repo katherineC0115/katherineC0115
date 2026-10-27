@@ -13,10 +13,11 @@
   <meta property="og:image:alt" content="Portrait of Katherine Contreras">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://katherinec0115.github.io/katherineC0115/assets/embedded-001.png">
-  <meta name="theme-color" content="#f8f7f4" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#121311" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#111210" media="(prefers-color-scheme: dark)">
   <link rel="canonical" href="https://katherinec0115.github.io/katherineC0115/">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23121311'/%3E%3Ctext x='32' y='41' text-anchor='middle' font-family='monospace' font-size='25' font-weight='700' fill='%23d39a65'%3EKC%3C/text%3E%3C/svg%3E">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23121311'/%3E%3Ctext x='32' y='41' text-anchor='middle' font-family='monospace' font-size='25' font-weight='700' fill='%23d39a65'%3EKC%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..900&amp;family=JetBrains+Mono:wght@500..800&amp;family=Lora:ital,wght@1,600..700&amp;display=swap" rel="stylesheet">
@@ -63,8 +64,7 @@
       background:var(--background);
       color:var(--foreground);
       font-family:var(--sans);
-      -webkit-font-smoothing:antialiased;
-      overflow-x:hidden
+      -webkit-font-smoothing:antialiased
     }
     body::before {
       content:"";
@@ -633,7 +633,7 @@
       min-height:100vh;
       position:relative;
       isolation:isolate;
-      overflow:hidden;
+      overflow:clip;
       background:
         radial-gradient(circle at 10% 8%,color-mix(in srgb,var(--accent) 12%,transparent),transparent 28%),
         radial-gradient(circle at 92% 34%,color-mix(in srgb,var(--primary) 11%,transparent),transparent 31%),
@@ -911,6 +911,13 @@
       background:var(--image-canvas);
       overflow:hidden
     }
+    .mobile-view-gallery .carousel-image-button .asset-wrap {
+      width:100%;
+      max-width:min(35vh,331px);
+      height:min(76vh,720px);
+      margin-inline:auto;
+      aspect-ratio:auto
+    }
     .carousel-image-button img {
       width:100%;
       height:100%;
@@ -1089,7 +1096,7 @@
       text-transform:uppercase;
       color:var(--muted-foreground)
     }
-    @media (max-width:1050px) {
+    @media (max-width:1180px) {
       .desktop-nav {
         display:none
       }
@@ -1427,6 +1434,18 @@
       --border:#45443d;
       --shadow:0 16px 45px rgba(0,0,0,.4)
     }
+    html[data-theme="dark"] #project-page[data-page-type="honor"] {
+      --background:#0d1110;
+      --foreground:#f3efe8;
+      --card:#17201b;
+      --primary:#d0a07a;
+      --primary-foreground:#0d1110;
+      --secondary:#242a29;
+      --muted-foreground:#c6cbc7;
+      --accent:#7fc4a8;
+      --border:#3c4944;
+      --shadow:0 16px 45px rgba(0,0,0,.4)
+    }
     html.project-view[data-project-theme="applied-ai-analytics-lab-website"] {
       --background:#f4f7fa;
       --foreground:#071521;
@@ -1575,6 +1594,9 @@
     :focus-visible {
       outline:2px solid var(--accent);
       outline-offset:4px
+    }
+    main#top:focus,h1[tabindex="-1"]:focus {
+      outline:none
     }
     section.portfolio-section>.section-head {
       top:144px
@@ -2864,7 +2886,7 @@
       color:var(--section-accent);
       transform:translateY(-2px)
     }
-    @media (max-width:1050px) {
+    @media (max-width:1180px) {
       .theme-toggle {
         margin-left:auto
       }
@@ -3120,6 +3142,9 @@
       opacity:1;
       transform:none
     }
+    html.motion-ready [data-flow-reveal].flow-complete {
+      will-change:auto
+    }
     html.motion-ready .project-page-section[data-flow-reveal],
     html.motion-ready .project-page-highlight[data-flow-reveal],
     html.motion-ready .deans-award[data-flow-reveal] {
@@ -3138,11 +3163,11 @@
       pointer-events:none
     }
     @keyframes viewEnter {
-      from { opacity:0; transform:translate3d(0,18px,0) scale(.996) }
-      to { opacity:1; transform:none }
+      from { opacity:0 }
+      to { opacity:1 }
     }
     @keyframes viewLeave {
-      to { opacity:0; transform:translate3d(0,-8px,0) scale(.998) }
+      to { opacity:0 }
     }
     .panel-entering {
       animation:panelEnter var(--motion-ui) var(--motion-ease) both
@@ -3238,7 +3263,7 @@
       from { opacity:.15; stroke-dashoffset:54 }
       to { opacity:1; stroke-dashoffset:0 }
     }
-    .is-flow-visible .experience-status span { animation:statusPulse 1.8s ease-in-out 2 }
+    .is-flow-visible .experience-status span { animation:statusPulse var(--motion-enter) ease-in-out 1 }
     @keyframes statusPulse {
       50% { transform:scale(1.35); box-shadow:0 0 0 6px color-mix(in srgb,var(--section-accent) 14%,transparent) }
     }
@@ -3260,7 +3285,7 @@
     .motion-ready .hero .hero-copy { animation-delay:240ms }
     .motion-ready .hero .buttons { animation-delay:320ms }
     .motion-ready .hero .facts { animation-delay:400ms }
-    .motion-ready .hero>.portrait { animation-delay:480ms }
+    .motion-ready .hero>.portrait { animation-delay:160ms }
     @keyframes heroStagger {
       from { opacity:0; transform:translate3d(0,16px,0) }
       to { opacity:1; transform:none }
@@ -3362,6 +3387,10 @@
       .media-fade,.motion-ready .hero .eyebrow,.motion-ready .hero .hero-name,
       .motion-ready .hero .hero-title,.motion-ready .hero .hero-copy,.motion-ready .hero .buttons,
       .motion-ready .hero .facts,.motion-ready .hero>.portrait { opacity:1!important }
+      .doodle-dash {
+        opacity:1!important;
+        stroke-dashoffset:0!important
+      }
     }
 
     /* Recruiter paths, project continuity, and accessible interaction polish */
@@ -3399,7 +3428,7 @@
     }
     .project-thumb-tab img.contain { object-fit:contain; padding:4px }
     .project-thumb-tab small { margin-top:4px }
-    .project-spotlight,.project-carousel,#image-lightbox { touch-action:pan-y }
+    .project-spotlight,.project-carousel,#image-lightbox { touch-action:pan-y pinch-zoom }
     .project-feature { position:relative }
     .project-feature-copy .spotlight-link::before {
       content:"";
@@ -3408,7 +3437,7 @@
       z-index:1
     }
     .lightbox-arrow {
-      position:fixed;
+      position:absolute;
       top:50%;
       z-index:3;
       width:46px;
@@ -3516,9 +3545,9 @@
       .project-sibling-nav { grid-template-columns:1fr }
       .lightbox-arrow.prev { left:8px }
       .lightbox-arrow.next { right:8px }
-      .course-tabs,.experience-tabs,.spotlight-picker,.showcase-rail,.roadmap-track {
-        -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 18px,#000 calc(100% - 28px),transparent 100%);
-        mask-image:linear-gradient(90deg,transparent 0,#000 18px,#000 calc(100% - 28px),transparent 100%)
+      .course-tabs,.spotlight-picker,.showcase-rail,.roadmap-track {
+        -webkit-mask-image:linear-gradient(90deg,#000 0,#000 calc(100% - 28px),transparent 100%);
+        mask-image:linear-gradient(90deg,#000 0,#000 calc(100% - 28px),transparent 100%)
       }
       .floating-project-back { left:12px; bottom:12px }
     }
@@ -3727,13 +3756,16 @@
       }
       .floating-project-back {
         position:sticky;
-        top:76px;
+        top:12px;
         left:auto;
         bottom:auto;
         z-index:20;
         width:max-content;
         margin:10px 0 0 12px;
         background:var(--background)
+      }
+      #project-page[data-page-type="project"] .project-page-back {
+        display:none
       }
       .carousel-arrow {
         width:38px;
@@ -3849,7 +3881,10 @@
       body { font-size:11pt }
       #site-header,.scroll-progress,.back-to-top,.doodle,.showcase-navigation,.carousel-arrow,
       .carousel-meta,.theme-toggle,.contact-form-panel,.buttons,.skip-link,.floating-project-back { display:none!important }
-      [hidden] { display:block!important }
+      #project-page[hidden],[data-portfolio-view][hidden] { display:none!important }
+      [data-flow-reveal] { opacity:1!important; transform:none!important }
+      [data-switch-panel],[data-switch-panel][hidden] { display:block!important }
+      .course-tabs,.spotlight-picker,.experience-tabs,.signal-orbit,.roadmap-track { display:none!important }
       main,.container,.project-page-shell,.subpage-footer { width:100%!important; max-width:none!important }
       section.portfolio-section { break-inside:avoid; margin:0 0 18pt!important; padding:10pt 0!important; border:0!important }
       .hero { min-height:0!important; padding:0 0 20pt!important }
@@ -3859,11 +3894,15 @@
       .project-page-cover,.project-page-section,.project-page-highlight { break-inside:avoid; box-shadow:none!important }
       .project-feature { height:auto!important; min-height:0!important; margin-bottom:12pt }
       .project-page-section { margin-top:18pt }
+      a[href^="http"]::after { content:" (" attr(href) ")"; font-size:8pt; font-weight:400; overflow-wrap:anywhere }
       footer { break-before:page; border-color:#111!important }
     }
 </style>
 <script>
 (function(){let theme=null;try{theme=localStorage.getItem('portfolio-theme')}catch(e){}if(theme!=='dark'&&theme!=='light')theme=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.dataset.theme=theme})();
+</script>
+<script>
+if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('motion-ready');
 </script>
 </head>
 <body>
@@ -3873,13 +3912,13 @@
   <div class="container topbar">
     <a class="brand" href="#top">KATHERINE CONTRERAS</a>
     <nav class="desktop-nav" aria-label="Primary navigation">
-      <a href="#coursework">Coursework</a><a href="#honors">Honors</a><a href="#projects">Projects</a><a href="#employment">Employment</a><a href="#clubs">Clubs</a><a href="#credentials">Credentials</a><a href="#future">Future</a><a class="resume-nav" href="assets/resume.pdf" download="Contreras_Katherine_Resume.pdf">Resume</a><a class="contact-pill" href="#contact">Contact</a>
+      <a href="#coursework">Coursework</a><a href="#honors">Honors</a><a href="#projects">Projects</a><a href="#employment">Employment</a><a href="#clubs">Clubs</a><a href="#credentials">Credentials</a><a href="#future">Future</a><a class="resume-nav" href="assets/resume.pdf" target="_blank" rel="noopener">Resume</a><a class="contact-pill" href="#contact">Contact</a>
     </nav>
-    <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Switch to light mode" aria-pressed="true"><span id="theme-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"></path></svg></span><span id="theme-label">Light mode</span></button>
+    <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Switch to light mode"><span id="theme-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"></path></svg></span><span id="theme-label">Light mode</span></button>
     <details class="mobile-nav">
       <summary>Menu</summary>
       <nav aria-label="Mobile navigation">
-        <a href="#coursework">Coursework</a><a href="#honors">Honors</a><a href="#projects">Projects</a><a href="#employment">Employment</a><a href="#clubs">Clubs</a><a href="#credentials">Credentials</a><a href="#future">Future</a><a href="assets/resume.pdf" download="Contreras_Katherine_Resume.pdf">Resume</a><a href="#contact">Contact</a>
+        <a href="#coursework">Coursework</a><a href="#honors">Honors</a><a href="#projects">Projects</a><a href="#employment">Employment</a><a href="#clubs">Clubs</a><a href="#credentials">Credentials</a><a href="#future">Future</a><a href="assets/resume.pdf" target="_blank" rel="noopener">Resume</a><a href="#contact">Contact</a>
       </nav>
     </details>
   </div>
@@ -3894,7 +3933,7 @@
       <div class="eyebrow"><span class="primary">CLASS OF 2027</span></div>
       <h1><span class="hero-name">Katherine Contreras</span><span class="hero-title">Finance <span class="primary">&amp;</span> Computer Information Systems at <span class="primary">Quinnipiac University</span>.</span></h1>
       <p class="hero-copy"> Bridging finance, new technology, and analytics to build thoughtful solutions for real-world business challenges.</p>
-      <div class="buttons"><a class="btn btn-dark" href="#projects">See my work</a><a class="btn" href="#coursework">Browse coursework</a><a class="btn" href="assets/resume.pdf" download="Contreras_Katherine_Resume.pdf">Resume</a></div>
+      <div class="buttons"><a class="btn btn-dark" href="#projects">See my work</a><a class="btn" href="#coursework">Browse coursework</a><a class="btn" href="assets/resume.pdf" target="_blank" rel="noopener">Resume</a></div>
       <div class="facts"><span>HAMDEN, CONNECTICUT</span><span class="dot"></span><span>GPA: 3.96</span><span class="dot"></span><span>Open to internships</span></div>
     </div>
     <div class="portrait reveal"><img src="assets/embedded-001.png" alt="Katherine Contreras headshot" width="487" height="455" fetchpriority="high" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><div class="asset-placeholder" style="display:none">Image unavailable</div></div>
@@ -3920,14 +3959,14 @@
     <textarea id="contact-message" name="message" rows="6" maxlength="4000" required></textarea>
     <label for="contact-info">Additional contact information <span class="muted">(optional)</span></label>
     <textarea id="contact-info" name="contactInfo" rows="2" maxlength="500" placeholder="Your name, email address, or preferred way to reach you"></textarea>
-    <label class="form-honeypot" for="contact-website">Leave this field empty<input id="contact-website" name="_gotcha" type="text" autocomplete="off" tabindex="-1"></label>
+    <label class="form-honeypot" for="contact-website" aria-hidden="true">Leave this field empty<input id="contact-website" name="_gotcha" type="text" autocomplete="off" tabindex="-1"></label>
     <button class="btn btn-dark" type="submit">Send message</button>
     <p class="contact-form-status" id="contact-status" role="status"></p>
   </form>
-</details><div class="socials"><a href="https://www.linkedin.com/in/katherinecontreras2/" target="_blank" rel="noreferrer noopener">LinkedIn</a><a href="https://github.com/katherineC0115" target="_blank" rel="noopener noreferrer">GitHub</a><a href="assets/resume.pdf" download="Contreras_Katherine_Resume.pdf" aria-label="Download resume (PDF)">Resume</a></div><p class="copyright">© 2026 - KATHERINE CONTRERAS</p></div></div></footer>
+</details><div class="socials"><a href="https://www.linkedin.com/in/katherinecontreras2/" target="_blank" rel="noreferrer noopener">LinkedIn</a><a href="https://github.com/katherineC0115" target="_blank" rel="noopener noreferrer">GitHub</a><a href="assets/resume.pdf" target="_blank" rel="noopener" aria-label="Resume (PDF), opens in a new tab">Resume</a></div><p class="copyright">© 2026 - KATHERINE CONTRERAS</p></div></div></footer>
 </main>
 
-<main id="project-page" hidden="" aria-live="polite"></main>
+<main id="project-page" hidden=""></main>
 
 <dialog id="image-lightbox" aria-label="Expanded project image"><div class="lightbox-inner"><button class="lightbox-close" type="button" aria-label="Close enlarged image">×</button><button class="lightbox-arrow prev" type="button" aria-label="Previous image">‹</button><button class="lightbox-arrow next" type="button" aria-label="Next image">›</button><div class="lightbox-image-wrap"><img class="lightbox-image" alt=""></div><p class="lightbox-caption"></p></div></dialog>
 
@@ -3996,6 +4035,7 @@ const projects = [
     "title": "Hypothetical Company Financial Modeling & Valuation",
     "date": "SUMMER 2026",
     "asset": "assets/financial-model-dcf.png",
+    "thumb": "assets/thumbs/financial-model.webp",
     "imageContain": true,
     "summary": "For my FIN 320 final project, I built an Excel-based five-year forecast for a hypothetical company and used it to estimate enterprise value through a discounted cash flow analysis.",
     "details": [
@@ -4032,6 +4072,7 @@ const projects = [
     "title": "Applied AI & Analytics Lab Website",
     "date": "FALL 2026 — IN PROGRESS",
     "asset": "assets/applied-ai-lab-hero.jpg",
+    "thumb": "assets/thumbs/applied-ai-lab.webp",
     "summary": "For my CIS 440 course, my team and I are working with Quinnipiac University’s Applied AI & Analytics Lab to redesign its website. My main contribution has been designing and developing the Fellowship Pathway page, and I have also worked on graphic design and shared visual details across the site.",
     "details": [
       "My team and I were challenged to redesign the Applied AI & Analytics Lab’s website so that students, faculty, and industry partners could more easily learn about the Lab and its opportunities. Because this is a team project, each member has been responsible for different parts of the website. My primary responsibility has been the Fellowship Pathway page.",
@@ -4072,6 +4113,7 @@ const projects = [
     "title": "One Dollar Pop-Up Shop",
     "date": "MAY 2025",
     "asset": "assets/embedded-002.png",
+    "thumb": "assets/thumbs/one-dollar-shop.webp",
     "summary": "I created an affordable pop-up shop during final exam week at Quinnipiac University, aimed at selling items that help ease the stress of exam season.",
     "details": [
       "Most of the items I sold (desk stationery, notebooks, and stress balls) were leftover products from a micro-business project I completed for one of my courses. I used the lessons I learned from that experience to operate my new temporary business. For example, the micro-business struggled to attract customers, partly because the launch event was run by the School of Business, so only students in that school knew about it. For the One Dollar Pop-Up Shop, I made sure to print and hang posters all over campus (including approved residence halls) so that the wider student body was aware of the event.",
@@ -4087,6 +4129,7 @@ const projects = [
     "title": "The Grove Residence Hall Poster Project",
     "date": "APRIL 2025, APRIL 2026",
     "asset": "assets/embedded-003.png",
+    "thumb": "assets/thumbs/grove-poster.webp",
     "summary": "As a mentee in the Grove Community Engagement Program, I helped coordinate two service experiences that connected Quinnipiac students with the local community. One of those experiences became our university-wide Paws for a Cause event.",
     "details": [
       "The poster photographed above is the poster presentation I worked on with my group. Our goal was to raise awareness of and support for shelter dogs in nonprofit, no-kill animal shelters. To do so, we created a university-wide event called “Paws for a Cause.”",
@@ -4118,6 +4161,7 @@ const projects = [
     "title": "Rapid Application Development Challenge",
     "date": "APRIL 2026",
     "asset": "assets/embedded-007.png",
+    "thumb": "assets/thumbs/reservequ.webp",
     "imageContain": true,
     "summary": "My teammate and I were challenged to solve a business problem using Claude and a rapid application development platform named Google AppSheet. I built the ReserveQU prototype, while also applying feedback for revisions given from my teammate who tested the system's features and functionality. Claude was used to resolve troubleshooting issues and optimizing my work to improve the system's performance (e.g. loading speeds).",
     "details": [
@@ -4290,21 +4334,22 @@ const credentials = [
 ];
 
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));
-const assetBox=(src,caption='',contain=false)=>`<div class="asset-wrap"><img src="${esc(src)}" alt="${esc(caption || 'Project image')}" class="${contain?'contain':''}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><div class="asset-placeholder" style="display:none">Image unavailable</div></div>${caption?`<figcaption>${esc(caption)}</figcaption>`:''}`;
+const motionPreference=window.matchMedia('(prefers-reduced-motion: reduce)');
+const assetBox=(src,caption='',contain=false,alt=caption)=>`<div class="asset-wrap"><img src="${esc(src)}" alt="${esc(alt)}" class="${contain?'contain':''}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><div class="asset-placeholder" style="display:none">Image unavailable</div></div>${caption?`<figcaption>${esc(caption)}</figcaption>`:''}`;
 
 const projectOrder = ['applied-ai-analytics-lab-website', 'hypothetical-company-financial-model', 'reservequ-space-reservation-prototype', 'grove-residence-hall-poster', 'one-dollar-pop-up-shop'];
 projects.sort((a, b) => projectOrder.indexOf(a.slug) - projectOrder.indexOf(b.slug));
 const summaryLead=text=>{const clean=String(text).trim();const sentence=clean.match(/^.*?[.!?](?:\s|$)/)?.[0]?.trim()||clean;return sentence.length>175?`${sentence.slice(0,172).trim()}…`:sentence};
 const courseParts=course=>{const [code,...name]=course.split(' - ');return [code,name.join(' - ')]};
 const switchButton=(label,index,prefix,selected=false,meta='')=>`<button type="button" id="${prefix}-tab-${index}" role="tab" aria-selected="${selected}" aria-controls="${prefix}-panel-${index}" tabindex="${selected?0:-1}" data-switch-target="${index}"><span>${esc(label)}</span>${meta?`<small>${esc(meta)}</small>`:''}</button>`;
-const projectThumbButton=(p,index,selected=false)=>`<button class="project-thumb-tab" type="button" id="project-feature-tab-${index}" role="tab" aria-selected="${selected}" aria-controls="project-feature-panel-${index}" tabindex="${selected?0:-1}" data-switch-target="${index}"><img src="${esc(p.asset)}" alt="" class="${p.imageContain?'contain':''}" loading="lazy"><span><span>${esc(p.title)}</span><small>Project ${String(index+1).padStart(2,'0')}</small></span></button>`;
+const projectThumbButton=(p,index,selected=false)=>`<button class="project-thumb-tab" type="button" id="project-feature-tab-${index}" role="tab" aria-selected="${selected}" aria-controls="project-feature-panel-${index}" tabindex="${selected?0:-1}" data-switch-target="${index}"><img src="${esc(p.thumb||p.asset)}" data-fallback="${esc(p.asset)}" onerror="if(!this.dataset.didFallback){this.dataset.didFallback='1';this.src=this.dataset.fallback}" alt="" class="${p.imageContain?'contain':''}" loading="lazy" width="320" height="240"><span><span>${esc(p.title)}</span><small>Project ${String(index+1).padStart(2,'0')}</small></span></button>`;
 const switchPanel=(content,index,prefix,selected=false,className='')=>`<section class="${className}" id="${prefix}-panel-${index}" role="tabpanel" aria-labelledby="${prefix}-tab-${index}" data-switch-panel="${index}" ${selected?'':'hidden'}>${content}</section>`;
 
 document.getElementById('coursework-content').innerHTML=`<div class="course-explorer" data-switcher><div class="course-tabs" role="tablist" aria-label="Coursework subjects">${coursework.map((c,i)=>switchButton(c.section==='FINANCE'?'Finance':'Computer Information Systems',i,'course',i===0,`${c.courses.length} courses`)).join('')}<span class="course-tab-indicator" aria-hidden="true"></span></div><div class="course-deck">${coursework.map((c,i)=>switchPanel(`<ol class="course-map">${c.courses.map((course,n)=>{const [code,name]=courseParts(course);return `<li><span>${String(n+1).padStart(2,'0')}</span><strong>${esc(code)}</strong><em>${esc(name)}</em></li>`}).join('')}</ol>`,i,'course',i===0,'course-panel')).join('')}</div></div>`;
 
 document.getElementById('honors-content').innerHTML=`<div class="honors-spotlight" data-switcher><div class="spotlight-picker" role="tablist" aria-label="Choose an honor">${honors.map((h,i)=>switchButton(h.title,i,'honor-spotlight',i===0,h.year)).join('')}</div><div class="spotlight-stage">${honors.map((h,i)=>switchPanel(`<span class="spotlight-count">${String(i+1).padStart(2,'0')} / ${String(honors.length).padStart(2,'0')}</span><span class="card-date">${esc(h.year)}</span><h3>${esc(h.title)}</h3><p>${esc(h.summary)}</p>${h.slug==='deans-list'?'<a class="spotlight-link" href="#honor/deans-list">Explore the semesters <span aria-hidden="true">→</span></a>':''}`,i,'honor-spotlight',i===0,'spotlight-card')).join('')}</div></div>`;
 
-document.getElementById('projects-content').innerHTML=`<div class="project-showcase" data-switcher><div class="project-spotlight" aria-live="polite">${projects.map((p,i)=>switchPanel(`<a class="project-feature-image" href="#project/${encodeURIComponent(p.slug)}" aria-label="Open ${esc(p.title)} project details">${assetBox(p.asset,'',p.imageContain)}</a><div class="project-feature-copy"><span class="spotlight-count">FEATURE ${String(i+1).padStart(2,'0')} / ${String(projects.length).padStart(2,'0')}</span><span class="card-date">${esc(p.date)}</span><h3>${esc(p.title)}</h3><p>${esc(summaryLead(p.summary))}</p><div class="tags">${p.highlights.slice(0,2).map(t=>`<span class="tag">${esc(t)}</span>`).join('')}</div><a class="spotlight-link" href="#project/${encodeURIComponent(p.slug)}">Open project <span aria-hidden="true">→</span></a></div>`,i,'project-feature',i===0,'project-feature')).join('')}</div><div class="showcase-navigation"><button type="button" class="showcase-arrow" data-switch-prev aria-label="Previous featured project"><span aria-hidden="true">←</span></button><div class="showcase-rail" role="tablist" aria-label="Choose a featured project">${projects.map((p,i)=>projectThumbButton(p,i,i===0)).join('')}</div><button type="button" class="showcase-arrow" data-switch-next aria-label="Next featured project"><span aria-hidden="true">→</span></button></div></div>`;
+document.getElementById('projects-content').innerHTML=`<div class="project-showcase" data-switcher><div class="project-spotlight">${projects.map((p,i)=>switchPanel(`<a class="project-feature-image" href="#project/${encodeURIComponent(p.slug)}" aria-label="Open ${esc(p.title)} project details">${assetBox(p.asset,'',p.imageContain)}</a><div class="project-feature-copy"><span class="spotlight-count">FEATURE ${String(i+1).padStart(2,'0')} / ${String(projects.length).padStart(2,'0')}</span><span class="card-date">${esc(p.date)}</span><h3>${esc(p.title)}</h3><p>${esc(summaryLead(p.summary))}</p><div class="tags">${p.highlights.slice(0,2).map(t=>`<span class="tag">${esc(t)}</span>`).join('')}</div><a class="spotlight-link" href="#project/${encodeURIComponent(p.slug)}">Open project <span aria-hidden="true">→</span></a></div>`,i,'project-feature',i===0,'project-feature')).join('')}</div><div class="showcase-navigation"><button type="button" class="showcase-arrow" data-switch-prev aria-label="Previous featured project"><span aria-hidden="true">←</span></button><div class="showcase-rail" role="tablist" aria-label="Choose a featured project">${projects.map((p,i)=>projectThumbButton(p,i,i===0)).join('')}</div><button type="button" class="showcase-arrow" data-switch-next aria-label="Next featured project"><span aria-hidden="true">→</span></button></div></div>`;
 
 document.getElementById('employment-content').innerHTML=`<div class="experience-console" data-switcher><div class="experience-tabs" role="tablist" aria-label="Choose a role">${employment.map((e,i)=>switchButton(e.role,i,'experience',i===0,e.dates)).join('')}<span class="experience-time-rail" aria-hidden="true"><span></span></span></div><div class="experience-screen">${employment.map((e,i)=>switchPanel(`<div class="experience-status"><span aria-hidden="true"></span>${i===0?'Current role':'Previous role'}</div><span class="card-date">${esc(e.dates)}</span><h3>${esc(e.role)}</h3><p class="experience-org">${esc(e.org)}</p><p class="experience-lead">${esc(e.bullets[0])}</p>${e.bullets.length>1?`<details class="role-details"><summary>More from this role</summary><ul>${e.bullets.slice(1).map(b=>`<li>${esc(b)}</li>`).join('')}</ul></details>`:''}`,i,'experience',i===0,'experience-panel')).join('')}</div></div>`;
 
@@ -4321,9 +4366,26 @@ document.getElementById('future-content').innerHTML=`<div class="future-roadmap"
 
 function initHorizontalSwipe(element,onPrevious,onNext){
   if(!element)return;
-  let startX=0,startY=0;
-  element.addEventListener('touchstart',event=>{const touch=event.changedTouches[0];startX=touch.clientX;startY=touch.clientY},{passive:true});
-  element.addEventListener('touchend',event=>{const touch=event.changedTouches[0];const dx=touch.clientX-startX;const dy=touch.clientY-startY;if(Math.abs(dx)<48||Math.abs(dx)<=Math.abs(dy)*1.15)return;dx>0?onPrevious():onNext()},{passive:true});
+  let startX=0,startY=0,tracking=false,pinching=false;
+  element.addEventListener('touchstart',event=>{
+    if(event.touches.length!==1){pinching=true;tracking=false;return}
+    const touch=event.touches[0];
+    startX=touch.clientX;startY=touch.clientY;tracking=true
+  },{passive:true});
+  element.addEventListener('touchmove',event=>{
+    if(event.touches.length>1){pinching=true;tracking=false}
+  },{passive:true});
+  element.addEventListener('touchend',event=>{
+    if(pinching){if(event.touches.length===0)pinching=false;tracking=false;return}
+    if(!tracking||!event.changedTouches.length)return;
+    tracking=false;
+    const touch=event.changedTouches[0];
+    const dx=touch.clientX-startX;
+    const dy=touch.clientY-startY;
+    if(Math.abs(dx)<48||Math.abs(dx)<=Math.abs(dy)*1.15)return;
+    dx>0?onPrevious():onNext()
+  },{passive:true});
+  element.addEventListener('touchcancel',()=>{tracking=false;pinching=false},{passive:true});
 }
 const runWhenIdle=callback=>'requestIdleCallback' in window?requestIdleCallback(callback,{timeout:900}):setTimeout(callback,120);
 const preloadedImages=new Map();
@@ -4331,6 +4393,7 @@ const preloadImage=src=>{if(!src||preloadedImages.has(src))return;const image=ne
 const preloadImages=sources=>runWhenIdle(()=>[...new Set(sources.filter(Boolean))].forEach(preloadImage));
 function initImageFades(root=document){
   root.querySelectorAll('img:not(.logo-showcase-image.animated)').forEach(image=>{
+    if(image.closest('.portrait'))return;
     if(image.classList.contains('media-fade'))return;
     image.classList.add('media-fade');
     const reveal=()=>image.classList.add('is-loaded');
@@ -4338,6 +4401,8 @@ function initImageFades(root=document){
     else image.addEventListener('load',reveal,{once:true});
   });
 }
+const courseIndicatorUpdaters=[];
+const refreshCourseIndicators=()=>courseIndicatorUpdaters.forEach(update=>window.requestAnimationFrame(update));
 function initHomepageInteractions(){
   const reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)');
   document.querySelectorAll('[data-switcher]').forEach(switcher=>{
@@ -4349,9 +4414,14 @@ function initHomepageInteractions(){
     const updateCourseIndicator=()=>{
       if(!courseIndicator)return;
       const activeButton=buttons[current];
+      if(!activeButton||activeButton.offsetWidth===0)return;
       courseIndicator.style.width=`${activeButton.offsetWidth}px`;
       courseIndicator.style.transform=`translateX(${activeButton.offsetLeft}px)`;
     };
+    if(courseIndicator){
+      courseIndicatorUpdaters.push(updateCourseIndicator);
+      if('ResizeObserver' in window)new ResizeObserver(updateCourseIndicator).observe(courseIndicator.parentElement);
+    }
     const activate=(index,moveFocus=false,directionHint=0,ensureVisible=false)=>{
       const safe=(index+buttons.length)%buttons.length;
       const direction=directionHint||Math.sign(safe-current)||1;
@@ -4392,8 +4462,8 @@ function initHomepageInteractions(){
     });
     if(switcher.classList.contains('project-showcase'))initHorizontalSwipe(switcher.querySelector('.project-spotlight'),()=>activate(current-1,false,-1,true),()=>activate(current+1,false,1,true));
     activate(0);
-    window.addEventListener('resize',updateCourseIndicator,{passive:true});
   });
+  document.fonts?.ready.then(refreshCourseIndicators);
 }
 initHomepageInteractions();
 initImageFades();
@@ -4404,7 +4474,7 @@ function initCredentialAccordions(){
       if(motionPreference.matches||typeof details.animate!=='function')return;
       event.preventDefault();
       if(details.dataset.animating)return;
-      details.dataset.animating='';
+      details.dataset.animating='1';
       const opening=!details.open;
       const start=details.offsetHeight;
       if(opening)details.open=true;
@@ -4421,13 +4491,24 @@ function initCredentialAccordions(){
   });
 }
 initCredentialAccordions();
+let printDetailsState=[];
+window.addEventListener('beforeprint',()=>{
+  if(printDetailsState.length)return;
+  printDetailsState=[...document.querySelectorAll('details.credential-item,details.role-details')].map(details=>({details,open:details.open}));
+  printDetailsState.forEach(({details})=>{details.open=true});
+});
+window.addEventListener('afterprint',()=>{
+  printDetailsState.forEach(({details,open})=>{details.open=open});
+  printDetailsState=[];
+});
 
 let carouselSeq=0;
 function projectGalleryBlock(title,items,emptyText){
   if(items===undefined)return '';
   if(!items.length)return `<section class="project-page-section"><h2>${esc(title)}</h2><div class="coming-soon">${esc(emptyText||'IMAGES COMING SOON')}</div></section>`;
   const id=`carousel-${++carouselSeq}`;
-  return `<section class="project-page-section"><h2>${esc(title)}</h2><div class="project-carousel" data-carousel id="${id}"><div class="carousel-stage">${items.map(([src,cap],i)=>`<figure class="carousel-slide" data-slide="${i}" ${i?'hidden':''}><button type="button" class="carousel-image-button" data-lightbox-src="${esc(src)}" data-lightbox-caption="${esc(cap)}" aria-label="Enlarge image ${i+1} of ${items.length}">${assetBox(src,'')}</button><figcaption class="carousel-caption">${esc(cap)}</figcaption></figure>`).join('')}${items.length>1?`<button type="button" class="carousel-arrow prev" data-carousel-prev aria-label="Previous image">‹</button><button type="button" class="carousel-arrow next" data-carousel-next aria-label="Next image">›</button>`:''}</div><div class="carousel-meta"><span data-carousel-count>1 / ${items.length}</span>${items.length>1?`<span aria-hidden="true">·</span><span>${items.map((_,i)=>`<button type="button" class="carousel-dot ${i===0?'active':''}" data-carousel-dot="${i}" aria-label="Go to image ${i+1}"></button>`).join('')}</span>`:''}</div></div></section>`;
+  const galleryClass=title==='Mobile View'?' mobile-view-gallery':'';
+  return `<section class="project-page-section${galleryClass}"><h2>${esc(title)}</h2><div class="project-carousel" data-carousel id="${id}"><div class="carousel-stage">${items.map(([src,cap],i)=>`<figure class="carousel-slide" data-slide="${i}" ${i?'hidden':''}><button type="button" class="carousel-image-button" data-lightbox-src="${esc(src)}" data-lightbox-caption="${esc(cap)}" aria-label="Enlarge image ${i+1} of ${items.length}">${assetBox(src,'')}</button><figcaption class="carousel-caption">${esc(cap)}</figcaption></figure>`).join('')}${items.length>1?`<button type="button" class="carousel-arrow prev" data-carousel-prev aria-label="Previous image">‹</button><button type="button" class="carousel-arrow next" data-carousel-next aria-label="Next image">›</button>`:''}</div><div class="carousel-meta"><span data-carousel-count>1 / ${items.length}</span>${items.length>1?`<span aria-hidden="true">·</span><span>${items.map((_,i)=>`<button type="button" class="carousel-dot ${i===0?'active':''}" data-carousel-dot="${i}" aria-label="Go to image ${i+1}"></button>`).join('')}</span>`:''}</div></div></section>`;
 }
 function projectLogoShowcase(showcase){
   if(!showcase)return '';
@@ -4437,12 +4518,15 @@ function projectVideoBlock(project){
   if(!project.hasDemoVideo)return '';
   return `<section class="project-page-section"><h2>Demo Video</h2><div style="position:relative;aspect-ratio:16/9;margin-top:18px;border-radius:12px;overflow:hidden;background:#000"><iframe src="https://player.vimeo.com/video/1228981500" title="ReserveQU Project Showcase" loading="lazy" allow="fullscreen; picture-in-picture; encrypted-media" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:0"></iframe></div><p style="margin-top:12px;font-size:13px;line-height:1.6"><a href="https://vimeo.com/1228981500" target="_blank" rel="noopener noreferrer" style="text-decoration:underline;text-underline-offset:3px">Watch the ReserveQU showcase on Vimeo</a></p></section>`;
 }
-const subpageFooter=()=>`<footer class="subpage-footer"><nav class="subpage-links" aria-label="Portfolio links"><a href="assets/resume.pdf" download="Contreras_Katherine_Resume.pdf">Resume</a><a href="https://www.linkedin.com/in/katherinecontreras2/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="#contact">Contact</a></nav></footer>`;
+const subpageFooter=()=>`<footer class="subpage-footer"><nav class="subpage-links" aria-label="Portfolio links"><a href="assets/resume.pdf" target="_blank" rel="noopener">Resume</a><a href="https://www.linkedin.com/in/katherinecontreras2/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="#contact">Contact</a></nav></footer>`;
 function projectSiblingNav(project){
   const index=projects.indexOf(project);
   const previous=projects[(index-1+projects.length)%projects.length];
   const next=projects[(index+1)%projects.length];
-  const link=(item,label,isNext=false)=>`<a class="project-sibling-link" href="#project/${encodeURIComponent(item.slug)}">${isNext?`<span><small>${label}</small><strong>${esc(item.title)}</strong></span><img src="${esc(item.asset)}" alt="" class="${item.imageContain?'contain':''}" loading="lazy">`:`<img src="${esc(item.asset)}" alt="" class="${item.imageContain?'contain':''}" loading="lazy"><span><small>${label}</small><strong>${esc(item.title)}</strong></span>`}</a>`;
+  const link=(item,label,isNext=false)=>{
+    const image=`<img src="${esc(item.thumb||item.asset)}" data-fallback="${esc(item.asset)}" onerror="if(!this.dataset.didFallback){this.dataset.didFallback='1';this.src=this.dataset.fallback}" alt="" class="${item.imageContain?'contain':''}" loading="lazy" width="320" height="240">`;
+    return `<a class="project-sibling-link" href="#project/${encodeURIComponent(item.slug)}">${isNext?`<span><small>${label}</small><strong>${esc(item.title)}</strong></span>${image}`:`${image}<span><small>${label}</small><strong>${esc(item.title)}</strong></span>`}</a>`;
+  };
   return `<nav class="project-sibling-nav" aria-label="More projects">${link(previous,'← Previous project')}${link(next,'Next project →',true)}</nav>`;
 }
 function focusRouteHeading(root){
@@ -4451,8 +4535,26 @@ function focusRouteHeading(root){
   heading.tabIndex=-1;
   requestAnimationFrame(()=>heading.focus({preventScroll:true}));
 }
-const motionPreference=window.matchMedia('(prefers-reduced-motion: reduce)');
+document.querySelector('.skip-link').addEventListener('click',event=>{
+  const projectPage=document.getElementById('project-page');
+  if(projectPage.hidden)return;
+  const heading=projectPage.querySelector('h1');
+  if(!heading)return;
+  event.preventDefault();
+  heading.tabIndex=-1;
+  heading.focus({preventScroll:false});
+});
 let viewTransitionActive=false;
+const pageStateKey='portfolio-page-state';
+const navigationType=performance.getEntriesByType?.('navigation')?.[0]?.type;
+let pendingPageRestore=null;
+try{
+  const savedState=JSON.parse(sessionStorage.getItem(pageStateKey)||'null');
+  if(savedState&&(navigationType==='reload'||navigationType==='back_forward')&&!location.hash){
+    if(typeof savedState.hash==='string'&&savedState.hash.startsWith('#')&&savedState.hash!=='#top')history.replaceState(null,'',savedState.hash);
+    if(Number.isFinite(savedState.scrollY))pendingPageRestore=savedState.scrollY;
+  }
+}catch(error){}
 let lastHomeHash=(location.hash.startsWith('#project/')||location.hash==='#honor/deans-list')?'#top':(location.hash||'#top');
 let homeReturnState={hash:lastHomeHash,scrollY:0};
 if('scrollRestoration' in history)history.scrollRestoration='manual';
@@ -4472,8 +4574,17 @@ function initFlowMotion(root=document){
   });
   document.documentElement.classList.add('motion-ready');
   targets.forEach(target=>{
-    if(motionPreference.matches||!flowObserver)target.classList.add('is-flow-visible');
-    else flowObserver.observe(target);
+    if(motionPreference.matches||!flowObserver){
+      target.classList.add('is-flow-visible','flow-complete');
+    }else{
+      const finishFlow=event=>{
+        if(event.target!==target)return;
+        target.classList.add('flow-complete');
+        target.removeEventListener('transitionend',finishFlow);
+      };
+      target.addEventListener('transitionend',finishFlow);
+      flowObserver.observe(target);
+    }
   });
 }
 function animateView(view){
@@ -4489,9 +4600,10 @@ function renderProjectPage(p){
   const projectPage=document.getElementById('project-page');
   projectPage.dataset.pageType='project';
   projectPage.dataset.projectSlug=p.slug;
-  projectPage.innerHTML=`<a class="floating-project-back" href="#projects">← Projects</a><div class="project-page-shell"><a class="project-page-back" href="#projects">← Projects</a><p class="project-page-meta">${p.date.includes('IN PROGRESS')?esc(p.date):`Completed ${esc(p.date)}`}</p><h1 class="project-page-title">${esc(p.title)}</h1><p class="project-page-summary">${esc(p.summary)}</p><div class="project-page-cover" data-lightbox-src="${esc(p.asset)}" data-lightbox-caption="${esc(p.title)} project cover" role="button" tabindex="0" aria-label="Enlarge ${esc(p.title)} project cover">${assetBox(p.asset,'',p.imageContain)}</div><div class="project-page-details">${p.details.map(x=>`<p>${esc(x)}</p>`).join('')}</div>${p.downloadAsset?`<section class="project-page-section"><h2>Project File</h2><p class="project-download-copy">Download the completed Excel workbook to review the linked forecasts, DCF valuation, cash sweep, and sensitivity analysis.</p><a class="project-download" href="${esc(p.downloadAsset)}" download="${esc(p.downloadName||'')}">Download Excel model ↓</a></section>`:''}${projectLogoShowcase(p.logoShowcase)}${p.githubUrl?`<section class="project-page-section"><h2>Project Link</h2><p class="project-download-copy">Visit my GitHub profile to see more of my coursework and development projects.</p><a class="project-download" href="${esc(p.githubUrl)}" target="_blank" rel="noopener noreferrer">View my GitHub profile ↗</a></section>`:''}${projectVideoBlock(p)}${projectGalleryBlock('Website Screenshots',p.websiteGallery)}${projectGalleryBlock('Model Views',p.modelGallery)}${projectGalleryBlock('Event Gallery',p.gallery)}${projectGalleryBlock('Desktop View',p.desktopGallery)}${projectGalleryBlock('Mobile View',p.mobileGallery)}${projectGalleryBlock('Behind the Scenes',p.behindGallery)}${p.highlights.length?`<div class="project-page-highlight"><h2>Highlights</h2><div class="tags">${p.highlights.map(x=>`<span class="tag">${esc(x)}</span>`).join('')}</div></div>`:''}${projectSiblingNav(p)}</div>${subpageFooter()}`;
+  projectPage.innerHTML=`<a class="floating-project-back" href="#projects">← Projects</a><div class="project-page-shell"><a class="project-page-back" href="#projects">← Projects</a><p class="project-page-meta">${p.date.includes('IN PROGRESS')?esc(p.date):`Completed ${esc(p.date)}`}</p><h1 class="project-page-title" id="project-page-heading">${esc(p.title)}</h1><p class="project-page-summary">${esc(p.summary)}</p><div class="project-page-cover" data-lightbox-src="${esc(p.asset)}" data-lightbox-caption="${esc(p.title)} project cover" role="button" tabindex="0" aria-label="Enlarge ${esc(p.title)} project cover">${assetBox(p.asset,'',p.imageContain,p.title)}</div><div class="project-page-details">${p.details.map(x=>`<p>${esc(x)}</p>`).join('')}</div>${p.downloadAsset?`<section class="project-page-section"><h2>Project File</h2><p class="project-download-copy">Download the completed Excel workbook to review the linked forecasts, DCF valuation, cash sweep, and sensitivity analysis.</p><a class="project-download" href="${esc(p.downloadAsset)}" download="${esc(p.downloadName||'')}">Download Excel model ↓</a></section>`:''}${projectLogoShowcase(p.logoShowcase)}${p.githubUrl?`<section class="project-page-section"><h2>Project Link</h2><p class="project-download-copy">Visit my GitHub profile to see more of my coursework and development projects.</p><a class="project-download" href="${esc(p.githubUrl)}" target="_blank" rel="noopener noreferrer">View my GitHub profile ↗</a></section>`:''}${projectVideoBlock(p)}${projectGalleryBlock('Website Screenshots',p.websiteGallery)}${projectGalleryBlock('Model Views',p.modelGallery)}${projectGalleryBlock('Event Gallery',p.gallery)}${projectGalleryBlock('Desktop View',p.desktopGallery)}${projectGalleryBlock('Mobile View',p.mobileGallery)}${projectGalleryBlock('Behind the Scenes',p.behindGallery)}${p.highlights.length?`<div class="project-page-highlight"><h2>Highlights</h2><div class="tags">${p.highlights.map(x=>`<span class="tag">${esc(x)}</span>`).join('')}</div></div>`:''}${projectSiblingNav(p)}</div>${subpageFooter()}`;
   document.querySelector('[data-portfolio-view]').hidden=true;
   document.getElementById('site-header').hidden=true;
+  document.querySelector('.skip-link').href='#project-page-heading';
   projectPage.hidden=false;
   animateView(projectPage);
   document.title=`${p.title} — Katherine Contreras`;
@@ -4507,7 +4619,7 @@ function renderProjectPage(p){
   initFlowMotion(projectPage);
   initImageFades(projectPage);
   const nextProject=projects[(projects.indexOf(p)+1)%projects.length];
-  preloadImages([nextProject?.asset,p.websiteGallery?.[0]?.[0],p.modelGallery?.[0]?.[0],p.gallery?.[0]?.[0],p.desktopGallery?.[0]?.[0],p.mobileGallery?.[0]?.[0]]);
+  preloadImages([nextProject?.asset]);
   window.scrollTo(0,0);
   setTimeout(()=>window.scrollTo(0,0),50);
   focusRouteHeading(projectPage);
@@ -4559,6 +4671,16 @@ function initProjectInteractions(root){
     let revealTimer;
     let playToken=0;
     if(!animatedLogo||!animationSource)return;
+    if('IntersectionObserver' in window){
+      const logoPreloader=new IntersectionObserver(entries=>{
+        if(!entries.some(entry=>entry.isIntersecting))return;
+        preloadImage(animationSource);
+        logoPreloader.disconnect();
+      },{rootMargin:'400px 0px'});
+      logoPreloader.observe(demo);
+    }else{
+      preloadImage(animationSource);
+    }
     const finishAnimation=()=>{
       window.clearTimeout(animationTimer);
       window.clearTimeout(cleanupTimer);
@@ -4574,8 +4696,9 @@ function initProjectInteractions(root){
         animatedLogo.removeAttribute('src');
       },reducedMotion.matches?0:160);
     };
-    const playAnimation=()=>{
-      if(reducedMotion.matches||demo.hasAttribute('data-logo-playing'))return;
+    const playAnimation=event=>{
+      const explicitlyRequested=event?.type==='click';
+      if((reducedMotion.matches&&!explicitlyRequested)||demo.hasAttribute('data-logo-playing'))return;
       demo.setAttribute('data-logo-playing','');
       animatedLogo.removeAttribute('src');
       const currentPlay=++playToken;
@@ -4630,7 +4753,14 @@ function initProjectInteractions(root){
     dots.forEach(dot=>dot.addEventListener('click',()=>show(+dot.dataset.carouselDot)));
     carousel.addEventListener('keydown',e=>{if(e.key==='ArrowLeft')show(current-1);if(e.key==='ArrowRight')show(current+1)});
     initHorizontalSwipe(carousel,()=>show(current-1),()=>show(current+1));
-    primeAdjacent();
+    if('IntersectionObserver' in window){
+      const carouselObserver=new IntersectionObserver(entries=>{
+        if(!entries.some(entry=>entry.isIntersecting))return;
+        primeAdjacent();
+        carouselObserver.disconnect();
+      },{rootMargin:'400px 0px'});
+      carouselObserver.observe(carousel);
+    }else primeAdjacent();
   });
   root.querySelectorAll('[data-lightbox-src]').forEach(el=>{
     const open=()=>openImageLightbox(el);
@@ -4660,12 +4790,17 @@ function showPortfolio({restoreScroll=false}={}){
   animateView(portfolioView);
   initFlowMotion(portfolioView);
   document.getElementById('site-header').hidden=false;
+  document.querySelector('.skip-link').href='#top';
+  refreshCourseIndicators();
   document.title='Katherine Contreras — Finance & CIS Portfolio';
   const targetId=location.hash.replace(/^#/,'');
   const target=document.getElementById(targetId);
   if(targetId==='contact')document.querySelector('.contact-form-panel').open=true;
   if(restoreScroll){
-    window.scrollTo({top:homeReturnState.scrollY,left:0,behavior:'auto'});
+    window.scrollTo({top:homeReturnState.scrollY,left:0,behavior:'instant'});
+    const focusTarget=targetId==='top'?portfolioView:(target?.querySelector('h2')||portfolioView);
+    focusTarget.tabIndex=-1;
+    requestAnimationFrame(()=>focusTarget.focus({preventScroll:true}));
   }else if(target){
     requestAnimationFrame(()=>{
       target.scrollIntoView({block:'start',behavior:motionPreference.matches?'auto':'smooth'});
@@ -4684,9 +4819,10 @@ function renderDeansList(){
  const awards=[['Spring 2026',true],['Fall 2025',false],['Spring 2025',false],['Fall 2024',true]];
  const medal='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="8" r="5"/><path d="m8 12-2 9 6-3 6 3-2-9"/></svg>';
  const star='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2-5.6-3-5.6 3 1.1-6.2L3 9.6l6.2-.9Z"/></svg>';
- page.innerHTML=`<div class="project-page-shell"><a class="project-page-back" href="#honors">&larr; Honors &amp; Awards</a><p class="deans-link"><a href="https://www.qu.edu/academics/deans-list/" target="_blank" rel="noopener noreferrer">Quinnipiac University Dean's List Website</a></p><p class="project-page-meta">Academic recognition</p><h1 class="project-page-title">Dean's List</h1><p class="project-page-summary">Quinnipiac University &middot; School of Business</p><div class="deans-awards">${awards.map(([semester,h])=>`<article class="deans-award"><span class="award-icon">${h?medal:star}</span><p class="card-date">${semester}</p><h2>Dean's List${h?' with Honors':''}</h2></article>`).join('')}</div></div>${subpageFooter()}`;
+ page.innerHTML=`<div class="project-page-shell"><a class="project-page-back" href="#honors">&larr; Honors &amp; Awards</a><p class="deans-link"><a href="https://www.qu.edu/academics/deans-list/" target="_blank" rel="noopener noreferrer">Quinnipiac University Dean's List Website</a></p><p class="project-page-meta">Academic recognition</p><h1 class="project-page-title" id="deans-list-heading">Dean's List</h1><p class="project-page-summary">Quinnipiac University &middot; School of Business</p><div class="deans-awards">${awards.map(([semester,h])=>`<article class="deans-award"><span class="award-icon">${h?medal:star}</span><p class="card-date">${semester}</p><h2>Dean's List${h?' with Honors':''}</h2></article>`).join('')}</div></div>${subpageFooter()}`;
  document.querySelector('[data-portfolio-view]').hidden=true;
  document.getElementById('site-header').hidden=true;
+ document.querySelector('.skip-link').href='#deans-list-heading';
  page.hidden=false;animateView(page);initFlowMotion(page);document.title="Dean's List - Katherine Contreras";window.scrollTo(0,0);focusRouteHeading(page);
 }
 function routeNow(){
@@ -4711,7 +4847,8 @@ function routeNow(){
   if(projectPage.hidden){
     lastHomeHash=location.hash||'#top';
     if(hash==='contact')document.querySelector('.contact-form-panel').open=true;
-    if(!document.documentElement.classList.contains('motion-ready'))initFlowMotion(document.querySelector('[data-portfolio-view]'));
+    const portfolioView=document.querySelector('[data-portfolio-view]');
+    if(!portfolioView.querySelector('[data-flow-reveal]'))initFlowMotion(portfolioView);
     return;
   }
   showPortfolio({restoreScroll:(location.hash||'#top')===homeReturnState.hash});
@@ -4756,13 +4893,20 @@ document.addEventListener('click',event=>{
 });
 window.addEventListener('hashchange',route);
 route();
+window.addEventListener('pagehide',()=>{
+  try{sessionStorage.setItem(pageStateKey,JSON.stringify({hash:location.hash||'#top',scrollY}))}catch(error){}
+});
+if(pendingPageRestore!==null){
+  requestAnimationFrame(()=>window.scrollTo({top:pendingPageRestore,left:0,behavior:'instant'}));
+  setTimeout(()=>window.scrollTo({top:pendingPageRestore,left:0,behavior:'instant'}),80);
+}
 </script>
 <script>
 (function(){
 const button=document.getElementById('theme-toggle');
 const moon='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M20 14A8.5 8.5 0 0 1 10 4a8.5 8.5 0 1 0 10 10Z"/></svg>';
 const sun='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></svg>';
-function update(){const dark=document.documentElement.dataset.theme==='dark';document.getElementById('theme-label').textContent=dark?'Light mode':'Dark mode';document.getElementById('theme-icon').innerHTML=dark?sun:moon;button.setAttribute('aria-label',dark?'Switch to light mode':'Switch to dark mode');button.setAttribute('aria-pressed',String(dark))}
+function update(){const dark=document.documentElement.dataset.theme==='dark';document.getElementById('theme-label').textContent=dark?'Light mode':'Dark mode';document.getElementById('theme-icon').innerHTML=dark?sun:moon;button.setAttribute('aria-label',dark?'Switch to light mode':'Switch to dark mode')}
 button.addEventListener('click',()=>{
   const root=document.documentElement;
   const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -4817,7 +4961,7 @@ document.getElementById('contact-form').addEventListener('submit',async function
   menu.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>menu.removeAttribute('open')));
   document.addEventListener('click',event=>{if(menu.open&&!menu.contains(event.target))menu.removeAttribute('open')});
   document.addEventListener('keydown',event=>{if(event.key==='Escape'&&menu.open){menu.removeAttribute('open');summary.focus()}});
-  window.addEventListener('resize',()=>{if(innerWidth>900)menu.removeAttribute('open')});
+  window.addEventListener('resize',()=>{if(innerWidth>1180)menu.removeAttribute('open')});
 })();
 </script>
 <script>
@@ -4827,7 +4971,11 @@ document.getElementById('contact-form').addEventListener('submit',async function
   const header=document.getElementById('site-header');
   const tracked=[...document.querySelectorAll('.portfolio-section,footer[id]')];
   const navLinks=[...document.querySelectorAll('#site-header a[href^="#"]')];
+  let sectionOffsets=[];
+  let updateFrame=0;
+  const cacheSectionOffsets=()=>{sectionOffsets=tracked.map(section=>({id:section.id,top:section.offsetTop}))};
   const updateNavigation=()=>{
+    updateFrame=0;
     const scrollRange=Math.max(document.documentElement.scrollHeight-innerHeight,1);
     progressBar.style.transform=`scaleX(${Math.min(Math.max(scrollY/scrollRange,0),1)})`;
     header.classList.toggle('is-scrolled',scrollY>12);
@@ -4835,17 +4983,21 @@ document.getElementById('contact-form').addEventListener('submit',async function
     if(document.querySelector('[data-portfolio-view]').hidden)return;
     const marker=scrollY+Math.min(180,innerHeight*.3);
     let active='top';
-    tracked.forEach(section=>{if(section.offsetTop<=marker)active=section.id});
+    sectionOffsets.forEach(section=>{if(section.top<=marker)active=section.id});
     navLinks.forEach(link=>{
       const current=link.getAttribute('href')===`#${active}`;
       if(current)link.setAttribute('aria-current','location');
       else link.removeAttribute('aria-current');
     });
   };
-  addEventListener('scroll',updateNavigation,{passive:true});
-  addEventListener('resize',updateNavigation);
-  addEventListener('hashchange',updateNavigation);
-  updateNavigation();
+  const requestUpdate=()=>{if(!updateFrame)updateFrame=requestAnimationFrame(updateNavigation)};
+  const refreshNavigation=()=>{cacheSectionOffsets();requestUpdate()};
+  addEventListener('scroll',requestUpdate,{passive:true});
+  addEventListener('resize',refreshNavigation,{passive:true});
+  addEventListener('hashchange',refreshNavigation);
+  document.fonts?.ready.then(refreshNavigation);
+  if('ResizeObserver' in window)new ResizeObserver(refreshNavigation).observe(document.body);
+  refreshNavigation();
 })();
 </script>
 </body></html>
