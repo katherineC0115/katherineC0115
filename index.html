@@ -2214,7 +2214,7 @@
       font:850 11px var(--mono);
       letter-spacing:.13em
     }
-    .spotlight-card h3,.project-feature h3,.experience-panel h3,.signal-panel h3,.roadmap-panel h3 {
+    .spotlight-card h3,.project-feature h3,.employment-role h3,.signal-panel h3,.roadmap-panel h3 {
       margin:10px 0 0;
       font-size:clamp(23px,3vw,36px);
       line-height:1.02;
@@ -2326,47 +2326,57 @@
       background:color-mix(in srgb,var(--section-accent) 12%,var(--card));
       box-shadow:inset 0 3px 0 var(--section-accent)
     }
-    .experience-console {
-      display:grid;
-      grid-template-columns:250px minmax(0,1fr);
-      gap:0;
-      overflow:hidden;
-      border:1px solid var(--border);
-      border-radius:16px;
-      background:color-mix(in srgb,var(--background) 55%,var(--card));
+    .employment-timeline {
+      list-style:none;
+      position:relative;
+      width:min(100%,42rem);
+      margin:0 auto;
+      padding:4px 0 0;
       text-align:left
     }
-    .experience-tabs {
-      padding:12px;
-      border-right:1px solid var(--border);
-      background:color-mix(in srgb,var(--secondary) 70%,transparent)
+    .employment-timeline::before {
+      content:"";
+      position:absolute;
+      left:7px;
+      top:10px;
+      bottom:18px;
+      width:2px;
+      border-radius:999px;
+      background:color-mix(in srgb,var(--section-accent) 42%,var(--border));
+      pointer-events:none
     }
-    .experience-tabs button {
-      width:100%;
-      padding:16px 14px;
-      border-bottom-color:var(--border);
-      font-weight:820
+    .employment-timeline>li {
+      position:relative;
+      margin:0;
+      padding:0 0 42px 36px
     }
-    .experience-tabs button.is-active {
-      color:var(--foreground);
-      border-color:var(--section-accent);
-      border-radius:7px;
-      background:var(--card)
+    .employment-timeline>li:last-child {
+      padding-bottom:0
     }
-    .experience-screen {
-      min-height:350px;
-      padding:34px;
-      background:
-        linear-gradient(color-mix(in srgb,var(--section-accent) 8%,transparent) 1px,transparent 1px),
-        linear-gradient(90deg,color-mix(in srgb,var(--section-accent) 8%,transparent) 1px,transparent 1px);
-      background-size:24px 24px
+    .employment-timeline>li::before {
+      content:"";
+      position:absolute;
+      left:1px;
+      top:8px;
+      width:14px;
+      height:14px;
+      border:2px solid var(--background);
+      border-radius:50%;
+      background:var(--section-accent);
+      box-shadow:0 0 0 1px color-mix(in srgb,var(--section-accent) 55%,var(--border));
+      pointer-events:none
+    }
+    .employment-role {
+      max-width:65ch;
+      padding:4px 0 4px 16px;
+      border-left:2px solid color-mix(in srgb,var(--section-accent) 28%,transparent)
     }
     .experience-status {
       display:flex;
       align-items:center;
       gap:8px;
       width:max-content;
-      margin-bottom:46px;
+      margin-bottom:14px;
       color:var(--muted-foreground);
       font:800 11px var(--mono);
       letter-spacing:.12em;
@@ -2383,22 +2393,27 @@
       margin:7px 0 0;
       color:var(--section-accent);
       font:700 15px var(--serif);
-      font-style:italic
+      font-style:italic;
+      overflow-wrap:anywhere
     }
     .experience-lead {
       max-width:65ch;
-      margin:22px 0 0;
+      margin:18px 0 0;
       color:var(--muted-foreground);
       font-size:14px;
       line-height:1.6
     }
     .role-details {
-      margin-top:20px;
+      margin-top:18px;
       border-top:1px solid var(--border);
-      padding-top:14px
+      padding-top:10px
     }
     .role-details summary {
+      display:inline-flex;
+      align-items:center;
+      min-height:44px;
       width:max-content;
+      max-width:100%;
       cursor:pointer;
       color:var(--foreground);
       font:800 11px var(--mono);
@@ -2407,11 +2422,25 @@
     }
     .role-details ul {
       max-width:65ch;
-      margin:14px 0 0;
+      margin:10px 0 0;
       padding-left:18px;
       color:var(--muted-foreground);
       font-size:13px;
       line-height:1.55
+    }
+    html.motion-ready #employment-content[data-flow-reveal] .employment-timeline>li {
+      opacity:0;
+      transform:translate3d(0,14px,0);
+      transition:
+        opacity var(--motion-enter) var(--motion-ease),
+        transform var(--motion-enter) var(--motion-ease)
+    }
+    html.motion-ready #employment-content[data-flow-reveal].is-flow-visible .employment-timeline>li {
+      opacity:1;
+      transform:none
+    }
+    html.motion-ready #employment-content[data-flow-reveal].is-flow-visible .employment-timeline>li:nth-child(2) {
+      transition-delay:90ms
     }
     .club-signal {
       display:grid;
@@ -2769,24 +2798,6 @@
     .spotlight-card {
       min-height:330px
     }
-    .experience-console {
-      grid-template-columns:280px minmax(0,1fr)
-    }
-    .experience-tabs {
-      grid-column:1;
-      grid-row:1;
-      border-right:1px solid var(--border);
-      border-left:0
-    }
-    .experience-screen {
-      grid-column:2;
-      grid-row:1;
-      min-height:320px;
-      padding:38px 44px
-    }
-    .experience-status {
-      margin-bottom:34px
-    }
     .club-signal {
       grid-template-columns:minmax(0,1.25fr) minmax(270px,.75fr);
       gap:clamp(34px,6vw,76px);
@@ -2964,22 +2975,17 @@
       .hero-star-cluster,.hero-swirl,.hero-circuit {
         display:none
       }
-      .course-explorer,.experience-console,.club-signal,.future-roadmap {
+      .course-explorer,.club-signal,.future-roadmap {
         grid-template-columns:1fr
       }
       .course-explorer {
         min-height:0
       }
-      .course-tabs,.experience-tabs {
+      .course-tabs {
         display:grid;
         grid-template-columns:repeat(2,minmax(0,1fr))
       }
-      .experience-tabs {
-        border-right:0;
-        border-left:0;
-        border-bottom:1px solid var(--border)
-      }
-      .course-tabs,.course-deck,.experience-tabs,.experience-screen,.signal-orbit,.signal-display,.roadmap-track,.roadmap-display {
+      .course-tabs,.course-deck,.signal-orbit,.signal-display,.roadmap-track,.roadmap-display {
         grid-column:auto;
         grid-row:auto
       }
@@ -3008,7 +3014,7 @@
       }
     }
     @media (max-width:720px) {
-      .course-explorer,.honors-spotlight,.project-showcase,.experience-console,.club-signal,.credential-stack,.future-roadmap {
+      .course-explorer,.honors-spotlight,.project-showcase,.employment-timeline,.club-signal,.credential-stack,.future-roadmap {
         text-align:left
       }
       section.portfolio-section,html[data-theme="dark"] section.portfolio-section {
@@ -3043,7 +3049,7 @@
         font-size:clamp(26px,8vw,34px);
         line-height:1.13
       }
-      .experience-tabs,.spotlight-picker,.showcase-rail {
+      .spotlight-picker,.showcase-rail {
         display:flex;
         flex-direction:row;
         gap:8px;
@@ -3052,10 +3058,10 @@
         scroll-snap-type:x mandatory;
         scrollbar-width:none
       }
-      .experience-tabs::-webkit-scrollbar,.spotlight-picker::-webkit-scrollbar,.showcase-rail::-webkit-scrollbar,.roadmap-track::-webkit-scrollbar {
+      .spotlight-picker::-webkit-scrollbar,.showcase-rail::-webkit-scrollbar,.roadmap-track::-webkit-scrollbar {
         display:none
       }
-      .experience-tabs button,.spotlight-picker button,.showcase-rail button {
+      .spotlight-picker button,.showcase-rail button {
         flex:0 0 min(68vw,240px);
         scroll-snap-align:start
       }
@@ -3091,8 +3097,15 @@
       .course-map {
         grid-template-columns:1fr
       }
-      .course-deck,.experience-screen {
+      .course-deck {
         padding:20px
+      }
+      .employment-timeline {
+        width:100%;
+        margin:0
+      }
+      .employment-timeline>li {
+        padding-bottom:34px
       }
       .honors-spotlight {
         grid-template-columns:1fr;
@@ -3129,12 +3142,6 @@
       .project-feature-copy>p {
         min-height:6.2em;
         -webkit-line-clamp:4
-      }
-      .experience-screen {
-        min-height:390px
-      }
-      .experience-status {
-        margin-bottom:34px
       }
       .signal-panel,.roadmap-panel {
         min-height:300px;
@@ -3325,44 +3332,6 @@
     .project-spotlight.is-dragging .project-feature:not([hidden]) {
       transition:none
     }
-    .experience-tabs {
-      position:relative;
-      padding:12px 38px 12px 12px
-    }
-    .experience-time-rail {
-      position:absolute;
-      top:34px;
-      right:17px;
-      bottom:34px;
-      width:2px;
-      border-radius:999px;
-      background:color-mix(in srgb,var(--section-accent) 32%,var(--border));
-      pointer-events:none
-    }
-    .experience-time-rail::before {
-      content:"";
-      position:absolute;
-      top:-8px;
-      left:50%;
-      width:8px;
-      height:8px;
-      border-top:2px solid var(--section-accent);
-      border-left:2px solid var(--section-accent);
-      transform:translateX(-50%) rotate(45deg)
-    }
-    .experience-time-rail span {
-      position:absolute;
-      top:var(--job-position,25%);
-      left:50%;
-      width:8px;
-      height:44px;
-      border:2px solid var(--background);
-      border-radius:999px;
-      background:var(--section-accent);
-      box-shadow:0 0 0 1px var(--section-accent),0 0 16px color-mix(in srgb,var(--section-accent) 42%,transparent);
-      transform:translate(-50%,-50%);
-      transition:top var(--motion-ui) var(--motion-ease)
-    }
     .carousel-slide.slide-entering {
       animation:carouselEnter var(--motion-ui) var(--motion-ease) both
     }
@@ -3465,21 +3434,6 @@
     @media (max-width:900px) {
       #site-header,.back-to-top,.mobile-nav nav,.floating-project-back,.project-page-details,
       .project-page-section,#image-lightbox::backdrop,dialog::backdrop { backdrop-filter:none!important }
-      .experience-tabs {
-        display:grid;
-        grid-template-columns:1fr;
-        gap:6px;
-        overflow:visible;
-        padding:12px 12px 12px 38px
-      }
-      .experience-tabs button {
-        width:100%;
-        min-width:0
-      }
-      .experience-time-rail {
-        right:auto;
-        left:17px
-      }
     }
     @media (prefers-reduced-motion:reduce) {
       html {
@@ -3487,10 +3441,11 @@
       }
       [data-switch-target],.project-feature-image img,.credential-toggle,.media-fade,
       [data-flow-reveal],.scroll-progress span,#site-header,.course-tab-indicator,
-      .experience-time-rail span {
+      html.motion-ready #employment-content[data-flow-reveal] .employment-timeline>li {
         transition:none!important
       }
-      [data-flow-reveal] {
+      [data-flow-reveal],
+      html.motion-ready #employment-content[data-flow-reveal] .employment-timeline>li {
         opacity:1!important;
         transform:none!important
       }
@@ -3743,7 +3698,7 @@
         max-width:100%
       }
       .hero-name,.hero-title,.section-head h2,.spotlight-card h3,.project-feature h3,
-      .experience-panel h3,.signal-panel h3,.roadmap-panel h3,.project-page-title {
+      .employment-role h3,.signal-panel h3,.roadmap-panel h3,.project-page-title {
         overflow-wrap:anywhere
       }
       section.portfolio-section,section.portfolio-section>* {
@@ -3756,7 +3711,7 @@
         grid-template-columns:1fr
       }
       .project-spotlight,.project-feature,.project-feature-image,.spotlight-card,
-      .experience-screen,.signal-panel,.roadmap-panel {
+      .signal-panel,.roadmap-panel {
         min-height:0
       }
       .project-spotlight,.project-feature {
@@ -3786,11 +3741,8 @@
         overflow:visible;
         -webkit-line-clamp:unset
       }
-      .spotlight-card,.experience-screen,.signal-panel,.roadmap-panel {
+      .spotlight-card,.signal-panel,.roadmap-panel {
         height:auto
-      }
-      .experience-status {
-        margin-bottom:24px
       }
       .signal-panel h3 {
         max-width:100%
@@ -3840,7 +3792,7 @@
       section.portfolio-section>.section-head .section-doodle {
         width:64px
       }
-      .course-deck,.spotlight-card,.experience-screen,.signal-panel,.roadmap-panel {
+      .course-deck,.spotlight-card,.signal-panel,.roadmap-panel {
         padding:20px
       }
       .course-map li {
@@ -3864,7 +3816,7 @@
         min-height:0;
         -webkit-line-clamp:unset
       }
-      .spotlight-card,.experience-screen,.signal-panel,.roadmap-panel {
+      .spotlight-card,.signal-panel,.roadmap-panel {
         min-height:0
       }
       .signal-display {
@@ -4053,13 +4005,15 @@
       #project-page[hidden],[data-portfolio-view][hidden] { display:none!important }
       [data-flow-reveal] { opacity:1!important; transform:none!important }
       [data-switch-panel],[data-switch-panel][hidden] { display:block!important }
-      .course-tabs,.spotlight-picker,.spotlight-arrow,.experience-tabs,.signal-orbit,.roadmap-track { display:none!important }
+      .course-tabs,.spotlight-picker,.spotlight-arrow,.signal-orbit,.roadmap-track { display:none!important }
+      .employment-timeline::before,.employment-timeline>li::before { display:none!important }
+      .employment-timeline>li,.employment-role { opacity:1!important; transform:none!important; border:0!important; box-shadow:none!important; background:transparent!important; padding-left:0!important }
       main,.container,.project-page-shell,.subpage-footer { width:100%!important; max-width:none!important }
       section.portfolio-section { break-inside:avoid; margin:0 0 18pt!important; padding:10pt 0!important; border:0!important }
       .hero { min-height:0!important; padding:0 0 20pt!important }
       .portrait { box-shadow:none!important }
       a { color:#111!important; text-decoration:underline }
-      .project-feature,.spotlight-card,.experience-panel,.signal-panel,.roadmap-panel,.credential-item,
+      .project-feature,.spotlight-card,.employment-role,.signal-panel,.roadmap-panel,.credential-item,
       .project-page-cover,.project-page-section,.project-page-highlight { break-inside:avoid; box-shadow:none!important }
       .project-feature { height:auto!important; min-height:0!important; margin-bottom:12pt }
       .project-page-section { margin-top:18pt }
@@ -4521,7 +4475,7 @@ document.getElementById('honors-content').innerHTML=`<div class="honors-spotligh
 
 document.getElementById('projects-content').innerHTML=`<div class="project-showcase" data-switcher><div class="project-spotlight">${projects.map((p,i)=>switchPanel(`<a class="project-feature-image" href="#project/${encodeURIComponent(p.slug)}" aria-label="Open ${esc(p.title)} project details">${assetBox(p.asset,'',p.imageContain)}</a><div class="project-feature-copy"><span class="spotlight-count">FEATURE ${String(i+1).padStart(2,'0')} / ${String(projects.length).padStart(2,'0')}</span><span class="card-date">${esc(p.date)}</span><h3>${esc(p.title)}</h3><p>${esc(summaryLead(p.summary))}</p><div class="tags">${p.highlights.slice(0,2).map(t=>`<span class="tag">${esc(t)}</span>`).join('')}</div><a class="spotlight-link" href="#project/${encodeURIComponent(p.slug)}">Open project <span aria-hidden="true">→</span></a></div>`,i,'project-feature',i===0,'project-feature')).join('')}</div><div class="showcase-navigation"><button type="button" class="showcase-arrow" data-switch-prev aria-label="Previous featured project"><span aria-hidden="true">←</span></button><div class="showcase-rail" role="tablist" aria-label="Choose a featured project">${projects.map((p,i)=>projectThumbButton(p,i,i===0)).join('')}</div><button type="button" class="showcase-arrow" data-switch-next aria-label="Next featured project"><span aria-hidden="true">→</span></button></div></div>`;
 
-document.getElementById('employment-content').innerHTML=`<div class="experience-console" data-switcher><div class="experience-tabs" role="tablist" aria-label="Choose a role">${employment.map((e,i)=>switchButton(e.role,i,'experience',i===0,e.dates)).join('')}<span class="experience-time-rail" aria-hidden="true"><span></span></span></div><div class="experience-screen">${employment.map((e,i)=>switchPanel(`<div class="experience-status"><span aria-hidden="true"></span>${i===0?'Current role':'Previous role'}</div><span class="card-date">${esc(e.dates)}</span><h3>${esc(e.role)}</h3><p class="experience-org">${esc(e.org)}</p><p class="experience-lead">${esc(e.bullets[0])}</p>${e.bullets.length>1?`<details class="role-details"><summary>More from this role</summary><ul>${e.bullets.slice(1).map(b=>`<li>${esc(b)}</li>`).join('')}</ul></details>`:''}`,i,'experience',i===0,'experience-panel')).join('')}</div></div>`;
+document.getElementById('employment-content').innerHTML=`<ol class="employment-timeline">${employment.map((e,i)=>`<li><article class="employment-role"><div class="experience-status"><span aria-hidden="true"></span>${i===0?'Current role':'Previous role'}</div><span class="card-date">${esc(e.dates)}</span><h3>${esc(e.role)}</h3><p class="experience-org">${esc(e.org)}</p><p class="experience-lead">${esc(e.bullets[0])}</p>${e.bullets.length>1?`<details class="role-details"><summary>More from this role</summary><ul>${e.bullets.slice(1).map(b=>`<li>${esc(b)}</li>`).join('')}</ul></details>`:''}</article></li>`).join('')}</ol>`;
 
 document.getElementById('clubs-content').innerHTML=`<div class="club-signal" data-switcher><div class="signal-orbit" role="tablist" aria-label="Choose an activity">${clubs.map((c,i)=>switchButton(c.org,i,'club',i===0,i===0?'Finance':'Community')).join('')}</div><div class="signal-display">${clubs.map((c,i)=>switchPanel(`<span class="signal-icon" aria-hidden="true">${i===0?'↗':'✦'}</span><span class="card-date">${esc(c.role)}</span><h3>${esc(c.org)}</h3><p>${esc(c.body)}</p>`,i,'club',i===0,'signal-panel')).join('')}</div></div>`;
 
@@ -4699,7 +4653,6 @@ function initHomepageInteractions(){
     const buttons=[...switcher.querySelectorAll('[data-switch-target]')];
     const panels=[...switcher.querySelectorAll('[data-switch-panel]')];
     const courseIndicator=switcher.querySelector('.course-tab-indicator');
-    const experienceTabs=switcher.querySelector('.experience-tabs');
     const isHonors=switcher.classList.contains('honors-spotlight');
     const isProjects=switcher.classList.contains('project-showcase');
     const prevControl=switcher.querySelector('[data-switch-prev]');
@@ -4744,7 +4697,6 @@ function initHomepageInteractions(){
         }
       });
       current=safe;
-      if(experienceTabs)experienceTabs.style.setProperty('--job-position',`${((safe+.5)/buttons.length)*100}%`);
       window.requestAnimationFrame(updateCourseIndicator);
       updateEdgeControls();
       if(moveFocus)buttons[safe].focus();
