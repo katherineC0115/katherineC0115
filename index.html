@@ -4651,6 +4651,36 @@ const runWhenIdle=callback=>'requestIdleCallback' in window?requestIdleCallback(
 const preloadedImages=new Map();
 const preloadImage=src=>{if(!src||preloadedImages.has(src))return;const image=new Image();image.src=src;preloadedImages.set(src,image)};
 const preloadImages=sources=>runWhenIdle(()=>[...new Set(sources.filter(Boolean))].forEach(preloadImage));
+const animatedLogoCache=new Map();
+const loadAnimatedLogo=src=>{
+  if(!src)return Promise.reject(new Error('missing-animation-source'));
+  const existing=animatedLogoCache.get(src);
+  if(existing?.url)return Promise.resolve(existing.url);
+  if(existing?.promise)return existing.promise;
+  const entry={};
+  const promise=fetch(src).then(response=>{
+    if(!response.ok)throw new Error('gif-load-failed');
+    return response.blob();
+  }).then(blob=>{
+    const url=URL.createObjectURL(blob);
+    entry.url=url;
+    delete entry.promise;
+    animatedLogoCache.set(src,entry);
+    return url;
+  }).catch(error=>{
+    animatedLogoCache.delete(src);
+    throw error;
+  });
+  entry.promise=promise;
+  animatedLogoCache.set(src,entry);
+  return promise;
+};
+window.addEventListener('pagehide',()=>{
+  animatedLogoCache.forEach(entry=>{
+    if(entry.url)URL.revokeObjectURL(entry.url);
+  });
+  animatedLogoCache.clear();
+});
 function initImageFades(root=document){
   root.querySelectorAll('img:not(.logo-showcase-image.animated)').forEach(image=>{
     if(image.closest('.portrait'))return;
@@ -5117,16 +5147,19 @@ function initProjectInteractions(root){
     let revealTimer;
     let playToken=0;
     if(!animatedLogo||!animationSource)return;
-    if('IntersectionObserver' in window){
-      const logoPreloader=new IntersectionObserver(entries=>{
-        if(!entries.some(entry=>entry.isIntersecting))return;
-        preloadImage(animationSource);
-        logoPreloader.disconnect();
-      },{rootMargin:'400px 0px'});
-      logoPreloader.observe(demo);
-    }else{
-      preloadImage(animationSource);
-    }
+    const clearBusy=()=>demo.removeAttribute('aria-busy');
+    const ensureAnimationLoaded=()=>{
+      const cached=animatedLogoCache.get(animationSource);
+      if(cached?.url)return Promise.resolve(cached.url);
+      demo.setAttribute('aria-busy','true');
+      return loadAnimatedLogo(animationSource).then(url=>{
+        clearBusy();
+        return url;
+      },error=>{
+        clearBusy();
+        throw error;
+      });
+    };
     const finishAnimation=()=>{
       window.clearTimeout(animationTimer);
       window.clearTimeout(cleanupTimer);
@@ -5148,17 +5181,26 @@ function initProjectInteractions(root){
       demo.setAttribute('data-logo-playing','');
       animatedLogo.removeAttribute('src');
       const currentPlay=++playToken;
-      animatedLogo.onload=()=>{
+      ensureAnimationLoaded().then(url=>{
         if(currentPlay!==playToken)return;
-        revealTimer=window.setTimeout(()=>{
+        animatedLogo.onload=()=>{
           if(currentPlay!==playToken)return;
-          demo.classList.add('is-animating');
-          animationTimer=window.setTimeout(finishAnimation,animationDuration);
-        },revealDelay);
-      };
-      animatedLogo.onerror=finishAnimation;
-      window.requestAnimationFrame(()=>{
-        if(currentPlay===playToken)animatedLogo.src=animationSource;
+          revealTimer=window.setTimeout(()=>{
+            if(currentPlay!==playToken)return;
+            demo.classList.add('is-animating');
+            animationTimer=window.setTimeout(finishAnimation,animationDuration);
+          },revealDelay);
+        };
+        animatedLogo.onerror=()=>{
+          clearBusy();
+          finishAnimation();
+        };
+        window.requestAnimationFrame(()=>{
+          if(currentPlay===playToken)animatedLogo.src=url;
+        });
+      }).catch(()=>{
+        if(currentPlay!==playToken)return;
+        finishAnimation();
       });
     };
     demo.addEventListener('pointerenter',playAnimation);
