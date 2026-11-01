@@ -13,8 +13,8 @@
   <meta property="og:image:alt" content="Portrait of Katherine Contreras">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://katherinec0115.github.io/katherineC0115/assets/embedded-001.png">
-  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#111210" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#f6f7f9" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#101218" media="(prefers-color-scheme: dark)">
   <link rel="canonical" href="https://katherinec0115.github.io/katherineC0115/">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23121311'/%3E%3Ctext x='32' y='41' text-anchor='middle' font-family='monospace' font-size='25' font-weight='700' fill='%23d39a65'%3EKC%3C/text%3E%3C/svg%3E">
@@ -1422,17 +1422,34 @@
       color-scheme:light
     }
     html[data-theme="dark"] {
-      color-scheme:dark;
-      --background:#111210;
-      --foreground:#f1ede6;
-      --card:#1b1c19;
-      --primary:#c48b5e;
-      --primary-foreground:#111210;
-      --secondary:#272721;
-      --muted-foreground:#bdb7ad;
-      --accent:#759982;
-      --border:#45443d;
-      --shadow:0 16px 45px rgba(0,0,0,.4)
+      color-scheme:dark
+    }
+    /* Ink & Copper — homepage only; project/honor detail themes stay untouched */
+    html:not(.project-view) {
+      --background:#f6f7f9;
+      --foreground:#14171c;
+      --muted-foreground:#5a6170;
+      --primary:#8b4e22;
+      --primary-foreground:#fff8f3;
+      --accent:#2c6b5e;
+      --border:#d5dae3;
+      --card:#ffffff;
+      --secondary:#e9edf3;
+      --shadow:0 16px 45px rgba(20,25,35,.12);
+      --image-canvas:#ffffff
+    }
+    html:not(.project-view)[data-theme="dark"] {
+      --background:#101218;
+      --foreground:#f3efe7;
+      --muted-foreground:#b7b2a8;
+      --primary:#d29a68;
+      --primary-foreground:#15110e;
+      --accent:#7eae9c;
+      --border:#3c424c;
+      --card:#181b22;
+      --secondary:#242833;
+      --shadow:0 16px 45px rgba(0,0,0,.4);
+      --image-canvas:#181b22
     }
     html[data-theme="dark"] #project-page[data-page-type="honor"] {
       --background:#0d1110;
@@ -1597,6 +1614,11 @@
     }
     main#top:focus,h1[tabindex="-1"]:focus {
       outline:none
+    }
+    html.input-keyboard main#top.route-focus,
+    html.input-keyboard h1[tabindex="-1"].route-focus {
+      outline:2px solid var(--accent);
+      outline-offset:4px
     }
     section.portfolio-section>.section-head {
       top:144px
@@ -1849,32 +1871,31 @@
         var(--background);
       background-size:32px 32px,32px 32px,auto,auto,auto
     }
-    html[data-theme="dark"] body::before {
+    html:not(.project-view)[data-theme="dark"] body::before {
       background:
-        radial-gradient(circle at 8% 18%,rgba(117,153,130,.065),transparent 30%),
-        radial-gradient(circle at 92% 82%,rgba(196,139,94,.075),transparent 32%),
-        radial-gradient(circle at 54% 96%,rgba(208,132,79,.04),transparent 26%),
-        linear-gradient(145deg,#0d0e0d,#181817 52%,#141311)
+        radial-gradient(circle at 8% 18%,rgba(126,174,156,.07),transparent 30%),
+        radial-gradient(circle at 92% 82%,rgba(210,154,104,.08),transparent 32%),
+        radial-gradient(circle at 54% 96%,rgba(210,154,104,.045),transparent 26%),
+        linear-gradient(145deg,#0c0e12,#161922 52%,#12151b)
     }
-    html[data-theme="dark"] #coursework {
-      --section-accent:#78a087
+    html:not(.project-view)[data-theme="dark"] #coursework,
+    html:not(.project-view)[data-theme="dark"] #clubs {
+      --section-accent:#7eae9c
     }
-    html[data-theme="dark"] #honors,html[data-theme="dark"] #employment {
-      --section-accent:#bd865f
+    html:not(.project-view)[data-theme="dark"] #honors,
+    html:not(.project-view)[data-theme="dark"] #employment {
+      --section-accent:#d29a68
     }
-    html[data-theme="dark"] #projects {
-      --section-accent:#c99768
+    html:not(.project-view)[data-theme="dark"] #projects {
+      --section-accent:color-mix(in srgb,#7eae9c 48%,#d29a68)
     }
-    html[data-theme="dark"] #clubs {
-      --section-accent:#879b6f
+    html:not(.project-view)[data-theme="dark"] #credentials {
+      --section-accent:color-mix(in srgb,#d29a68 66%,#7eae9c)
     }
-    html[data-theme="dark"] #credentials {
-      --section-accent:#a6825d
+    html:not(.project-view)[data-theme="dark"] #future {
+      --section-accent:color-mix(in srgb,#7eae9c 72%,#d29a68)
     }
-    html[data-theme="dark"] #future {
-      --section-accent:#d0844f
-    }
-    html[data-theme="dark"] section.portfolio-section {
+    html:not(.project-view)[data-theme="dark"] section.portfolio-section {
       background:
         radial-gradient(circle at 88% 14%,color-mix(in srgb,var(--section-accent) 10%,transparent),transparent 34%),
         linear-gradient(145deg,color-mix(in srgb,var(--card) 96%,var(--section-accent)),color-mix(in srgb,var(--background) 98%,black))
@@ -2102,10 +2123,51 @@
       min-height:340px;
       text-align:left
     }
+    .spotlight-rail-nav {
+      display:flex;
+      flex-direction:column;
+      gap:7px;
+      min-width:0
+    }
+    .spotlight-arrow {
+      display:none;
+      place-items:center;
+      width:44px;
+      height:44px;
+      min-width:44px;
+      min-height:44px;
+      padding:0;
+      border:1px solid var(--border);
+      border-radius:8px;
+      background:var(--card);
+      color:var(--foreground);
+      font:800 20px/1 var(--mono);
+      cursor:pointer;
+      transition:.2s color,.2s border-color,.2s background,.2s opacity
+    }
+    .spotlight-arrow:hover,.spotlight-arrow:focus-visible {
+      border-color:var(--section-accent);
+      background:color-mix(in srgb,var(--section-accent) 12%,var(--card));
+      color:var(--section-accent)
+    }
+    .spotlight-arrow:focus-visible {
+      outline:2px solid var(--accent);
+      outline-offset:3px
+    }
+    .spotlight-arrow:disabled,
+    .spotlight-arrow[aria-disabled="true"] {
+      opacity:.34;
+      cursor:not-allowed;
+      color:var(--muted-foreground);
+      border-color:var(--border);
+      background:var(--card);
+      transform:none
+    }
     .spotlight-picker {
       display:flex;
       flex-direction:column;
-      gap:7px
+      gap:7px;
+      min-width:0
     }
     .spotlight-picker button {
       padding:13px 14px;
@@ -2886,6 +2948,10 @@
       color:var(--section-accent);
       transform:translateY(-2px)
     }
+    .showcase-arrow:focus-visible {
+      outline:2px solid var(--accent);
+      outline-offset:3px
+    }
     @media (max-width:1180px) {
       .theme-toggle {
         margin-left:auto
@@ -2977,7 +3043,7 @@
         font-size:clamp(26px,8vw,34px);
         line-height:1.13
       }
-      .course-tabs,.experience-tabs,.spotlight-picker,.showcase-rail {
+      .experience-tabs,.spotlight-picker,.showcase-rail {
         display:flex;
         flex-direction:row;
         gap:8px;
@@ -2986,12 +3052,41 @@
         scroll-snap-type:x mandatory;
         scrollbar-width:none
       }
-      .course-tabs::-webkit-scrollbar,.experience-tabs::-webkit-scrollbar,.spotlight-picker::-webkit-scrollbar,.showcase-rail::-webkit-scrollbar,.roadmap-track::-webkit-scrollbar {
+      .experience-tabs::-webkit-scrollbar,.spotlight-picker::-webkit-scrollbar,.showcase-rail::-webkit-scrollbar,.roadmap-track::-webkit-scrollbar {
         display:none
       }
-      .course-tabs button,.experience-tabs button,.spotlight-picker button,.showcase-rail button {
+      .experience-tabs button,.spotlight-picker button,.showcase-rail button {
         flex:0 0 min(68vw,240px);
         scroll-snap-align:start
+      }
+      .course-tabs {
+        display:grid;
+        grid-template-columns:repeat(2,minmax(0,1fr));
+        gap:8px;
+        overflow:visible;
+        overflow-x:visible;
+        scroll-snap-type:none;
+        padding-bottom:9px;
+        -webkit-mask-image:none;
+        mask-image:none
+      }
+      .course-tabs button {
+        flex:none;
+        width:auto;
+        min-width:0;
+        white-space:normal;
+        overflow-wrap:anywhere;
+        scroll-snap-align:none
+      }
+      .spotlight-picker {
+        position:relative;
+        padding-right:2px
+      }
+      .spotlight-picker button {
+        flex:0 0 min(82vw,300px);
+        white-space:normal;
+        overflow-wrap:anywhere;
+        line-height:1.35
       }
       .course-map {
         grid-template-columns:1fr
@@ -3083,6 +3178,11 @@
       }
       .roadmap-track button.is-active {
         transform:none
+      }
+    }
+    @media (max-width:360px) {
+      .course-tabs {
+        grid-template-columns:1fr
       }
     }
     @media (max-width:420px) {
@@ -3196,6 +3296,17 @@
     .course-tabs button.is-active {
       box-shadow:none
     }
+    @media (max-width:360px) {
+      .course-tab-indicator {
+        display:none!important
+      }
+      .course-tabs button.is-active {
+        color:var(--foreground);
+        border-color:var(--section-accent);
+        background:color-mix(in srgb,var(--section-accent) 13%,var(--card));
+        box-shadow:inset 4px 0 0 var(--section-accent)
+      }
+    }
     .project-spotlight {
       overflow:hidden;
       border-radius:18px
@@ -3204,8 +3315,15 @@
       animation:projectPanelSlide var(--motion-ui) var(--motion-ease) both
     }
     @keyframes projectPanelSlide {
-      from { opacity:0; transform:translate3d(var(--panel-shift,8px),0,0) }
+      from { transform:translate3d(var(--panel-shift,28px),0,0) }
       to { transform:none }
+    }
+    .project-spotlight.is-dragging,
+    .project-spotlight.is-dragging a {
+      cursor:grabbing
+    }
+    .project-spotlight.is-dragging .project-feature:not([hidden]) {
+      transition:none
     }
     .experience-tabs {
       position:relative;
@@ -3476,7 +3594,7 @@
     .project-sibling-link:hover { transform:translateY(-3px); border-color:var(--primary) }
     .project-sibling-link img { width:72px; height:68px; object-fit:cover; background:var(--image-canvas) }
     .project-sibling-link img.contain { object-fit:contain; padding:5px }
-    .project-sibling-link small,.subpage-links span {
+    .project-sibling-link small {
       display:block;
       color:var(--primary);
       font:700 11px var(--mono);
@@ -3491,8 +3609,27 @@
       border-top:1px solid var(--border)
     }
     .subpage-links { display:flex; justify-content:center; flex-wrap:wrap; gap:10px 24px }
-    .subpage-links a { text-decoration:underline; text-decoration-thickness:2px; text-underline-offset:5px }
-    .subpage-links a:hover { color:var(--primary) }
+    a.subpage-link,
+    a.subpage-link:link,
+    a.subpage-link:visited,
+    a.subpage-link:hover,
+    a.subpage-link:active,
+    a.subpage-link:focus-visible {
+      -webkit-text-size-adjust:100%;
+      text-size-adjust:100%;
+      font:600 15px/1.45 var(--sans);
+      letter-spacing:0;
+      text-transform:none;
+      text-decoration:underline;
+      text-decoration-thickness:2px;
+      text-underline-offset:5px;
+      font-synthesis:none
+    }
+    a.subpage-link:hover { color:var(--primary) }
+    a.subpage-link:focus-visible {
+      outline:2px solid var(--accent);
+      outline-offset:4px
+    }
     .card-date,.spotlight-count,.carousel-meta,.credential-number,.credential-item summary small,
     .roadmap-track button small,.in-progress-pill,.tag,[data-switch-target] small {
       font-size:11px!important
@@ -3545,9 +3682,37 @@
       .project-sibling-nav { grid-template-columns:1fr }
       .lightbox-arrow.prev { left:8px }
       .lightbox-arrow.next { right:8px }
-      .course-tabs,.spotlight-picker,.showcase-rail,.roadmap-track {
+      .roadmap-track {
         -webkit-mask-image:linear-gradient(90deg,#000 0,#000 calc(100% - 28px),transparent 100%);
         mask-image:linear-gradient(90deg,#000 0,#000 calc(100% - 28px),transparent 100%)
+      }
+      .spotlight-picker.is-rail-scrollable.is-at-start:not(.is-at-end),
+      .showcase-rail.is-rail-scrollable.is-at-start:not(.is-at-end) {
+        -webkit-mask-image:linear-gradient(90deg,#000 0,#000 calc(100% - 36px),transparent 100%);
+        mask-image:linear-gradient(90deg,#000 0,#000 calc(100% - 36px),transparent 100%)
+      }
+      .spotlight-picker.is-rail-scrollable.is-at-end,
+      .showcase-rail.is-rail-scrollable.is-at-end {
+        -webkit-mask-image:none;
+        mask-image:none
+      }
+      .spotlight-picker.is-rail-scrollable:not(.is-at-start):not(.is-at-end),
+      .showcase-rail.is-rail-scrollable:not(.is-at-start):not(.is-at-end) {
+        -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 22px,#000 calc(100% - 36px),transparent 100%);
+        mask-image:linear-gradient(90deg,transparent 0,#000 22px,#000 calc(100% - 36px),transparent 100%)
+      }
+      .spotlight-rail-nav.has-rail-cue,
+      .showcase-navigation.has-rail-cue {
+        position:relative
+      }
+      .spotlight-rail-nav {
+        display:grid;
+        grid-template-columns:44px minmax(0,1fr) 44px;
+        align-items:center;
+        gap:6px
+      }
+      .spotlight-arrow {
+        display:grid
       }
       .floating-project-back { left:12px; bottom:12px }
     }
@@ -3768,12 +3933,15 @@
         display:none
       }
       .carousel-arrow {
-        width:38px;
-        height:38px;
+        width:44px;
+        height:44px;
+        min-width:44px;
+        min-height:44px;
+        top:calc(50% - 22px);
         font-size:22px
       }
-      .carousel-arrow.prev { left:6px }
-      .carousel-arrow.next { right:6px }
+      .carousel-arrow.prev { left:8px }
+      .carousel-arrow.next { right:8px }
       .carousel-caption {
         min-height:0;
         padding:12px 14px 14px
@@ -3793,12 +3961,12 @@
         position:absolute;
         top:auto;
         bottom:14px;
-        width:42px;
-        height:42px;
+        width:44px;
+        height:44px;
         transform:none
       }
-      .lightbox-arrow.prev { left:calc(50% - 52px) }
-      .lightbox-arrow.next { right:calc(50% - 52px) }
+      .lightbox-arrow.prev { left:calc(50% - 54px) }
+      .lightbox-arrow.next { right:calc(50% - 54px) }
       .lightbox-caption {
         padding-inline:4px
       }
@@ -3849,11 +4017,12 @@
         grid-column:2
       }
       .showcase-navigation {
-        grid-template-columns:40px minmax(0,1fr) 40px;
+        grid-template-columns:44px minmax(0,1fr) 44px;
         gap:5px
       }
       .showcase-arrow {
-        min-width:40px
+        min-width:44px;
+        min-height:44px
       }
       .project-thumb-tab {
         flex-basis:min(74vw,248px)!important;
@@ -3884,7 +4053,7 @@
       #project-page[hidden],[data-portfolio-view][hidden] { display:none!important }
       [data-flow-reveal] { opacity:1!important; transform:none!important }
       [data-switch-panel],[data-switch-panel][hidden] { display:block!important }
-      .course-tabs,.spotlight-picker,.experience-tabs,.signal-orbit,.roadmap-track { display:none!important }
+      .course-tabs,.spotlight-picker,.spotlight-arrow,.experience-tabs,.signal-orbit,.roadmap-track { display:none!important }
       main,.container,.project-page-shell,.subpage-footer { width:100%!important; max-width:none!important }
       section.portfolio-section { break-inside:avoid; margin:0 0 18pt!important; padding:10pt 0!important; border:0!important }
       .hero { min-height:0!important; padding:0 0 20pt!important }
@@ -3959,7 +4128,7 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElem
     <textarea id="contact-message" name="message" rows="6" maxlength="4000" required></textarea>
     <label for="contact-info">Additional contact information <span class="muted">(optional)</span></label>
     <textarea id="contact-info" name="contactInfo" rows="2" maxlength="500" placeholder="Your name, email address, or preferred way to reach you"></textarea>
-    <label class="form-honeypot" for="contact-website" aria-hidden="true">Leave this field empty<input id="contact-website" name="_gotcha" type="text" autocomplete="off" tabindex="-1"></label>
+    <div class="form-honeypot" aria-hidden="true"><label for="contact-website"></label><input id="contact-website" name="_gotcha" type="text" value="" autocomplete="off" tabindex="-1" aria-hidden="true"></div>
     <button class="btn btn-dark" type="submit">Send message</button>
     <p class="contact-form-status" id="contact-status" role="status"></p>
   </form>
@@ -4073,7 +4242,7 @@ const projects = [
     "date": "FALL 2026 — IN PROGRESS",
     "asset": "assets/applied-ai-lab-hero.jpg",
     "thumb": "assets/thumbs/applied-ai-lab.webp",
-    "summary": "For my CIS 440 course, my team and I are working with Quinnipiac University’s Applied AI & Analytics Lab to redesign its website. My main contribution has been designing and developing the Fellowship Pathway page, and I have also worked on graphic design and shared visual details across the site.",
+    "summary": "For my CIS 440 course, my team and I are working with Quinnipiac University’s Applied AI & Analytics Lab to create a designated website for it. My main contribution has been designing and developing the Fellowship Pathway page, and I have also worked on graphic design and shared visual details across the site.",
     "details": [
       "My team and I were challenged to redesign the Applied AI & Analytics Lab’s website so that students, faculty, and industry partners could more easily learn about the Lab and its opportunities. Because this is a team project, each member has been responsible for different parts of the website. My primary responsibility has been the Fellowship Pathway page.",
       "For the Fellowship Pathway page, I created a responsive layout that introduces the program, showcases student fellows and their projects, and provides space for future application and participation information. I also developed an interactive student carousel and made sure the page worked across different screen sizes, supported light and dark modes, and included accessible navigation features.",
@@ -4342,13 +4511,13 @@ const projectOrder = ['applied-ai-analytics-lab-website', 'hypothetical-company-
 projects.sort((a, b) => projectOrder.indexOf(a.slug) - projectOrder.indexOf(b.slug));
 const summaryLead=text=>{const clean=String(text).trim();const sentence=clean.match(/^.*?[.!?](?:\s|$)/)?.[0]?.trim()||clean;return sentence.length>175?`${sentence.slice(0,172).trim()}…`:sentence};
 const courseParts=course=>{const [code,...name]=course.split(' - ');return [code,name.join(' - ')]};
-const switchButton=(label,index,prefix,selected=false,meta='')=>`<button type="button" id="${prefix}-tab-${index}" role="tab" aria-selected="${selected}" aria-controls="${prefix}-panel-${index}" tabindex="${selected?0:-1}" data-switch-target="${index}"><span>${esc(label)}</span>${meta?`<small>${esc(meta)}</small>`:''}</button>`;
+const switchButton=(label,index,prefix,selected=false,meta='',ariaLabel='')=>`<button type="button" id="${prefix}-tab-${index}" role="tab" aria-selected="${selected}" aria-controls="${prefix}-panel-${index}" tabindex="${selected?0:-1}" data-switch-target="${index}"${ariaLabel?` aria-label="${esc(ariaLabel)}"`:''}><span>${esc(label)}</span>${meta?`<small>${esc(meta)}</small>`:''}</button>`;
 const projectThumbButton=(p,index,selected=false)=>`<button class="project-thumb-tab" type="button" id="project-feature-tab-${index}" role="tab" aria-selected="${selected}" aria-controls="project-feature-panel-${index}" tabindex="${selected?0:-1}" data-switch-target="${index}"><img src="${esc(p.thumb||p.asset)}" data-fallback="${esc(p.asset)}" onerror="if(!this.dataset.didFallback){this.dataset.didFallback='1';this.src=this.dataset.fallback}" alt="" class="${p.imageContain?'contain':''}" loading="lazy" width="320" height="240"><span><span>${esc(p.title)}</span><small>Project ${String(index+1).padStart(2,'0')}</small></span></button>`;
 const switchPanel=(content,index,prefix,selected=false,className='')=>`<section class="${className}" id="${prefix}-panel-${index}" role="tabpanel" aria-labelledby="${prefix}-tab-${index}" data-switch-panel="${index}" ${selected?'':'hidden'}>${content}</section>`;
 
 document.getElementById('coursework-content').innerHTML=`<div class="course-explorer" data-switcher><div class="course-tabs" role="tablist" aria-label="Coursework subjects">${coursework.map((c,i)=>switchButton(c.section==='FINANCE'?'Finance':'Computer Information Systems',i,'course',i===0,`${c.courses.length} courses`)).join('')}<span class="course-tab-indicator" aria-hidden="true"></span></div><div class="course-deck">${coursework.map((c,i)=>switchPanel(`<ol class="course-map">${c.courses.map((course,n)=>{const [code,name]=courseParts(course);return `<li><span>${String(n+1).padStart(2,'0')}</span><strong>${esc(code)}</strong><em>${esc(name)}</em></li>`}).join('')}</ol>`,i,'course',i===0,'course-panel')).join('')}</div></div>`;
 
-document.getElementById('honors-content').innerHTML=`<div class="honors-spotlight" data-switcher><div class="spotlight-picker" role="tablist" aria-label="Choose an honor">${honors.map((h,i)=>switchButton(h.title,i,'honor-spotlight',i===0,h.year)).join('')}</div><div class="spotlight-stage">${honors.map((h,i)=>switchPanel(`<span class="spotlight-count">${String(i+1).padStart(2,'0')} / ${String(honors.length).padStart(2,'0')}</span><span class="card-date">${esc(h.year)}</span><h3>${esc(h.title)}</h3><p>${esc(h.summary)}</p>${h.slug==='deans-list'?'<a class="spotlight-link" href="#honor/deans-list">Explore the semesters <span aria-hidden="true">→</span></a>':''}`,i,'honor-spotlight',i===0,'spotlight-card')).join('')}</div></div>`;
+document.getElementById('honors-content').innerHTML=`<div class="honors-spotlight" data-switcher><div class="spotlight-rail-nav"><button type="button" class="spotlight-arrow" data-switch-prev aria-label="Previous honor" disabled><span aria-hidden="true">‹</span></button><div class="spotlight-picker" role="tablist" aria-label="Choose an honor">${honors.map((h,i)=>switchButton(h.title,i,'honor-spotlight',i===0,h.year)).join('')}</div><button type="button" class="spotlight-arrow" data-switch-next aria-label="Next honor"><span aria-hidden="true">›</span></button></div><div class="spotlight-stage">${honors.map((h,i)=>switchPanel(`<span class="spotlight-count">${String(i+1).padStart(2,'0')} / ${String(honors.length).padStart(2,'0')}</span><span class="card-date">${esc(h.year)}</span><h3>${esc(h.title)}</h3><p>${esc(h.summary)}</p>${h.slug==='deans-list'?'<a class="spotlight-link" href="#honor/deans-list">Explore the semesters <span aria-hidden="true">→</span></a>':''}`,i,'honor-spotlight',i===0,'spotlight-card')).join('')}</div></div>`;
 
 document.getElementById('projects-content').innerHTML=`<div class="project-showcase" data-switcher><div class="project-spotlight">${projects.map((p,i)=>switchPanel(`<a class="project-feature-image" href="#project/${encodeURIComponent(p.slug)}" aria-label="Open ${esc(p.title)} project details">${assetBox(p.asset,'',p.imageContain)}</a><div class="project-feature-copy"><span class="spotlight-count">FEATURE ${String(i+1).padStart(2,'0')} / ${String(projects.length).padStart(2,'0')}</span><span class="card-date">${esc(p.date)}</span><h3>${esc(p.title)}</h3><p>${esc(summaryLead(p.summary))}</p><div class="tags">${p.highlights.slice(0,2).map(t=>`<span class="tag">${esc(t)}</span>`).join('')}</div><a class="spotlight-link" href="#project/${encodeURIComponent(p.slug)}">Open project <span aria-hidden="true">→</span></a></div>`,i,'project-feature',i===0,'project-feature')).join('')}</div><div class="showcase-navigation"><button type="button" class="showcase-arrow" data-switch-prev aria-label="Previous featured project"><span aria-hidden="true">←</span></button><div class="showcase-rail" role="tablist" aria-label="Choose a featured project">${projects.map((p,i)=>projectThumbButton(p,i,i===0)).join('')}</div><button type="button" class="showcase-arrow" data-switch-next aria-label="Next featured project"><span aria-hidden="true">→</span></button></div></div>`;
 
@@ -4363,7 +4532,7 @@ const futurePlans=[
   {year:'2027',type:'Undergraduate goal',title:'Bachelor’s Degree in Computer Information Systems'},
   {year:'2028',type:'Graduate goal',title:'Master of Business Administration'}
 ];
-document.getElementById('future-content').innerHTML=`<div class="future-roadmap" data-switcher><div class="roadmap-track" role="tablist" aria-label="Choose a future milestone">${futurePlans.map((plan,i)=>switchButton(plan.year,i,'future-step',i===0,plan.type)).join('')}</div><div class="roadmap-display">${futurePlans.map((plan,i)=>switchPanel(`<span class="roadmap-year">${esc(plan.year)}</span><span class="card-date">${esc(plan.type)}</span><h3>${esc(plan.title)}</h3><div class="roadmap-progress" aria-hidden="true"><span style="width:${i===2?'100':'72'}%"></span></div>`,i,'future-step',i===0,'roadmap-panel')).join('')}</div></div>`;
+document.getElementById('future-content').innerHTML=`<div class="future-roadmap" data-switcher><div class="roadmap-track" role="tablist" aria-label="Choose a future milestone">${futurePlans.map((plan,i)=>switchButton(plan.year,i,'future-step',i===0,plan.type,`${plan.year} ${plan.type}: ${plan.title}`)).join('')}</div><div class="roadmap-display">${futurePlans.map((plan,i)=>switchPanel(`<span class="roadmap-year">${esc(plan.year)}</span><span class="card-date">${esc(plan.type)}</span><h3>${esc(plan.title)}</h3><div class="roadmap-progress" aria-hidden="true"><span style="width:${i===2?'100':'72'}%"></span></div>`,i,'future-step',i===0,'roadmap-panel')).join('')}</div></div>`;
 
 function initHorizontalSwipe(element,onPrevious,onNext){
   if(!element)return;
@@ -4388,6 +4557,96 @@ function initHorizontalSwipe(element,onPrevious,onNext){
   },{passive:true});
   element.addEventListener('touchcancel',()=>{tracking=false;pinching=false},{passive:true});
 }
+function initProjectSpotlightSwipe(spotlight,getCurrent,activate){
+  if(!spotlight||spotlight.dataset.spotlightSwipeBound)return;
+  spotlight.dataset.spotlightSwipeBound='1';
+  const reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)');
+  let startX=0,startY=0,deltaX=0,deltaY=0,pointerId=null,axis=null,dragging=false,suppressClick=false;
+  const activePanel=()=>spotlight.querySelector('[data-switch-panel]:not([hidden])');
+  const clearDragStyle=()=>{
+    const panel=activePanel();
+    if(!panel)return;
+    panel.style.removeProperty('transform');
+    panel.style.removeProperty('transition');
+  };
+  const resetPointerState=()=>{
+    spotlight.classList.remove('is-dragging');
+    clearDragStyle();
+    pointerId=null;
+    axis=null;
+    dragging=false;
+    deltaX=0;
+    deltaY=0;
+  };
+  const abortDrag=event=>{
+    if(pointerId===null||(event.pointerId!==undefined&&event.pointerId!==pointerId))return;
+    const heldId=pointerId;
+    try{spotlight.releasePointerCapture(heldId)}catch(_){}
+    resetPointerState();
+  };
+  const commitDrag=event=>{
+    if(pointerId===null||(event.pointerId!==undefined&&event.pointerId!==pointerId))return;
+    const dx=dragging?deltaX:0;
+    const wasHorizontal=axis==='x'&&dragging;
+    const heldId=pointerId;
+    try{spotlight.releasePointerCapture(heldId)}catch(_){}
+    resetPointerState();
+    if(!wasHorizontal)return;
+    const threshold=Math.max(52,spotlight.clientWidth*0.18);
+    if(dx<=-threshold)activate(getCurrent()+1,false,1,true);
+    else if(dx>=threshold)activate(getCurrent()-1,false,-1,true);
+    if(Math.abs(dx)>=threshold){
+      suppressClick=true;
+      window.setTimeout(()=>{suppressClick=false},320);
+    }
+  };
+  spotlight.addEventListener('pointerdown',event=>{
+    if(event.pointerType==='mouse'&&event.button!==0)return;
+    if(pointerId!==null)return;
+    pointerId=event.pointerId;
+    startX=event.clientX;startY=event.clientY;deltaX=0;deltaY=0;axis=null;dragging=false;
+    try{spotlight.setPointerCapture(pointerId)}catch(_){}
+  });
+  spotlight.addEventListener('pointermove',event=>{
+    if(event.pointerId!==pointerId)return;
+    deltaX=event.clientX-startX;
+    deltaY=event.clientY-startY;
+    if(!axis){
+      if(Math.hypot(deltaX,deltaY)<10)return;
+      axis=Math.abs(deltaX)>Math.abs(deltaY)*1.15?'x':'y';
+      if(axis==='y'){
+        try{spotlight.releasePointerCapture(pointerId)}catch(_){}
+        pointerId=null;
+        deltaX=0;
+        deltaY=0;
+        return;
+      }
+    }
+    if(axis!=='x')return;
+    if(event.cancelable)event.preventDefault();
+    dragging=true;
+    spotlight.classList.add('is-dragging');
+    const panel=activePanel();
+    if(panel&&!reducedMotion.matches){
+      panel.style.transition='none';
+      panel.style.transform=`translate3d(${deltaX}px,0,0)`;
+    }
+  },{passive:false});
+  spotlight.addEventListener('pointerup',commitDrag);
+  spotlight.addEventListener('pointercancel',abortDrag);
+  spotlight.addEventListener('lostpointercapture',event=>{
+    // After pointerup/cancel, pointerId is already null so this is a no-op.
+    // Standalone capture loss aborts without committing a swipe.
+    if(event.pointerId===pointerId)abortDrag(event);
+  });
+  spotlight.addEventListener('click',event=>{
+    if(!suppressClick)return;
+    const link=event.target.closest('a[href]');
+    if(!link||!spotlight.contains(link))return;
+    event.preventDefault();
+    event.stopPropagation();
+  },true);
+}
 const runWhenIdle=callback=>'requestIdleCallback' in window?requestIdleCallback(callback,{timeout:900}):setTimeout(callback,120);
 const preloadedImages=new Map();
 const preloadImage=src=>{if(!src||preloadedImages.has(src))return;const image=new Image();image.src=src;preloadedImages.set(src,image)};
@@ -4411,6 +4670,10 @@ function initHomepageInteractions(){
     const panels=[...switcher.querySelectorAll('[data-switch-panel]')];
     const courseIndicator=switcher.querySelector('.course-tab-indicator');
     const experienceTabs=switcher.querySelector('.experience-tabs');
+    const isHonors=switcher.classList.contains('honors-spotlight');
+    const isProjects=switcher.classList.contains('project-showcase');
+    const prevControl=switcher.querySelector('[data-switch-prev]');
+    const nextControl=switcher.querySelector('[data-switch-next]');
     let current=Math.max(buttons.findIndex(button=>button.getAttribute('aria-selected')==='true'),0);
     const updateCourseIndicator=()=>{
       if(!courseIndicator)return;
@@ -4419,6 +4682,15 @@ function initHomepageInteractions(){
       courseIndicator.style.width=`${activeButton.offsetWidth}px`;
       courseIndicator.style.transform=`translateX(${activeButton.offsetLeft}px)`;
     };
+    const updateEdgeControls=()=>{
+      if(!isHonors||!prevControl||!nextControl)return;
+      const atStart=current<=0;
+      const atEnd=current>=buttons.length-1;
+      prevControl.disabled=atStart;
+      nextControl.disabled=atEnd;
+      prevControl.setAttribute('aria-disabled',String(atStart));
+      nextControl.setAttribute('aria-disabled',String(atEnd));
+    };
     if(courseIndicator){
       courseIndicatorUpdaters.push(updateCourseIndicator);
       if('ResizeObserver' in window)new ResizeObserver(updateCourseIndicator).observe(courseIndicator.parentElement);
@@ -4426,12 +4698,14 @@ function initHomepageInteractions(){
     const activate=(index,moveFocus=false,directionHint=0,ensureVisible=false)=>{
       const safe=(index+buttons.length)%buttons.length;
       const direction=directionHint||Math.sign(safe-current)||1;
+      const shift=isProjects?`${direction>0?28:-28}px`:`${direction>0?8:-8}px`;
       buttons.forEach((button,i)=>{const active=i===safe;button.setAttribute('aria-selected',String(active));button.tabIndex=active?0:-1;button.classList.toggle('is-active',active)});
       panels.forEach((panel,i)=>{
         const active=i===safe;
         panel.hidden=!active;
         panel.classList.remove('panel-entering');
-        panel.style.setProperty('--panel-shift',direction>0?'8px':'-8px');
+        panel.style.removeProperty('transform');
+        panel.style.setProperty('--panel-shift',shift);
         if(active&&!reducedMotion.matches){
           window.requestAnimationFrame(()=>{
             panel.classList.add('panel-entering');
@@ -4442,15 +4716,25 @@ function initHomepageInteractions(){
       current=safe;
       if(experienceTabs)experienceTabs.style.setProperty('--job-position',`${((safe+.5)/buttons.length)*100}%`);
       window.requestAnimationFrame(updateCourseIndicator);
+      updateEdgeControls();
       if(moveFocus)buttons[safe].focus();
       if(ensureVisible&&innerWidth<=1100&&buttons[safe].parentElement?.scrollWidth>buttons[safe].parentElement.clientWidth){
         buttons[safe].scrollIntoView({behavior:reducedMotion.matches?'auto':'smooth',block:'nearest',inline:'center'});
       }
-      if(switcher.classList.contains('project-showcase'))preloadImages([projects[(safe+1)%projects.length]?.asset,projects[(safe-1+projects.length)%projects.length]?.asset]);
+      if(isProjects){
+        const neighborThumb=project=>project?.thumb||project?.asset;
+        preloadImages([neighborThumb(projects[(safe+1)%projects.length]),neighborThumb(projects[(safe-1+projects.length)%projects.length])]);
+      }
     };
     buttons.forEach((button,i)=>button.addEventListener('click',()=>activate(i,false,i>=current?1:-1,true)));
-    switcher.querySelector('[data-switch-prev]')?.addEventListener('click',()=>activate(current-1,false,-1,true));
-    switcher.querySelector('[data-switch-next]')?.addEventListener('click',()=>activate(current+1,false,1,true));
+    prevControl?.addEventListener('click',()=>{
+      if(isHonors){if(current<=0)return;activate(current-1,false,-1,true);return}
+      activate(current-1,false,-1,true);
+    });
+    nextControl?.addEventListener('click',()=>{
+      if(isHonors){if(current>=buttons.length-1)return;activate(current+1,false,1,true);return}
+      activate(current+1,false,1,true);
+    });
     switcher.addEventListener('keydown',event=>{
       if(!event.target.matches('[data-switch-target]'))return;
       const focused=buttons.indexOf(event.target);
@@ -4461,12 +4745,152 @@ function initHomepageInteractions(){
       if(event.key==='End')next=buttons.length-1;
       if(next!==null){event.preventDefault();activate(next,true,next>=focused?1:-1,true)}
     });
-    if(switcher.classList.contains('project-showcase'))initHorizontalSwipe(switcher.querySelector('.project-spotlight'),()=>activate(current-1,false,-1,true),()=>activate(current+1,false,1,true));
+    if(isProjects){
+      initProjectSpotlightSwipe(switcher.querySelector('.project-spotlight'),()=>current,activate);
+    }
     activate(0);
   });
   document.fonts?.ready.then(refreshCourseIndicators);
 }
+function initScrollRailCue(rail,{affordanceHost=null}={}){
+  if(!rail||rail.dataset.railCueBound)return;
+  rail.dataset.railCueBound='1';
+  const host=affordanceHost||rail.parentElement;
+  const reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)');
+  const updateAffordance=()=>{
+    const maxScroll=Math.max(rail.scrollWidth-rail.clientWidth,0);
+    const canScroll=maxScroll>12;
+    const edgeSlack=Math.max(24,Math.min(40,rail.clientWidth*0.08));
+    const tabs=[...rail.querySelectorAll('[data-switch-target]')];
+    const first=tabs[0];
+    const last=tabs[tabs.length-1];
+    const railRect=rail.getBoundingClientRect();
+    const firstRect=first?.getBoundingClientRect();
+    const lastRect=last?.getBoundingClientRect();
+    const firstVisible=!firstRect||firstRect.left>=railRect.left-2;
+    const lastVisible=!lastRect||lastRect.right<=railRect.right+8;
+    const atStart=!canScroll||rail.scrollLeft<=edgeSlack||firstVisible;
+    const atEnd=!canScroll||(maxScroll-rail.scrollLeft)<=edgeSlack||lastVisible;
+    rail.classList.toggle('is-rail-scrollable',canScroll);
+    rail.classList.toggle('is-at-start',atStart);
+    rail.classList.toggle('is-at-end',atEnd);
+    host?.classList.toggle('has-rail-cue',canScroll);
+    host?.classList.toggle('is-at-start',atStart);
+    host?.classList.toggle('is-at-end',atEnd);
+    return canScroll;
+  };
+  updateAffordance();
+  rail.addEventListener('scroll',updateAffordance,{passive:true});
+  rail.addEventListener('scrollend',updateAffordance,{passive:true});
+  if('ResizeObserver' in window)new ResizeObserver(updateAffordance).observe(rail);
+  window.addEventListener('resize',updateAffordance,{passive:true});
+  if(reducedMotion.matches)return;
+  let cancelled=false;
+  let played=false;
+  let frame=0;
+  const activeButton=()=>rail.querySelector('[data-switch-target][aria-selected="true"]')||rail.querySelector('[data-switch-target]');
+  const snapToActive=()=>{
+    const button=activeButton();
+    if(!button){rail.scrollLeft=0;updateAffordance();return}
+    const left=button.offsetLeft-((rail.clientWidth-button.offsetWidth)/2);
+    rail.scrollLeft=Math.max(0,Math.min(left,rail.scrollWidth-rail.clientWidth));
+    updateAffordance();
+  };
+  const cancelCue=()=>{
+    if(cancelled)return;
+    cancelled=true;
+    if(frame)cancelAnimationFrame(frame);
+    frame=0;
+    rail.style.removeProperty('scroll-snap-type');
+    snapToActive();
+  };
+  const onInteract=()=>cancelCue();
+  ['pointerdown','touchstart','wheel','keydown'].forEach(type=>{
+    rail.addEventListener(type,onInteract,{passive:true,capture:true});
+  });
+  host?.querySelectorAll('.showcase-arrow,.spotlight-arrow,[data-switch-target]').forEach(control=>{
+    // Use pointerup so cue cancellation does not interfere with the subsequent click.
+    control.addEventListener('pointerup',onInteract,{passive:true});
+    control.addEventListener('keydown',onInteract,{passive:true});
+  });
+  const setCueSnap=(enabled)=>{
+    if(enabled){
+      rail.style.removeProperty('scroll-snap-type');
+    }else{
+      // Mandatory snap steals intermediate scrollLeft values and turns the cue into a flash.
+      rail.style.scrollSnapType='none';
+    }
+  };
+  const animateScroll=(from,to,duration)=>{
+    return new Promise(resolve=>{
+      const start=performance.now();
+      const step=now=>{
+        if(cancelled){resolve(false);return}
+        const progress=Math.min(1,(now-start)/duration);
+        const eased=progress<.5?2*progress*progress:1-Math.pow(-2*progress+2,2)/2;
+        rail.scrollLeft=from+(to-from)*eased;
+        updateAffordance();
+        if(progress<1)frame=requestAnimationFrame(step);
+        else{frame=0;resolve(true)}
+      };
+      frame=requestAnimationFrame(step);
+    });
+  };
+  const playCue=async()=>{
+    if(cancelled||played||document.documentElement.classList.contains('project-view'))return;
+    if(!updateAffordance())return;
+    played=true;
+    snapToActive();
+    const from=rail.scrollLeft;
+    const maxScroll=Math.max(rail.scrollWidth-rail.clientWidth,0);
+    const nudge=Math.min(76,Math.max(36,maxScroll*0.28));
+    const peak=Math.min(maxScroll,from+nudge);
+    if(peak<=from+8){snapToActive();return}
+    setCueSnap(false);
+    const finish=()=>{setCueSnap(true);snapToActive()};
+    const went=await animateScroll(from,peak,420);
+    if(!went||cancelled){finish();return}
+    await new Promise(resolve=>setTimeout(resolve,120));
+    if(cancelled){finish();return}
+    const returned=await animateScroll(rail.scrollLeft,from,460);
+    if(!returned||cancelled){finish();return}
+    finish();
+  };
+  const section=rail.closest('section.portfolio-section');
+  const flowTarget=section?.querySelector('[data-flow-reveal]')||section;
+  const startWhenReady=()=>{
+    if(cancelled||played)return;
+    if(flowTarget?.hasAttribute('data-flow-reveal')&&!flowTarget.classList.contains('is-flow-visible')){
+      const onFlow=()=>{
+        if(!flowTarget.classList.contains('is-flow-visible'))return;
+        flowTarget.removeEventListener('transitionend',onFlow);
+        window.setTimeout(playCue,280);
+      };
+      flowTarget.addEventListener('transitionend',onFlow);
+      window.setTimeout(()=>{if(!played&&!cancelled)playCue()},1200);
+      return;
+    }
+    window.setTimeout(playCue,320);
+  };
+  if('IntersectionObserver' in window){
+    const observer=new IntersectionObserver(entries=>{
+      if(!entries.some(entry=>entry.isIntersecting&&entry.intersectionRatio>=.35))return;
+      observer.disconnect();
+      startWhenReady();
+    },{threshold:[.35,.55]});
+    observer.observe(rail);
+  }else{
+    startWhenReady();
+  }
+}
+function initHomepageRailCues(){
+  const honorsRail=document.querySelector('#honors-content .spotlight-picker');
+  const projectsRail=document.querySelector('#projects-content .showcase-rail');
+  if(honorsRail)initScrollRailCue(honorsRail,{affordanceHost:honorsRail.closest('.spotlight-rail-nav')||honorsRail.closest('.honors-spotlight')});
+  if(projectsRail)initScrollRailCue(projectsRail,{affordanceHost:projectsRail.closest('.showcase-navigation')});
+}
 initHomepageInteractions();
+initHomepageRailCues();
 initImageFades();
 function initCredentialAccordions(){
   document.querySelectorAll('.credential-item').forEach(details=>{
@@ -4509,7 +4933,7 @@ function projectGalleryBlock(title,items,emptyText){
   if(!items.length)return `<section class="project-page-section"><h2>${esc(title)}</h2><div class="coming-soon">${esc(emptyText||'IMAGES COMING SOON')}</div></section>`;
   const id=`carousel-${++carouselSeq}`;
   const galleryClass=title==='Mobile View'?' mobile-view-gallery':'';
-  return `<section class="project-page-section${galleryClass}"><h2>${esc(title)}</h2><div class="project-carousel" data-carousel id="${id}"><div class="carousel-stage">${items.map(([src,cap],i)=>`<figure class="carousel-slide" data-slide="${i}" ${i?'hidden':''}><button type="button" class="carousel-image-button" data-lightbox-src="${esc(src)}" data-lightbox-caption="${esc(cap)}" aria-label="Enlarge image ${i+1} of ${items.length}">${assetBox(src,'')}</button><figcaption class="carousel-caption">${esc(cap)}</figcaption></figure>`).join('')}${items.length>1?`<button type="button" class="carousel-arrow prev" data-carousel-prev aria-label="Previous image">‹</button><button type="button" class="carousel-arrow next" data-carousel-next aria-label="Next image">›</button>`:''}</div><div class="carousel-meta"><span data-carousel-count>1 / ${items.length}</span>${items.length>1?`<span aria-hidden="true">·</span><span>${items.map((_,i)=>`<button type="button" class="carousel-dot ${i===0?'active':''}" data-carousel-dot="${i}" aria-label="Go to image ${i+1}"></button>`).join('')}</span>`:''}</div></div></section>`;
+  return `<section class="project-page-section${galleryClass}"><h2>${esc(title)}</h2><div class="project-carousel" data-carousel id="${id}"><div class="carousel-stage">${items.map(([src,cap],i)=>`<figure class="carousel-slide" data-slide="${i}" ${i?'hidden':''}><button type="button" class="carousel-image-button" data-lightbox-src="${esc(src)}" data-lightbox-caption="${esc(cap)}" aria-label="Enlarge image ${i+1} of ${items.length}">${assetBox(src,'')}</button><figcaption class="carousel-caption">${esc(cap)}</figcaption></figure>`).join('')}${items.length>1?`<button type="button" class="carousel-arrow prev" data-carousel-prev aria-label="Previous image">‹</button><button type="button" class="carousel-arrow next" data-carousel-next aria-label="Next image">›</button>`:''}</div><div class="carousel-meta"><span data-carousel-count>1 / ${items.length}</span>${items.length>1?`<span aria-hidden="true">·</span><span>${items.map((_,i)=>`<button type="button" class="carousel-dot ${i===0?'active':''}" data-carousel-dot="${i}" aria-label="Go to image ${i+1}"${i===0?' aria-current="true"':''}></button>`).join('')}</span>`:''}</div></div></section>`;
 }
 function projectLogoShowcase(showcase){
   if(!showcase)return '';
@@ -4519,7 +4943,7 @@ function projectVideoBlock(project){
   if(!project.hasDemoVideo)return '';
   return `<section class="project-page-section"><h2>Demo Video</h2><div style="position:relative;aspect-ratio:16/9;margin-top:18px;border-radius:12px;overflow:hidden;background:#000"><iframe src="https://player.vimeo.com/video/1228981500" title="ReserveQU Project Showcase" loading="lazy" allow="fullscreen; picture-in-picture; encrypted-media" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:0"></iframe></div><p style="margin-top:12px;font-size:13px;line-height:1.6"><a href="https://vimeo.com/1228981500" target="_blank" rel="noopener noreferrer" style="text-decoration:underline;text-underline-offset:3px">Watch the ReserveQU showcase on Vimeo</a></p></section>`;
 }
-const subpageFooter=()=>`<footer class="subpage-footer"><nav class="subpage-links" aria-label="Portfolio links"><a href="assets/resume.pdf" target="_blank" rel="noopener">Resume</a><a href="https://www.linkedin.com/in/katherinecontreras2/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="#contact">Contact</a></nav></footer>`;
+const subpageFooter=()=>`<footer class="subpage-footer"><nav class="subpage-links" aria-label="Portfolio links"><a class="subpage-link" href="assets/resume.pdf" target="_blank" rel="noopener">Resume</a><a class="subpage-link" href="https://www.linkedin.com/in/katherinecontreras2/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a class="subpage-link" href="#contact">Contact</a></nav></footer>`;
 function projectSiblingNav(project){
   const index=projects.indexOf(project);
   const previous=projects[(index-1+projects.length)%projects.length];
@@ -4530,10 +4954,31 @@ function projectSiblingNav(project){
   };
   return `<nav class="project-sibling-nav" aria-label="More projects">${link(previous,'← Previous project')}${link(next,'Next project →',true)}</nav>`;
 }
+(()=>{
+  const keyboardKeys=new Set(['Tab','ArrowUp','ArrowDown','ArrowLeft','ArrowRight','Enter',' ','Escape','Home','End']);
+  const setKeyboard=()=>document.documentElement.classList.add('input-keyboard');
+  const setPointer=()=>document.documentElement.classList.remove('input-keyboard');
+  document.addEventListener('keydown',event=>{
+    if(keyboardKeys.has(event.key))setKeyboard();
+  },true);
+  document.addEventListener('pointerdown',setPointer,true);
+})();
 function focusRouteHeading(root){
   const heading=root.querySelector('h1');
   if(!heading)return;
   heading.tabIndex=-1;
+  const clearRouteFocus=()=>{
+    heading.classList.remove('route-focus');
+    heading.removeEventListener('blur',clearRouteFocus);
+    document.removeEventListener('pointerdown',clearRouteFocus,true);
+    document.removeEventListener('keydown',clearRouteFocus,true);
+  };
+  // Outline only for keyboard modality; pointer/touch still receive programmatic focus.
+  if(document.documentElement.classList.contains('input-keyboard'))heading.classList.add('route-focus');
+  else heading.classList.remove('route-focus');
+  heading.addEventListener('blur',clearRouteFocus);
+  document.addEventListener('pointerdown',clearRouteFocus,true);
+  document.addEventListener('keydown',clearRouteFocus,true);
   requestAnimationFrame(()=>heading.focus({preventScroll:true}));
 }
 document.querySelector('.skip-link').addEventListener('click',event=>{
@@ -4604,7 +5049,7 @@ function renderProjectPage(p){
   projectPage.innerHTML=`<a class="floating-project-back" href="#projects">← Projects</a><div class="project-page-shell"><a class="project-page-back" href="#projects">← Projects</a><p class="project-page-meta">${p.date.includes('IN PROGRESS')?esc(p.date):`Completed ${esc(p.date)}`}</p><h1 class="project-page-title" id="project-page-heading">${esc(p.title)}</h1><p class="project-page-summary">${esc(p.summary)}</p><div class="project-page-cover" data-lightbox-src="${esc(p.asset)}" data-lightbox-caption="${esc(p.title)} project cover" role="button" tabindex="0" aria-label="Enlarge ${esc(p.title)} project cover">${assetBox(p.asset,'',p.imageContain,p.title)}</div><div class="project-page-details">${p.details.map(x=>`<p>${esc(x)}</p>`).join('')}</div>${p.downloadAsset?`<section class="project-page-section"><h2>Project File</h2><p class="project-download-copy">Download the completed Excel workbook to review the linked forecasts, DCF valuation, cash sweep, and sensitivity analysis.</p><a class="project-download" href="${esc(p.downloadAsset)}" download="${esc(p.downloadName||'')}">Download Excel model ↓</a></section>`:''}${projectLogoShowcase(p.logoShowcase)}${p.githubUrl?`<section class="project-page-section"><h2>Project Link</h2><p class="project-download-copy">Visit my GitHub profile to see more of my coursework and development projects.</p><a class="project-download" href="${esc(p.githubUrl)}" target="_blank" rel="noopener noreferrer">View my GitHub profile ↗</a></section>`:''}${projectVideoBlock(p)}${projectGalleryBlock('Website Screenshots',p.websiteGallery)}${projectGalleryBlock('Model Views',p.modelGallery)}${projectGalleryBlock('Event Gallery',p.gallery)}${projectGalleryBlock('Desktop View',p.desktopGallery)}${projectGalleryBlock('Mobile View',p.mobileGallery)}${projectGalleryBlock('Behind the Scenes',p.behindGallery)}${p.highlights.length?`<div class="project-page-highlight"><h2>Highlights</h2><div class="tags">${p.highlights.map(x=>`<span class="tag">${esc(x)}</span>`).join('')}</div></div>`:''}${projectSiblingNav(p)}</div>${subpageFooter()}`;
   document.querySelector('[data-portfolio-view]').hidden=true;
   document.getElementById('site-header').hidden=true;
-  document.querySelector('.skip-link').href='#project-page-heading';
+  document.querySelector('.skip-link').hidden=true;
   projectPage.hidden=false;
   animateView(projectPage);
   document.title=`${p.title} — Katherine Contreras`;
@@ -4620,7 +5065,7 @@ function renderProjectPage(p){
   initFlowMotion(projectPage);
   initImageFades(projectPage);
   const nextProject=projects[(projects.indexOf(p)+1)%projects.length];
-  preloadImages([nextProject?.asset]);
+  preloadImages([nextProject?.thumb||nextProject?.asset]);
   window.scrollTo(0,0);
   setTimeout(()=>window.scrollTo(0,0),50);
   focusRouteHeading(projectPage);
@@ -4745,7 +5190,12 @@ function initProjectInteractions(root){
           });
         }
       });
-      dots.forEach((dot,i)=>dot.classList.toggle('active',i===current));
+      dots.forEach((dot,i)=>{
+        const active=i===current;
+        dot.classList.toggle('active',active);
+        if(active)dot.setAttribute('aria-current','true');
+        else dot.removeAttribute('aria-current');
+      });
       if(count)count.textContent=`${current+1} / ${slides.length}`;
       primeAdjacent();
     };
@@ -4791,7 +5241,9 @@ function showPortfolio({restoreScroll=false}={}){
   animateView(portfolioView);
   initFlowMotion(portfolioView);
   document.getElementById('site-header').hidden=false;
-  document.querySelector('.skip-link').href='#top';
+  const skipLink=document.querySelector('.skip-link');
+  skipLink.hidden=false;
+  skipLink.href='#top';
   refreshCourseIndicators();
   document.title='Katherine Contreras — Finance & CIS Portfolio';
   const targetId=location.hash.replace(/^#/,'');
@@ -4823,7 +5275,7 @@ function renderDeansList(){
  page.innerHTML=`<div class="project-page-shell"><a class="project-page-back" href="#honors">&larr; Honors &amp; Awards</a><p class="deans-link"><a href="https://www.qu.edu/academics/deans-list/" target="_blank" rel="noopener noreferrer">Quinnipiac University Dean's List Website</a></p><p class="project-page-meta">Academic recognition</p><h1 class="project-page-title" id="deans-list-heading">Dean's List</h1><p class="project-page-summary">Quinnipiac University &middot; School of Business</p><div class="deans-awards">${awards.map(([semester,h])=>`<article class="deans-award"><span class="award-icon">${h?medal:star}</span><p class="card-date">${semester}</p><h2>Dean's List${h?' with Honors':''}</h2></article>`).join('')}</div></div>${subpageFooter()}`;
  document.querySelector('[data-portfolio-view]').hidden=true;
  document.getElementById('site-header').hidden=true;
- document.querySelector('.skip-link').href='#deans-list-heading';
+ document.querySelector('.skip-link').hidden=true;
  page.hidden=false;animateView(page);initFlowMotion(page);document.title="Dean's List - Katherine Contreras";window.scrollTo(0,0);focusRouteHeading(page);
 }
 function routeNow(){
