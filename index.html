@@ -13,11 +13,11 @@
   <meta property="og:image:alt" content="Portrait of Katherine Contreras">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://katherinec0115.github.io/katherineC0115/assets/embedded-001.png">
-  <meta name="theme-color" content="#f6f7f9" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#101218" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#eceeef" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0d0e10" media="(prefers-color-scheme: dark)">
   <link rel="canonical" href="https://katherinec0115.github.io/katherineC0115/">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23121311'/%3E%3Ctext x='32' y='41' text-anchor='middle' font-family='monospace' font-size='25' font-weight='700' fill='%23d39a65'%3EKC%3C/text%3E%3C/svg%3E">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230a0908'/%3E%3Ctext x='32' y='41' text-anchor='middle' font-family='monospace' font-size='25' font-weight='700' fill='%23ee6577'%3EKC%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..900&amp;family=JetBrains+Mono:wght@500..800&amp;family=Lora:ital,wght@1,600..700&amp;display=swap" rel="stylesheet">
@@ -27,7 +27,7 @@
   </script>
   <style>
     :root {
-      --radius: .75rem;
+      --radius: .4rem;
       --background: oklch(100% 0.00011 271.152);
       --foreground: oklch(.19 .012 260);
       --image-canvas: #ffffff;
@@ -36,8 +36,9 @@
       --primary-foreground: oklch(98.781% 0.00121 107.83);
       --secondary: oklch(.955 .006 250);
       --muted-foreground: oklch(.52 .015 258);
-      --accent: oklch(55.325% 0.10505 174.246);
+      --accent: oklch(48% 0.105 174.246); /* was 55.325%; same hue, about #007059 */
       --border: oklch(.905 .006 258);
+      --border-strong: #7b7074;
       --shadow: 0 16px 45px rgba(20,25,35,.12);
       --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
@@ -70,12 +71,40 @@
       content:"";
       position:fixed;
       inset:0;
-      z-index:-1;
+      z-index:-2;
       pointer-events:none;
       background:
         radial-gradient(circle at 8% 18%,color-mix(in srgb,var(--accent) 8%,transparent),transparent 28%),
         radial-gradient(circle at 92% 82%,color-mix(in srgb,var(--primary) 7%,transparent),transparent 30%),
         var(--background)
+    }
+    body::after {
+      content:"";
+      position:fixed;
+      inset:-12% 0;
+      z-index:-1;
+      pointer-events:none;
+      background:
+        radial-gradient(2px 2px at 8% 12%,color-mix(in srgb,var(--primary) 78%,transparent),transparent),
+        radial-gradient(1.5px 1.5px at 18% 28%,color-mix(in srgb,var(--accent) 72%,transparent),transparent),
+        radial-gradient(1.5px 1.5px at 26% 8%,color-mix(in srgb,var(--primary) 70%,transparent),transparent),
+        radial-gradient(2px 2px at 34% 42%,color-mix(in srgb,var(--accent) 68%,transparent),transparent),
+        radial-gradient(1.5px 1.5px at 48% 16%,color-mix(in srgb,var(--primary) 74%,transparent),transparent),
+        radial-gradient(1.5px 1.5px at 62% 34%,color-mix(in srgb,var(--accent) 70%,transparent),transparent),
+        radial-gradient(2px 2px at 74% 10%,color-mix(in srgb,var(--primary) 66%,transparent),transparent),
+        radial-gradient(1.5px 1.5px at 86% 24%,color-mix(in srgb,var(--accent) 72%,transparent),transparent),
+        radial-gradient(1.5px 1.5px at 12% 58%,color-mix(in srgb,var(--primary) 68%,transparent),transparent),
+        radial-gradient(2px 2px at 28% 72%,color-mix(in srgb,var(--accent) 64%,transparent),transparent),
+        radial-gradient(1.5px 1.5px at 44% 64%,color-mix(in srgb,var(--primary) 62%,transparent),transparent),
+        radial-gradient(1.5px 1.5px at 58% 78%,color-mix(in srgb,var(--accent) 66%,transparent),transparent),
+        radial-gradient(2px 2px at 72% 56%,color-mix(in srgb,var(--primary) 64%,transparent),transparent),
+        radial-gradient(1.5px 1.5px at 88% 68%,color-mix(in srgb,var(--accent) 70%,transparent),transparent),
+        radial-gradient(1.5px 1.5px at 6% 88%,color-mix(in srgb,var(--primary) 60%,transparent),transparent),
+        radial-gradient(2px 2px at 38% 92%,color-mix(in srgb,var(--accent) 62%,transparent),transparent),
+        radial-gradient(1.5px 1.5px at 66% 90%,color-mix(in srgb,var(--primary) 58%,transparent),transparent),
+        radial-gradient(1.5px 1.5px at 94% 86%,color-mix(in srgb,var(--accent) 64%,transparent),transparent),
+        radial-gradient(1.5px 1.5px at 52% 48%,color-mix(in srgb,var(--primary) 55%,transparent),transparent),
+        radial-gradient(2px 2px at 80% 48%,color-mix(in srgb,var(--accent) 58%,transparent),transparent)
     }
     a {
       color:inherit;
@@ -99,9 +128,6 @@
     .primary {
       color:var(--primary)
     }
-    .accent {
-      color:var(--accent)
-    }
     header {
       position:sticky;
       top:0;
@@ -124,7 +150,7 @@
     .desktop-nav {
       display:flex;
       align-items:center;
-      gap:18px;
+      gap:26px;
       font:500 11px var(--mono);
       letter-spacing:.14em;
       text-transform:uppercase;
@@ -159,9 +185,16 @@
     }
     .contact-pill {
       border-radius:999px;
-      background:var(--foreground);
-      color:var(--primary-foreground);
-      padding:6px 12px
+      background:var(--primary);
+      color:#fff;
+      padding:6px 12px;
+      border:2px solid var(--primary)
+    }
+    html:not(.project-view)[data-theme="dark"] .contact-pill {
+      background:var(--primary);
+      color:#0d0e10;
+      border-color:color-mix(in srgb,var(--accent) 55%,var(--primary));
+      box-shadow:3px 3px 0 color-mix(in srgb,var(--accent) 35%,transparent)
     }
     .mobile-nav {
       display:none;
@@ -227,9 +260,9 @@
     .hero {
       position:relative;
       display:grid;
-      grid-template-columns:1fr 340px;
+      grid-template-columns:minmax(0,1fr) minmax(400px,520px);
       align-items:center;
-      gap:40px;
+      gap:clamp(28px,4vw,56px);
       padding:72px 0
     }
     .hero>*:not(.doodle) {
@@ -318,25 +351,53 @@
       background:var(--accent)
     }
     .portrait {
-      aspect-ratio:4/5;
-      max-height:430px;
-      border-radius:18px;
-      border:1px solid var(--border);
-      background:linear-gradient(145deg,var(--secondary),#fff);
-      display:grid;
-      place-items:center;
-      overflow:hidden
+      --portrait-size:min(460px,100%);
+      position:relative;
+      width:var(--portrait-size);
+      max-width:100%;
+      aspect-ratio:1 / 1;
+      height:auto;
+      min-width:0;
+      min-height:0;
+      margin-inline:auto;
+      display:block;
+      border:0;
+      border-radius:50%;
+      background:transparent;
+      box-shadow:none;
+      overflow:visible;
+      flex:0 0 auto;
+      justify-self:center;
+      align-self:center
     }
-    .portrait img,.project-image img {
+    .portrait img,
+    .portrait .asset-placeholder {
+      position:absolute;
+      z-index:1;
+      inset:0;
       width:100%;
       height:100%;
+      max-width:none;
+      aspect-ratio:1 / 1;
+      border-radius:50%;
       display:block;
-      object-fit:cover
+      object-fit:cover;
+      object-position:center 14%;
+      border:4px solid var(--primary);
+      background:var(--secondary);
+      box-shadow:
+        0 0 0 7px color-mix(in srgb,var(--accent) 32%,transparent),
+        0 0 0 1px color-mix(in srgb,var(--primary) 45%,var(--border)),
+        0 18px 40px color-mix(in srgb,var(--primary) 22%,transparent)
     }
-    .project-image img.contain {
-      object-fit:contain;
-      background:var(--image-canvas);
-      padding:24px
+    .portrait .asset-placeholder {
+      display:grid;
+      place-items:center;
+      padding:18px;
+      text-align:center;
+      font:700 11px/1.45 var(--mono);
+      letter-spacing:.1em;
+      text-transform:uppercase
     }
     .asset-wrap {
       width:100%;
@@ -386,28 +447,32 @@
       pointer-events:none;
       overflow:hidden
     }
-    #coursework {
-      --section-accent:var(--accent)
-    }
     #coursework::before {
       background-image:
-        linear-gradient(color-mix(in srgb,var(--accent) 18%,transparent) 1px,transparent 1px),
-        linear-gradient(90deg,color-mix(in srgb,var(--accent) 18%,transparent) 1px,transparent 1px);
+        linear-gradient(color-mix(in srgb,var(--accent) 14%,transparent) 1px,transparent 1px),
+        linear-gradient(90deg,color-mix(in srgb,var(--accent) 14%,transparent) 1px,transparent 1px);
       background-size:26px 26px;
-      opacity:.34;
-      mask-image:linear-gradient(100deg,transparent 36%,#000 100%)
-    }
-    #honors {
-      --section-accent:var(--primary)
+      opacity:.16;
+      mask-image:radial-gradient(circle at 92% 18%,#000 0 28%,transparent 58%)
     }
     #honors::before {
       background:
-        radial-gradient(circle at 84% 28%,transparent 0 46px,color-mix(in srgb,var(--primary) 22%,transparent) 47px 48px,transparent 49px),
-        radial-gradient(circle at 72% 74%,transparent 0 18px,color-mix(in srgb,var(--accent) 20%,transparent) 19px 20px,transparent 21px),
-        radial-gradient(circle at 94% 82%,color-mix(in srgb,var(--primary) 25%,transparent) 0 3px,transparent 4px)
+        radial-gradient(circle at 84% 28%,transparent 0 46px,color-mix(in srgb,var(--gold,#876000) 28%,transparent) 47px 48px,transparent 49px),
+        radial-gradient(circle at 72% 74%,transparent 0 18px,color-mix(in srgb,var(--primary) 22%,transparent) 19px 20px,transparent 21px),
+        radial-gradient(circle at 94% 82%,color-mix(in srgb,var(--gold,#876000) 30%,transparent) 0 3px,transparent 4px),
+        radial-gradient(1.8px 1.8px at 78% 18%,color-mix(in srgb,var(--gold,#876000) 55%,transparent),transparent),
+        radial-gradient(1.5px 1.5px at 88% 42%,color-mix(in srgb,var(--gold,#876000) 48%,transparent),transparent),
+        radial-gradient(2px 2px at 70% 56%,color-mix(in srgb,var(--primary) 40%,transparent),transparent),
+        radial-gradient(1.5px 1.5px at 92% 68%,color-mix(in srgb,var(--gold,#876000) 52%,transparent),transparent),
+        radial-gradient(1.8px 1.8px at 76% 88%,color-mix(in srgb,var(--gold,#876000) 44%,transparent),transparent);
+      animation:honorFieldPulse 3.4s ease-in-out infinite
     }
-    #projects {
-      --section-accent:color-mix(in srgb,var(--accent) 62%,var(--primary))
+    @keyframes honorFieldPulse {
+      0%,100% { opacity:.55 }
+      50% { opacity:.95 }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      #honors::before { animation:none; opacity:.7 }
     }
     #projects::after,#credentials::after {
       box-sizing:border-box;
@@ -421,32 +486,15 @@
       opacity:.1;
       transform:rotate(-2deg) scale(1.05)
     }
-    #employment {
-      --section-accent:var(--primary)
-    }
     #employment::before {
-      background:repeating-linear-gradient(118deg,transparent 0 22px,color-mix(in srgb,var(--primary) 13%,transparent) 23px 24px,transparent 25px 47px);
-      opacity:.42;
-      mask-image:linear-gradient(90deg,transparent 42%,#000)
-    }
-    #clubs {
-      --section-accent:var(--accent)
-    }
-    #clubs::before {
-      background:
-        radial-gradient(circle at 82% 45%,transparent 0 76px,color-mix(in srgb,var(--accent) 18%,transparent) 77px 78px,transparent 79px),
-        radial-gradient(circle at 82% 45%,transparent 0 112px,color-mix(in srgb,var(--primary) 14%,transparent) 113px 114px,transparent 115px)
-    }
-    #credentials {
-      --section-accent:color-mix(in srgb,var(--primary) 66%,var(--accent))
+      background:repeating-linear-gradient(118deg,transparent 0 22px,color-mix(in srgb,var(--section-accent) 13%,transparent) 23px 24px,transparent 25px 47px);
+      opacity:.18;
+      mask-image:radial-gradient(circle at 100% 30%,#000 0 34%,transparent 62%)
     }
     #credentials::after {
       content:"00110010 00110000 00110010 00110110 00100000 01000001 01001001 00100000 01000010 01001101 01000011";
       padding-left:38%;
       transform:rotate(2deg) scale(1.05)
-    }
-    #future {
-      --section-accent:color-mix(in srgb,var(--accent) 72%,var(--primary))
     }
     #future::before {
       background:
@@ -547,8 +595,9 @@
     }
     .footer-grid {
       display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:48px
+      grid-template-columns:1fr auto 1fr;
+      gap:28px;
+      align-items:center
     }
     footer h2 {
       font-size:40px;
@@ -557,6 +606,51 @@
     }
     footer p {
       line-height:1.65
+    }
+    .contact-cue {
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      gap:6px;
+      min-width:88px;
+      color:var(--primary);
+      pointer-events:none
+    }
+    .contact-cue-arrow {
+      overflow:visible
+    }
+    .contact-cue-arrow-h {
+      width:108px;
+      height:58px;
+      animation:contactHopX 1.35s ease-in-out infinite
+    }
+    .contact-cue-arrow-v {
+      display:none;
+      width:48px;
+      height:84px;
+      animation:contactHopY 1.35s ease-in-out infinite
+    }
+    .contact-cue-label {
+      font:750 10px/1.2 var(--mono);
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color:var(--muted-foreground);
+      white-space:nowrap
+    }
+    @keyframes contactHopX {
+      0%,100% { transform:translateX(0) }
+      50% { transform:translateX(12px) }
+    }
+    @keyframes contactHopY {
+      0%,100% { transform:translateY(0) }
+      50% { transform:translateY(12px) }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .contact-cue-arrow-h,
+      .contact-cue-arrow-v {
+        animation:none
+      }
     }
     .contact-block {
       display:flex;
@@ -635,9 +729,12 @@
       isolation:isolate;
       overflow:clip;
       background:
+        linear-gradient(color-mix(in srgb,var(--primary) 7%,transparent) 1px,transparent 1px),
+        linear-gradient(90deg,color-mix(in srgb,var(--primary) 7%,transparent) 1px,transparent 1px),
         radial-gradient(circle at 10% 8%,color-mix(in srgb,var(--accent) 12%,transparent),transparent 28%),
         radial-gradient(circle at 92% 34%,color-mix(in srgb,var(--primary) 11%,transparent),transparent 31%),
-        var(--background)
+        var(--background);
+      background-size:32px 32px,32px 32px,auto,auto,auto
     }
     #project-page::before {
       position:absolute;
@@ -659,16 +756,6 @@
       left:auto;
       padding-top:84px;
       transform:rotate(5deg)
-    }
-    #project-page[data-page-type="honor"]::before {
-      content:"✦   ✧        ✦      ·   ✧       ✦        ✧    ·       ✦";
-      padding:70px 5%;
-      color:var(--primary);
-      font-size:42px;
-      line-height:3.2;
-      letter-spacing:.65em;
-      opacity:.11;
-      transform:rotate(-6deg)
     }
     .project-page-shell {
       width:min(768px,calc(100% - 48px));
@@ -1128,29 +1215,30 @@
         top:45%;
         opacity:.4
       }
-      .hero>div.reveal {
+      .hero>div.reveal:not(.portrait) {
         display:contents
       }
       .hero h1 {
-        grid-row:2;
+        grid-row:3;
         text-align:center;
         max-width:100%;
         justify-self:center
       }
       .hero-name {
-        font-size:clamp(44px,9vw,64px);
+        font-size:clamp(36px,8vw,52px);
         line-height:.98
       }
       .hero-title {
         max-width:22ch;
-        margin:16px auto 0;
-        font-size:clamp(30px,5.5vw,42px);
-        line-height:1.12
+        margin:14px auto 0;
+        font-size:clamp(24px,4.8vw,34px);
+        line-height:1.14
       }
       .hero>.portrait {
-        grid-row:6;
-        width:100%;
-        max-width:340px;
+        --portrait-size:min(340px,88vw);
+        display:grid;
+        grid-row:2;
+        margin:8px auto 4px;
         justify-self:center
       }
       .hero .eyebrow {
@@ -1166,26 +1254,43 @@
         line-height:1.6
       }
       .hero .hero-copy {
-        grid-row:3;
+        grid-row:4;
         justify-self:center;
         margin-top:0;
         text-align:center
       }
       .hero .buttons {
-        grid-row:4;
+        grid-row:5;
         justify-content:center;
         margin-top:0
       }
       .hero .facts {
-        grid-row:5;
+        grid-row:6;
         justify-content:center;
         margin-top:0;
         text-align:center
       }
       .footer-grid {
-        grid-template-columns:1fr
+        grid-template-columns:1fr;
+        gap:22px
+      }
+      .contact-cue {
+        order:2;
+        flex-direction:row;
+        justify-content:center;
+        gap:10px;
+        min-width:0;
+        width:100%;
+        padding:4px 0 2px
+      }
+      .contact-cue-arrow-h {
+        display:none
+      }
+      .contact-cue-arrow-v {
+        display:block
       }
       .contact-block {
+        order:3;
         align-items:flex-start
       }
     }
@@ -1242,7 +1347,8 @@
         padding:44px 0
       }
       .hero>.portrait {
-        max-width:230px
+        --portrait-size:min(320px,88vw);
+        max-width:none
       }
       .facts {
         gap:12px
@@ -1296,15 +1402,15 @@
       .hero {
         padding:36px 0
       }
+      .hero>.portrait {
+        --portrait-size:min(300px,86vw)
+      }
       .hero-name {
-        font-size:42px
+        font-size:clamp(30px,7.8vw,40px)
       }
       .hero-title {
-        margin-top:14px;
-        font-size:28px
-      }
-      .hero>.portrait {
-        max-width:250px
+        margin-top:12px;
+        font-size:clamp(20px,4.6vw,26px)
       }
       .hero-copy {
         font-size:16px;
@@ -1349,74 +1455,19 @@
         padding:20px
       }
     }
-    .honor-static {
-      cursor:default
-    }
-    .honor-static:hover {
-      transform:none;
-      border-color:var(--border)
-    }
-    .deans-link {
-      margin:28px 0 0;
-      font-size:14px;
-      line-height:1.6
-    }
-    .deans-link a {
-      color:var(--primary);
-      text-decoration:underline;
-      text-underline-offset:4px
-    }
-    .deans-awards {
-      display:grid;
-      grid-template-columns:repeat(2,minmax(0,1fr));
-      gap:18px;
-      margin-top:36px
-    }
-    .deans-award {
-      position:relative;
-      overflow:hidden;
-      padding:28px;
-      border:1px solid var(--border);
-      border-radius:13px;
-      background:linear-gradient(145deg,color-mix(in srgb,var(--card) 92%,var(--primary)),var(--card))
-    }
-    .deans-award::after {
-      content:"✦";
-      position:absolute;
-      right:14px;
-      bottom:-16px;
-      color:var(--primary);
-      font-size:72px;
-      opacity:.08;
-      transform:rotate(12deg)
-    }
-    .deans-award h2 {
-      font-size:22px;
-      line-height:1.3
-    }
     .award-icon {
       display:inline-grid;
       place-items:center;
       width:48px;
       height:48px;
       border-radius:50%;
-      background:var(--secondary);
-      color:var(--primary);
+      background:color-mix(in srgb,var(--section-accent) 14%,var(--card));
+      color:var(--section-accent);
       margin-bottom:18px
     }
     .award-icon svg {
       width:28px;
       height:28px
-    }
-    @media(max-width:720px) {
-      #employment .section-head {
-        width:100%;
-        justify-self:center;
-        text-align:center
-      }
-      .deans-awards {
-        grid-template-columns:1fr
-      }
     }
     html {
       color-scheme:light
@@ -1424,44 +1475,36 @@
     html[data-theme="dark"] {
       color-scheme:dark
     }
-    /* Ink & Copper — homepage only; project/honor detail themes stay untouched */
+    /* Studio Grey — homepage only; project detail themes stay untouched */
     html:not(.project-view) {
-      --background:#f6f7f9;
-      --foreground:#14171c;
-      --muted-foreground:#5a6170;
-      --primary:#8b4e22;
-      --primary-foreground:#fff8f3;
-      --accent:#2c6b5e;
-      --border:#d5dae3;
+      --background:#eceeef;
+      --foreground:#121418;
+      --muted-foreground:#5a5f66;
+      --primary:#8a1428;
+      --primary-foreground:#f5f6f7;
+      --accent:#1a7d74;
+      --gold:#876000;
+      --border:#d2d5d9;
+      --border-strong:#6d737b;
       --card:#ffffff;
-      --secondary:#e9edf3;
-      --shadow:0 16px 45px rgba(20,25,35,.12);
+      --secondary:#e2e5e8;
+      --shadow:0 16px 45px rgba(18,20,24,.12);
       --image-canvas:#ffffff
     }
     html:not(.project-view)[data-theme="dark"] {
-      --background:#101218;
-      --foreground:#f3efe7;
-      --muted-foreground:#b7b2a8;
-      --primary:#d29a68;
-      --primary-foreground:#15110e;
-      --accent:#7eae9c;
-      --border:#3c424c;
-      --card:#181b22;
-      --secondary:#242833;
-      --shadow:0 16px 45px rgba(0,0,0,.4);
-      --image-canvas:#181b22
-    }
-    html[data-theme="dark"] #project-page[data-page-type="honor"] {
-      --background:#0d1110;
-      --foreground:#f3efe8;
-      --card:#17201b;
-      --primary:#d0a07a;
-      --primary-foreground:#0d1110;
-      --secondary:#242a29;
-      --muted-foreground:#c6cbc7;
-      --accent:#7fc4a8;
-      --border:#3c4944;
-      --shadow:0 16px 45px rgba(0,0,0,.4)
+      --background:#0d0e10;
+      --foreground:#f2f3f4;
+      --muted-foreground:#a8adb4;
+      --primary:#d94a5c;
+      --primary-foreground:#0d0e10;
+      --accent:#5ec4b5;
+      --gold:#e0b84d;
+      --border:#2c3036;
+      --border-strong:#8a9098;
+      --card:#16181c;
+      --secondary:#1e2228;
+      --shadow:0 16px 45px rgba(0,0,0,.45);
+      --image-canvas:#16181c
     }
     html.project-view[data-project-theme="applied-ai-analytics-lab-website"] {
       --background:#f4f7fa;
@@ -1583,7 +1626,7 @@
       --border:#614050;
       --shadow:0 16px 45px rgba(0,0,0,.42)
     }
-    html[data-theme="dark"] .portrait,html[data-theme="dark"] .asset-placeholder {
+    html[data-theme="dark"] .asset-placeholder {
       background:linear-gradient(145deg,var(--secondary),var(--card))
     }
     .theme-toggle {
@@ -1639,7 +1682,7 @@
     .contact-form{display:grid;gap:10px;text-align:left;margin-top:16px}
     .contact-form p{font-size:13px;line-height:1.6;margin:0 0 8px;color:var(--muted-foreground)}
     .contact-form label{font-size:14px;font-weight:600;margin-top:8px}
-    .contact-form input,.contact-form textarea{box-sizing:border-box;width:100%;font:inherit;font-size:16px;line-height:1.5;padding:12px;border:1px solid var(--border);border-radius:8px;background:var(--card);color:var(--foreground)}
+    .contact-form input,.contact-form textarea{box-sizing:border-box;width:100%;font:inherit;font-size:16px;line-height:1.5;padding:12px;border:1px solid var(--border-strong);border-radius:8px;background:var(--card);color:var(--foreground)}
     .contact-form textarea{resize:vertical}
     .contact-form input::placeholder,.contact-form textarea::placeholder{color:var(--muted-foreground);opacity:1}
     .contact-form button{margin-top:8px;cursor:pointer}
@@ -1648,7 +1691,6 @@
 
     /* Bolder technical visual system */
     :root {
-      --radius:.4rem;
       --tech-line:color-mix(in srgb,var(--primary) 42%,var(--border));
       --tech-shadow:5px 5px 0 color-mix(in srgb,var(--primary) 16%,transparent)
     }
@@ -1705,7 +1747,7 @@
       padding:92px 28px 76px;
       border-top:2px solid var(--tech-line);
       border-left:3px solid var(--primary);
-      overflow:clip
+      overflow:visible
     }
     #top {
       scroll-margin-top:104px
@@ -1785,11 +1827,6 @@
       font-weight:800;
       box-shadow:3px 3px 0 color-mix(in srgb,var(--primary) 14%,transparent)
     }
-    .portrait {
-      border-width:2px;
-      border-radius:5px;
-      box-shadow:var(--tech-shadow)
-    }
     section.portfolio-section {
       margin:22px 0;
       border-width:2px;
@@ -1827,20 +1864,6 @@
     .coming-soon,.asset-placeholder {
       font-weight:800
     }
-    .deans-award {
-      position:relative;
-      border-width:2px;
-      border-radius:5px;
-      box-shadow:4px 4px 0 color-mix(in srgb,var(--primary) 11%,transparent)
-    }
-    .deans-award::before {
-      content:"+";
-      position:absolute;
-      top:8px;
-      right:10px;
-      color:var(--accent);
-      font:850 15px var(--mono)
-    }
     .card-date {
       font-size:11px;
       letter-spacing:.12em
@@ -1862,43 +1885,52 @@
       font-weight:800;
       text-decoration-thickness:2px
     }
-    #project-page {
-      background:
-        linear-gradient(color-mix(in srgb,var(--primary) 7%,transparent) 1px,transparent 1px),
-        linear-gradient(90deg,color-mix(in srgb,var(--primary) 7%,transparent) 1px,transparent 1px),
-        radial-gradient(circle at 10% 8%,color-mix(in srgb,var(--accent) 12%,transparent),transparent 28%),
-        radial-gradient(circle at 92% 34%,color-mix(in srgb,var(--primary) 11%,transparent),transparent 31%),
-        var(--background);
-      background-size:32px 32px,32px 32px,auto,auto,auto
-    }
     html:not(.project-view)[data-theme="dark"] body::before {
+      transform:none;
       background:
-        radial-gradient(circle at 8% 18%,rgba(126,174,156,.07),transparent 30%),
-        radial-gradient(circle at 92% 82%,rgba(210,154,104,.08),transparent 32%),
-        radial-gradient(circle at 54% 96%,rgba(210,154,104,.045),transparent 26%),
-        linear-gradient(145deg,#0c0e12,#161922 52%,#12151b)
+        radial-gradient(circle at 8% 18%,rgba(94,196,181,.08),transparent 30%),
+        radial-gradient(circle at 92% 82%,rgba(217,74,92,.1),transparent 32%),
+        radial-gradient(circle at 54% 96%,rgba(224,184,77,.07),transparent 26%),
+        linear-gradient(145deg,#0d0e10,#16181c 52%,#121418)
     }
-    html:not(.project-view)[data-theme="dark"] #coursework,
-    html:not(.project-view)[data-theme="dark"] #clubs {
-      --section-accent:#7eae9c
-    }
-    html:not(.project-view)[data-theme="dark"] #honors,
-    html:not(.project-view)[data-theme="dark"] #employment {
-      --section-accent:#d29a68
-    }
-    html:not(.project-view)[data-theme="dark"] #projects {
-      --section-accent:color-mix(in srgb,#7eae9c 48%,#d29a68)
-    }
-    html:not(.project-view)[data-theme="dark"] #credentials {
-      --section-accent:color-mix(in srgb,#d29a68 66%,#7eae9c)
-    }
-    html:not(.project-view)[data-theme="dark"] #future {
-      --section-accent:color-mix(in srgb,#7eae9c 72%,#d29a68)
+    html:not(.project-view)[data-theme="dark"] body::after {
+      transform:translate3d(0,calc(var(--starfield-y,0) * 1px),0);
+      will-change:transform;
+      background:
+        radial-gradient(2px 2px at 6% 10%,rgba(255,255,255,.95),transparent),
+        radial-gradient(1.5px 1.5px at 14% 26%,rgba(94,196,181,.9),transparent),
+        radial-gradient(1.5px 1.5px at 22% 8%,rgba(255,255,255,.85),transparent),
+        radial-gradient(1px 1px at 30% 38%,rgba(255,255,255,.8),transparent),
+        radial-gradient(2.5px 2.5px at 38% 14%,rgba(94,196,181,.8),transparent),
+        radial-gradient(1.5px 1.5px at 46% 30%,rgba(255,255,255,.88),transparent),
+        radial-gradient(1.5px 1.5px at 54% 6%,rgba(255,255,255,.78),transparent),
+        radial-gradient(1px 1px at 62% 22%,rgba(94,196,181,.85),transparent),
+        radial-gradient(2px 2px at 70% 40%,rgba(255,255,255,.86),transparent),
+        radial-gradient(1px 1px at 78% 12%,rgba(255,255,255,.8),transparent),
+        radial-gradient(2px 2px at 86% 28%,rgba(94,196,181,.75),transparent),
+        radial-gradient(1.5px 1.5px at 94% 18%,rgba(255,255,255,.9),transparent),
+        radial-gradient(1.5px 1.5px at 10% 52%,rgba(255,255,255,.82),transparent),
+        radial-gradient(1px 1px at 24% 64%,rgba(94,196,181,.8),transparent),
+        radial-gradient(2px 2px at 40% 56%,rgba(255,255,255,.78),transparent),
+        radial-gradient(1px 1px at 56% 70%,rgba(255,255,255,.84),transparent),
+        radial-gradient(2.5px 2.5px at 72% 58%,rgba(94,196,181,.7),transparent),
+        radial-gradient(1px 1px at 88% 66%,rgba(255,255,255,.82),transparent),
+        radial-gradient(1.5px 1.5px at 8% 82%,rgba(255,255,255,.8),transparent),
+        radial-gradient(1px 1px at 20% 90%,rgba(94,196,181,.65),transparent),
+        radial-gradient(1.5px 1.5px at 36% 84%,rgba(255,255,255,.76),transparent),
+        radial-gradient(1px 1px at 52% 94%,rgba(255,255,255,.82),transparent),
+        radial-gradient(2px 2px at 68% 86%,rgba(94,196,181,.68),transparent),
+        radial-gradient(1px 1px at 84% 92%,rgba(255,255,255,.8),transparent),
+        radial-gradient(1.5px 1.5px at 96% 78%,rgba(255,255,255,.74),transparent),
+        radial-gradient(1px 1px at 48% 18%,rgba(255,255,255,.7),transparent),
+        radial-gradient(1.5px 1.5px at 16% 44%,rgba(94,196,181,.7),transparent),
+        radial-gradient(1px 1px at 76% 48%,rgba(255,255,255,.72),transparent),
+        radial-gradient(2px 2px at 60% 88%,rgba(255,255,255,.68),transparent),
+        radial-gradient(1px 1px at 32% 12%,rgba(94,196,181,.6),transparent)
     }
     html:not(.project-view)[data-theme="dark"] section.portfolio-section {
-      background:
-        radial-gradient(circle at 88% 14%,color-mix(in srgb,var(--section-accent) 10%,transparent),transparent 34%),
-        linear-gradient(145deg,color-mix(in srgb,var(--card) 96%,var(--section-accent)),color-mix(in srgb,var(--background) 98%,black))
+      background:transparent;
+      box-shadow:none
     }
     .project-page-shell::after {
       content:none;
@@ -1959,14 +1991,9 @@
         padding-top:88px;
         border-right:1px solid var(--tech-line)
       }
-      .hero-swirl {
-        display:none
-      }
+      .hero-swirl,
       .hero-circuit {
-        right:-16px;
-        bottom:170px;
-        width:190px;
-        opacity:.28
+        display:none
       }
       .hero-star-cluster {
         width:46px;
@@ -1999,10 +2026,9 @@
       #projects::after,#credentials::after {
         display:none
       }
-      .hero-star-cluster {
-        display:none
-      }
-      .hero-swirl {
+      .hero-star-cluster,
+      .hero-swirl,
+      .hero-circuit {
         display:none
       }
     }
@@ -2028,13 +2054,6 @@
     [data-switch-panel][hidden] {
       display:none!important
     }
-    .interaction-prompt {
-      margin:0 0 18px;
-      color:var(--muted-foreground);
-      font:750 11px/1.5 var(--mono);
-      letter-spacing:.08em;
-      text-transform:uppercase
-    }
     [data-switch-target] {
       border:1px solid transparent;
       background:transparent;
@@ -2046,7 +2065,7 @@
     [data-switch-target]:hover {
       color:var(--foreground)
     }
-    [data-switch-target]:focus-visible,.credential-item summary:focus-visible,.spotlight-link:focus-visible,.project-feature-image:focus-visible {
+    [data-switch-target]:focus-visible,.spotlight-link:focus-visible,.project-feature-image:focus-visible {
       outline:3px solid color-mix(in srgb,var(--section-accent) 48%,transparent);
       outline-offset:3px
     }
@@ -2116,97 +2135,6 @@
       color:var(--muted-foreground);
       font:600 13px/1.35 var(--sans)
     }
-    .honors-spotlight {
-      display:grid;
-      grid-template-columns:minmax(220px,.78fr) minmax(0,1.22fr);
-      gap:16px;
-      min-height:340px;
-      text-align:left
-    }
-    .spotlight-rail-nav {
-      display:flex;
-      flex-direction:column;
-      gap:7px;
-      min-width:0
-    }
-    .spotlight-arrow {
-      display:none;
-      place-items:center;
-      width:44px;
-      height:44px;
-      min-width:44px;
-      min-height:44px;
-      padding:0;
-      border:1px solid var(--border);
-      border-radius:8px;
-      background:var(--card);
-      color:var(--foreground);
-      font:800 20px/1 var(--mono);
-      cursor:pointer;
-      transition:.2s color,.2s border-color,.2s background,.2s opacity
-    }
-    .spotlight-arrow:hover,.spotlight-arrow:focus-visible {
-      border-color:var(--section-accent);
-      background:color-mix(in srgb,var(--section-accent) 12%,var(--card));
-      color:var(--section-accent)
-    }
-    .spotlight-arrow:focus-visible {
-      outline:2px solid var(--accent);
-      outline-offset:3px
-    }
-    .spotlight-arrow:disabled,
-    .spotlight-arrow[aria-disabled="true"] {
-      opacity:.34;
-      cursor:not-allowed;
-      color:var(--muted-foreground);
-      border-color:var(--border);
-      background:var(--card);
-      transform:none
-    }
-    .spotlight-picker {
-      display:flex;
-      flex-direction:column;
-      gap:7px;
-      min-width:0
-    }
-    .spotlight-picker button {
-      padding:13px 14px;
-      border-bottom-color:var(--border);
-      font-weight:780
-    }
-    .spotlight-picker button.is-active {
-      color:var(--foreground);
-      border-color:var(--section-accent);
-      border-radius:8px;
-      background:color-mix(in srgb,var(--section-accent) 11%,transparent);
-      transform:translateX(5px)
-    }
-    .spotlight-stage {
-      min-width:0
-    }
-    .spotlight-card {
-      height:100%;
-      min-height:310px;
-      position:relative;
-      display:flex;
-      flex-direction:column;
-      justify-content:flex-end;
-      overflow:hidden;
-      border:1px solid color-mix(in srgb,var(--section-accent) 45%,var(--border));
-      border-radius:18px;
-      padding:30px;
-      background:
-        radial-gradient(circle at 82% 18%,color-mix(in srgb,var(--section-accent) 26%,transparent),transparent 34%),
-        linear-gradient(150deg,var(--card),color-mix(in srgb,var(--card) 88%,var(--section-accent)))
-    }
-    .spotlight-card::before {
-      content:"✦";
-      position:absolute;
-      right:28px;
-      top:22px;
-      color:var(--section-accent);
-      font-size:34px
-    }
     .spotlight-count {
       display:block;
       margin-bottom:auto;
@@ -2214,13 +2142,13 @@
       font:850 11px var(--mono);
       letter-spacing:.13em
     }
-    .spotlight-card h3,.project-feature h3,.employment-role h3,.signal-panel h3,.roadmap-panel h3 {
+    .project-feature h3 {
       margin:10px 0 0;
       font-size:clamp(23px,3vw,36px);
       line-height:1.02;
       letter-spacing:-.04em
     }
-    .spotlight-card p,.project-feature-copy>p,.signal-panel p {
+    .project-feature-copy>p {
       max-width:55ch;
       margin:12px 0 0;
       color:var(--muted-foreground);
@@ -2326,51 +2254,6 @@
       background:color-mix(in srgb,var(--section-accent) 12%,var(--card));
       box-shadow:inset 0 3px 0 var(--section-accent)
     }
-    .employment-timeline {
-      list-style:none;
-      position:relative;
-      width:min(100%,42rem);
-      margin:0 auto;
-      padding:4px 0 0;
-      text-align:left
-    }
-    .employment-timeline::before {
-      content:"";
-      position:absolute;
-      left:7px;
-      top:10px;
-      bottom:18px;
-      width:2px;
-      border-radius:999px;
-      background:color-mix(in srgb,var(--section-accent) 42%,var(--border));
-      pointer-events:none
-    }
-    .employment-timeline>li {
-      position:relative;
-      margin:0;
-      padding:0 0 42px 36px
-    }
-    .employment-timeline>li:last-child {
-      padding-bottom:0
-    }
-    .employment-timeline>li::before {
-      content:"";
-      position:absolute;
-      left:1px;
-      top:8px;
-      width:14px;
-      height:14px;
-      border:2px solid var(--background);
-      border-radius:50%;
-      background:var(--section-accent);
-      box-shadow:0 0 0 1px color-mix(in srgb,var(--section-accent) 55%,var(--border));
-      pointer-events:none
-    }
-    .employment-role {
-      max-width:65ch;
-      padding:4px 0 4px 16px;
-      border-left:2px solid color-mix(in srgb,var(--section-accent) 28%,transparent)
-    }
     .experience-status {
       display:flex;
       align-items:center;
@@ -2389,176 +2272,15 @@
       background:var(--section-accent);
       box-shadow:0 0 0 4px color-mix(in srgb,var(--section-accent) 18%,transparent)
     }
+    .experience-status.is-current span {
+      animation:statusPulseLive 1.8s ease-in-out infinite
+    }
     .experience-org {
       margin:7px 0 0;
       color:var(--section-accent);
       font:700 15px var(--serif);
       font-style:italic;
       overflow-wrap:anywhere
-    }
-    .experience-lead {
-      max-width:65ch;
-      margin:18px 0 0;
-      color:var(--muted-foreground);
-      font-size:14px;
-      line-height:1.6
-    }
-    .role-details {
-      margin-top:18px;
-      border-top:1px solid var(--border);
-      padding-top:10px
-    }
-    .role-details summary {
-      display:inline-flex;
-      align-items:center;
-      min-height:44px;
-      width:max-content;
-      max-width:100%;
-      cursor:pointer;
-      color:var(--foreground);
-      font:800 11px var(--mono);
-      letter-spacing:.08em;
-      text-transform:uppercase
-    }
-    .role-details ul {
-      max-width:65ch;
-      margin:10px 0 0;
-      padding-left:18px;
-      color:var(--muted-foreground);
-      font-size:13px;
-      line-height:1.55
-    }
-    html.motion-ready #employment-content[data-flow-reveal] .employment-timeline>li {
-      opacity:0;
-      transform:translate3d(0,14px,0);
-      transition:
-        opacity var(--motion-enter) var(--motion-ease),
-        transform var(--motion-enter) var(--motion-ease)
-    }
-    html.motion-ready #employment-content[data-flow-reveal].is-flow-visible .employment-timeline>li {
-      opacity:1;
-      transform:none
-    }
-    html.motion-ready #employment-content[data-flow-reveal].is-flow-visible .employment-timeline>li:nth-child(2) {
-      transition-delay:90ms
-    }
-    .club-signal {
-      display:grid;
-      grid-template-columns:minmax(230px,.7fr) minmax(0,1.3fr);
-      gap:18px;
-      align-items:stretch;
-      text-align:left
-    }
-    .signal-orbit {
-      display:grid;
-      gap:12px
-    }
-    .signal-orbit button {
-      position:relative;
-      min-height:135px;
-      overflow:hidden;
-      padding:24px;
-      border-color:var(--border);
-      border-radius:50%;
-      font-weight:850;
-      text-align:center
-    }
-    .signal-orbit button::after {
-      content:"";
-      position:absolute;
-      inset:9px;
-      border:1px dashed color-mix(in srgb,var(--section-accent) 42%,transparent);
-      border-radius:inherit;
-      pointer-events:none
-    }
-    .signal-orbit button.is-active {
-      color:var(--foreground);
-      border-color:var(--section-accent);
-      background:color-mix(in srgb,var(--section-accent) 13%,var(--card));
-      transform:rotate(-1deg)
-    }
-    .signal-display {
-      display:grid
-    }
-    .signal-panel {
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-      min-height:300px;
-      position:relative;
-      overflow:hidden;
-      border:1px solid var(--border);
-      border-radius:18px;
-      padding:36px;
-      background:linear-gradient(145deg,var(--card),color-mix(in srgb,var(--card) 86%,var(--section-accent)))
-    }
-    .signal-icon {
-      position:absolute;
-      right:28px;
-      top:20px;
-      color:var(--section-accent);
-      font:700 52px var(--mono)
-    }
-    .credential-stack {
-      display:grid;
-      gap:10px;
-      text-align:left
-    }
-    .credential-item {
-      border:1px solid var(--border);
-      border-radius:11px;
-      background:color-mix(in srgb,var(--card) 95%,var(--section-accent))
-    }
-    .credential-item[open] {
-      border-color:color-mix(in srgb,var(--section-accent) 62%,var(--border));
-      box-shadow:inset 4px 0 0 var(--section-accent)
-    }
-    .credential-item summary {
-      display:grid;
-      grid-template-columns:42px minmax(0,1fr) 32px;
-      align-items:center;
-      gap:14px;
-      padding:18px;
-      cursor:pointer;
-      list-style:none
-    }
-    .credential-item summary::-webkit-details-marker {
-      display:none
-    }
-    .credential-number {
-      color:var(--section-accent);
-      font:850 11px var(--mono)
-    }
-    .credential-item summary small {
-      display:block;
-      color:var(--muted-foreground);
-      font:750 11px/1.4 var(--mono);
-      letter-spacing:.1em;
-      text-transform:uppercase
-    }
-    .credential-item summary strong {
-      display:block;
-      margin-top:4px;
-      font-size:16px
-    }
-    .credential-toggle {
-      color:var(--section-accent);
-      font:500 28px var(--mono);
-      text-align:center;
-      transition:transform .2s
-    }
-    .credential-item[open] .credential-toggle {
-      transform:rotate(45deg)
-    }
-    .credential-body {
-      padding:0 64px 20px 74px
-    }
-    .credential-body p {
-      max-width:64ch;
-      margin:0;
-      color:var(--muted-foreground);
-      font-size:13px;
-      line-height:1.55
     }
     .in-progress-pill {
       display:inline-block;
@@ -2570,104 +2292,55 @@
       letter-spacing:.09em;
       text-transform:uppercase
     }
-    .future-roadmap {
-      display:grid;
-      grid-template-columns:minmax(0,1.1fr) minmax(270px,.9fr);
-      gap:24px;
-      text-align:left
-    }
-    .roadmap-track {
-      position:relative;
-      display:grid;
-      gap:12px;
-      padding-left:28px
-    }
-    .roadmap-track::before {
-      content:"";
-      position:absolute;
-      left:8px;
-      top:20px;
-      bottom:20px;
-      width:2px;
-      background:linear-gradient(var(--section-accent),var(--primary))
-    }
-    .roadmap-track button {
-      position:relative;
-      min-height:76px;
-      padding:14px 16px;
-      border-color:var(--border);
-      border-radius:9px;
-      background:var(--card);
-      font-size:19px;
-      font-weight:850
-    }
-    .roadmap-track button::before {
-      content:"";
-      position:absolute;
-      left:-27px;
-      top:50%;
-      width:12px;
-      height:12px;
-      border:2px solid var(--section-accent);
-      border-radius:50%;
-      background:var(--background);
-      transform:translate(-50%,-50%)
-    }
-    .roadmap-track button.is-active {
-      color:var(--foreground);
-      border-color:var(--section-accent);
-      transform:translateX(5px)
-    }
-    .roadmap-track button.is-active::before {
-      background:var(--section-accent);
-      box-shadow:0 0 0 5px color-mix(in srgb,var(--section-accent) 18%,transparent)
-    }
-    .roadmap-display {
-      display:grid
-    }
-    .roadmap-panel {
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-      min-height:300px;
-      border:1px solid color-mix(in srgb,var(--section-accent) 48%,var(--border));
-      border-radius:18px;
-      padding:30px;
-      background:
-        radial-gradient(circle at 80% 18%,color-mix(in srgb,var(--section-accent) 25%,transparent),transparent 28%),
-        var(--card)
-    }
     .roadmap-year {
       color:var(--section-accent);
       font:900 clamp(48px,7vw,76px)/1 var(--sans);
       letter-spacing:-.06em
     }
-    .roadmap-progress {
-      height:5px;
-      margin-top:28px;
-      overflow:hidden;
-      border-radius:999px;
-      background:var(--secondary)
-    }
-    .roadmap-progress span {
-      display:block;
-      height:100%;
-      border-radius:inherit;
-      background:linear-gradient(90deg,var(--section-accent),var(--primary))
-    }
-
-    /* Open section rhythm: vertical dividers instead of outer cards */
+    /* Open section rhythm: hairline dividers, no filled section panels */
     section.portfolio-section,
-    html[data-theme="dark"] section.portfolio-section {
+    html[data-theme="dark"] section.portfolio-section,
+    html:not(.project-view)[data-theme="dark"] section.portfolio-section {
       grid-template-columns:minmax(0,1fr);
       gap:34px;
       margin:0;
       padding:94px 0;
       border:0;
-      border-top:1px solid color-mix(in srgb,var(--section-accent) 34%,var(--border));
+      border-top:0;
       border-radius:0;
       background:transparent;
       box-shadow:none
+    }
+    section.portfolio-section::before,
+    section.portfolio-section::after {
+      opacity:.14
+    }
+    html:not(.project-view)[data-theme="dark"] section.portfolio-section::before,
+    html:not(.project-view)[data-theme="dark"] section.portfolio-section::after {
+      opacity:.12
+    }
+    /* Content cards stay boxed; section shells stay seamless */
+    .course-tabs button {
+      border:1px solid var(--border);
+      border-radius:9px;
+      background:var(--card);
+      box-shadow:none
+    }
+    .course-tabs button.is-active {
+      color:var(--foreground);
+      border-color:var(--section-accent);
+      background:color-mix(in srgb,var(--section-accent) 13%,var(--card));
+      box-shadow:inset 4px 0 0 var(--section-accent)
+    }
+    .course-deck {
+      border:1px solid var(--border);
+      border-radius:16px;
+      padding:24px;
+      background:color-mix(in srgb,var(--card) 94%,var(--section-accent))
+    }
+    .project-feature {
+      border:1px solid color-mix(in srgb,var(--section-accent) 42%,var(--border));
+      background:var(--card)
     }
     section.portfolio-section>.section-head {
       position:static;
@@ -2705,6 +2378,34 @@
       line-height:1.12;
       letter-spacing:-.028em
     }
+    @media (max-width:900px) {
+      .hero-name {
+        font-size:clamp(34px,7.5vw,46px)
+      }
+      .hero-title {
+        max-width:22ch;
+        font-size:clamp(22px,4.6vw,30px)
+      }
+      .hero>.portrait {
+        --portrait-size:min(340px,88vw)
+      }
+    }
+    @media (max-width:720px) {
+      .hero>.portrait {
+        --portrait-size:min(320px,88vw)
+      }
+    }
+    @media (max-width:420px) {
+      .hero-name {
+        font-size:clamp(30px,7.6vw,38px)
+      }
+      .hero-title {
+        font-size:clamp(20px,4.5vw,26px)
+      }
+      .hero>.portrait {
+        --portrait-size:min(300px,86vw)
+      }
+    }
     .hero-copy {
       max-width:50ch;
       font-weight:470
@@ -2729,7 +2430,7 @@
     }
     .desktop-nav {
       margin-left:auto;
-      gap:14px;
+      gap:24px;
       font-size:11px
     }
     .theme-toggle {
@@ -2790,117 +2491,10 @@
       min-height:0;
       padding:28px 30px
     }
-    .honors-spotlight {
-      grid-template-columns:minmax(250px,.72fr) minmax(0,1.28fr);
-      min-height:0;
-      gap:24px
-    }
-    .spotlight-card {
-      min-height:330px
-    }
-    .club-signal {
-      grid-template-columns:minmax(0,1.25fr) minmax(270px,.75fr);
-      gap:clamp(34px,6vw,76px);
-      align-items:center
-    }
     #clubs::before {
       background:repeating-linear-gradient(135deg,transparent 0 24px,color-mix(in srgb,var(--section-accent) 13%,transparent) 25px 26px);
-      opacity:.42;
-      mask-image:linear-gradient(90deg,transparent 42%,#000 100%)
-    }
-    .signal-orbit {
-      grid-column:2;
-      grid-row:1;
-      gap:0;
-      align-self:center;
-      border-top:1px solid color-mix(in srgb,var(--section-accent) 45%,var(--border));
-      counter-reset:club-option
-    }
-    .signal-orbit button {
-      counter-increment:club-option;
-      min-height:0;
-      padding:24px 34px 24px 42px;
-      border:0;
-      border-bottom:1px solid color-mix(in srgb,var(--section-accent) 45%,var(--border));
-      border-radius:0;
-      background:transparent;
-      text-align:left
-    }
-    .signal-orbit button::before {
-      content:counter(club-option,decimal-leading-zero);
-      position:absolute;
-      left:0;
-      top:27px;
-      color:var(--section-accent);
-      font:850 11px var(--mono);
-      letter-spacing:.08em
-    }
-    .signal-orbit button::after {
-      content:"\2192";
-      inset:50% 0 auto auto;
-      border:0;
-      color:var(--section-accent);
-      font:800 18px var(--mono);
-      transform:translateY(-50%)
-    }
-    .signal-orbit button.is-active {
-      color:var(--foreground);
-      background:transparent;
-      box-shadow:none;
-      transform:translateX(8px)
-    }
-    .signal-orbit button.is-active span {
-      text-decoration:underline;
-      text-decoration-color:var(--section-accent);
-      text-decoration-thickness:2px;
-      text-underline-offset:6px
-    }
-    .signal-display {
-      grid-column:1;
-      grid-row:1;
-      border-left:3px solid var(--section-accent);
-      padding-left:clamp(24px,4vw,52px)
-    }
-    .signal-panel {
-      min-height:280px;
-      border:0;
-      border-radius:0;
-      padding:24px 20px 24px 0;
-      background:none
-    }
-    .signal-panel h3 {
-      max-width:16ch;
-      font-size:clamp(32px,4vw,48px);
-      line-height:1.02
-    }
-    .signal-panel p {
-      max-width:48ch
-    }
-    .signal-icon {
-      display:none
-    }
-    .future-roadmap {
-      grid-template-columns:minmax(0,1.25fr) minmax(320px,.75fr);
-      gap:34px
-    }
-    .roadmap-track {
-      grid-column:2;
-      grid-row:1
-    }
-    .roadmap-display {
-      grid-column:1;
-      grid-row:1
-    }
-    .roadmap-track button {
-      height:88px;
-      min-height:88px;
-      font-size:16px;
-      line-height:1.05;
-      text-wrap:balance
-    }
-    .roadmap-track button small {
-      font-size:11px;
-      line-height:1.25
+      opacity:.16;
+      mask-image:radial-gradient(circle at 100% 40%,#000 0 36%,transparent 64%)
     }
     .project-spotlight {
       min-height:440px
@@ -2975,7 +2569,7 @@
       .hero-star-cluster,.hero-swirl,.hero-circuit {
         display:none
       }
-      .course-explorer,.club-signal,.future-roadmap {
+      .course-explorer {
         grid-template-columns:1fr
       }
       .course-explorer {
@@ -2985,36 +2579,13 @@
         display:grid;
         grid-template-columns:repeat(2,minmax(0,1fr))
       }
-      .course-tabs,.course-deck,.signal-orbit,.signal-display,.roadmap-track,.roadmap-display {
+      .course-tabs,.course-deck {
         grid-column:auto;
         grid-row:auto
       }
-      .signal-orbit {
-        grid-template-columns:repeat(2,minmax(0,1fr))
-      }
-      .signal-orbit button {
-        min-height:110px;
-        border-radius:0
-      }
-      .roadmap-track {
-        grid-template-columns:repeat(3,minmax(0,1fr));
-        padding:22px 0 0
-      }
-      .roadmap-track::before {
-        left:10%;
-        right:10%;
-        top:8px;
-        bottom:auto;
-        width:auto;
-        height:2px
-      }
-      .roadmap-track button::before {
-        left:50%;
-        top:-15px
-      }
     }
     @media (max-width:720px) {
-      .course-explorer,.honors-spotlight,.project-showcase,.employment-timeline,.club-signal,.credential-stack,.future-roadmap {
+      .course-explorer,.project-showcase {
         text-align:left
       }
       section.portfolio-section,html[data-theme="dark"] section.portfolio-section {
@@ -3042,14 +2613,17 @@
         padding:72px 0 58px
       }
       .hero-name {
-        font-size:clamp(40px,12vw,52px);
+        font-size:clamp(32px,8vw,42px);
         line-height:1
       }
       .hero-title {
-        font-size:clamp(26px,8vw,34px);
+        font-size:clamp(22px,5vw,28px);
         line-height:1.13
       }
-      .spotlight-picker,.showcase-rail {
+      .hero>.portrait {
+        --portrait-size:min(320px,88vw)
+      }
+      .showcase-rail {
         display:flex;
         flex-direction:row;
         gap:8px;
@@ -3058,10 +2632,10 @@
         scroll-snap-type:x mandatory;
         scrollbar-width:none
       }
-      .spotlight-picker::-webkit-scrollbar,.showcase-rail::-webkit-scrollbar,.roadmap-track::-webkit-scrollbar {
+      .showcase-rail::-webkit-scrollbar {
         display:none
       }
-      .spotlight-picker button,.showcase-rail button {
+      .showcase-rail button {
         flex:0 0 min(68vw,240px);
         scroll-snap-align:start
       }
@@ -3084,44 +2658,11 @@
         overflow-wrap:anywhere;
         scroll-snap-align:none
       }
-      .spotlight-picker {
-        position:relative;
-        min-width:0;
-        overflow-x:auto;
-        overscroll-behavior-x:contain;
-        padding-right:0
-      }
-      .spotlight-picker button {
-        box-sizing:border-box;
-        flex:0 0 calc(100% - 10px);
-        max-width:100%;
-        white-space:normal;
-        overflow-wrap:anywhere;
-        line-height:1.35
-      }
       .course-map {
         grid-template-columns:1fr
       }
       .course-deck {
         padding:20px
-      }
-      .employment-timeline {
-        width:100%;
-        margin:0
-      }
-      .employment-timeline>li {
-        padding-bottom:34px
-      }
-      .honors-spotlight {
-        grid-template-columns:1fr;
-        min-height:0
-      }
-      .spotlight-picker button.is-active {
-        transform:none
-      }
-      .spotlight-card {
-        min-height:330px;
-        padding:24px
       }
       .project-feature {
         grid-template-columns:1fr;
@@ -3147,49 +2688,6 @@
       .project-feature-copy>p {
         min-height:6.2em;
         -webkit-line-clamp:4
-      }
-      .signal-panel,.roadmap-panel {
-        min-height:300px;
-        padding:24px
-      }
-      .signal-display {
-        border-top:3px solid var(--section-accent);
-        border-left:0;
-        padding:26px 0 0
-      }
-      .signal-panel {
-        min-height:260px;
-        padding:0
-      }
-      .signal-orbit {
-        grid-template-columns:1fr
-      }
-      .credential-item summary {
-        grid-template-columns:28px minmax(0,1fr) 24px;
-        gap:10px;
-        padding:16px 12px
-      }
-      .credential-body {
-        padding:0 42px 18px 50px
-      }
-      .roadmap-track {
-        display:flex;
-        overflow-x:auto;
-        gap:8px;
-        padding:22px 4px 8px;
-        scroll-snap-type:x mandatory;
-        scrollbar-width:none
-      }
-      .roadmap-track::before {
-        left:20px;
-        right:20px
-      }
-      .roadmap-track button {
-        flex:0 0 150px;
-        scroll-snap-align:start
-      }
-      .roadmap-track button.is-active {
-        transform:none
       }
     }
     @media (max-width:360px) {
@@ -3230,7 +2728,7 @@
       height:100%;
       transform:scaleX(0);
       transform-origin:left center;
-      background:linear-gradient(90deg,var(--accent),var(--primary) 72%,color-mix(in srgb,var(--primary) 58%,#d0844f));
+      background:linear-gradient(90deg,var(--accent),var(--primary) 72%,var(--accent));
       box-shadow:0 0 14px color-mix(in srgb,var(--accent) 42%,transparent);
       transition:transform .12s linear
     }
@@ -3258,13 +2756,11 @@
       will-change:auto
     }
     html.motion-ready .project-page-section[data-flow-reveal],
-    html.motion-ready .project-page-highlight[data-flow-reveal],
-    html.motion-ready .deans-award[data-flow-reveal] {
+    html.motion-ready .project-page-highlight[data-flow-reveal] {
       transform:translate3d(0,34px,0) scale(.988)
     }
     html.motion-ready .project-page-section[data-flow-reveal].is-flow-visible,
-    html.motion-ready .project-page-highlight[data-flow-reveal].is-flow-visible,
-    html.motion-ready .deans-award[data-flow-reveal].is-flow-visible {
+    html.motion-ready .project-page-highlight[data-flow-reveal].is-flow-visible {
       transform:none
     }
     .view-entering {
@@ -3346,25 +2842,155 @@
     }
     .doodle-dash {
       opacity:.15;
-      stroke-dashoffset:54
+      stroke-dasharray:4 7;
+      stroke-dashoffset:0
     }
     .is-flow-visible .doodle-dash,.motion-ready .hero .doodle-dash {
-      animation:doodleDraw var(--motion-enter) var(--motion-ease) forwards
+      opacity:1;
+      animation:dashDrift 1.1s linear infinite
     }
-    @keyframes doodleDraw {
-      from { opacity:.15; stroke-dashoffset:54 }
-      to { opacity:1; stroke-dashoffset:0 }
+    @keyframes dashDrift {
+      from { stroke-dashoffset:0 }
+      to { stroke-dashoffset:-11 }
     }
-    .is-flow-visible .experience-status span { animation:statusPulse var(--motion-enter) ease-in-out 1 }
+    .is-flow-visible .doodle-accent-line,.motion-ready .hero .doodle-accent-line {
+      animation:starTwinkle 3.6s ease-in-out infinite
+    }
+    .is-flow-visible .section-doodle .doodle-accent-line,
+    .motion-ready .hero .doodle-accent-line:nth-of-type(2) {
+      animation-delay:.7s
+    }
+    @keyframes starTwinkle {
+      0%,100% { opacity:.4 }
+      50% { opacity:1 }
+    }
+    .home-accents {
+      position:absolute;
+      inset:0;
+      z-index:0;
+      pointer-events:none;
+      overflow:hidden
+    }
+    [data-portfolio-view] {
+      position:relative
+    }
+    [data-portfolio-view]>.hero,
+    [data-portfolio-view]>.portfolio-section,
+    [data-portfolio-view]>footer,
+    [data-portfolio-view]>.back-to-top {
+      position:relative;
+      z-index:1
+    }
+    .home-accents .accent-star,
+    .home-accents .accent-dot,
+    .home-accents .accent-dash {
+      position:absolute;
+      color:var(--primary);
+      opacity:.48
+    }
+    .home-accents .accent-star {
+      font-size:15px;
+      line-height:1;
+      animation:accentFloat 9s ease-in-out infinite
+    }
+    .home-accents .accent-star.soft {
+      color:var(--accent);
+      opacity:.42;
+      font-size:12px;
+      animation-name:accentTwinkle
+    }
+    .home-accents .accent-star.blue {
+      color:var(--accent);
+      opacity:.46
+    }
+    .home-accents .accent-dot {
+      width:5px;
+      height:5px;
+      border-radius:50%;
+      background:currentColor;
+      animation:accentPulse 4.8s ease-in-out infinite
+    }
+    .home-accents .accent-dash {
+      width:46px;
+      height:0;
+      border-top:1.5px dashed color-mix(in srgb,var(--primary) 55%,transparent);
+      opacity:.22;
+      animation:accentDashDrift 9s linear infinite
+    }
+    html:not(.project-view)[data-theme="dark"] .home-accents .accent-star,
+    html:not(.project-view)[data-theme="dark"] .home-accents .accent-dot {
+      color:var(--foreground);
+      opacity:.34
+    }
+    html:not(.project-view)[data-theme="dark"] .home-accents .accent-star.soft,
+    html:not(.project-view)[data-theme="dark"] .home-accents .accent-star.blue,
+    html:not(.project-view)[data-theme="dark"] .home-accents .accent-dot.blue {
+      color:var(--accent);
+      opacity:.4
+    }
+    html:not(.project-view)[data-theme="dark"] .home-accents .accent-dash {
+      border-top-color:color-mix(in srgb,var(--accent) 62%,var(--foreground));
+      opacity:.28
+    }
+    html:not(.project-view)[data-theme="dark"] .doodle-line {
+      stroke:var(--foreground)
+    }
+    html:not(.project-view)[data-theme="dark"] .doodle-accent-line {
+      stroke:var(--accent)
+    }
+    .home-accents .a1 { top:10%; left:5%; animation-delay:0s }
+    .home-accents .a2 { top:16%; right:7%; animation-delay:1.2s; font-size:18px }
+    .home-accents .a3 { top:28%; left:11%; animation-delay:.4s }
+    .home-accents .a4 { top:36%; right:12%; animation-delay:2s }
+    .home-accents .a5 { top:46%; left:4%; animation-delay:1.6s }
+    .home-accents .a6 { top:54%; right:9%; animation-delay:.8s; font-size:17px }
+    .home-accents .a7 { top:64%; left:16%; animation-delay:2.4s }
+    .home-accents .a8 { top:72%; right:18%; animation-delay:1.1s }
+    .home-accents .a9 { top:22%; left:42%; animation-delay:.6s; font-size:13px }
+    .home-accents .a10 { top:58%; left:48%; animation-delay:1.9s; font-size:16px }
+    .home-accents .a11 { top:80%; left:8%; animation-delay:2.8s }
+    .home-accents .a12 { top:88%; right:11%; animation-delay:1.4s; font-size:14px }
+    .home-accents .a13 { top:41%; left:72%; animation-delay:.2s; font-size:12px }
+    .home-accents .a14 { top:76%; left:62%; animation-delay:2.2s }
+    .home-accents .d1 { top:14%; left:26%; animation-delay:.3s }
+    .home-accents .d2 { top:33%; right:24%; animation-delay:1.5s }
+    .home-accents .d3 { top:51%; left:34%; animation-delay:2.1s }
+    .home-accents .d4 { top:69%; right:32%; animation-delay:.9s }
+    .home-accents .d5 { top:85%; left:44%; animation-delay:1.7s }
+    .home-accents .l1 { top:24%; left:68%; transform:rotate(-18deg); animation-delay:0s }
+    .home-accents .l2 { top:49%; left:7%; transform:rotate(14deg); animation-delay:1.8s }
+    .home-accents .l3 { top:71%; left:58%; transform:rotate(-8deg); animation-delay:.6s }
+    .home-accents .l4 { top:38%; left:30%; transform:rotate(22deg); animation-delay:2.5s }
+    @keyframes accentFloat {
+      0%,100% { transform:translate3d(0,0,0) rotate(0deg) }
+      50% { transform:translate3d(0,-10px,0) rotate(12deg) }
+    }
+    @keyframes accentTwinkle {
+      0%,100% { opacity:.12; transform:scale(.85) }
+      50% { opacity:.38; transform:scale(1.15) }
+    }
+    @keyframes accentPulse {
+      0%,100% { opacity:.16; transform:scale(1) }
+      50% { opacity:.42; transform:scale(1.35) }
+    }
+    @keyframes accentDashDrift {
+      from { transform:translate3d(0,0,0) rotate(var(--accent-rot, -18deg)); opacity:.18 }
+      40% { opacity:.3 }
+      to { transform:translate3d(28px,-14px,0) rotate(var(--accent-rot, -18deg)); opacity:0 }
+    }
+    .is-flow-visible .experience-status:not(.is-current) span { animation:statusPulse var(--motion-enter) ease-in-out 1 }
     @keyframes statusPulse {
       50% { transform:scale(1.35); box-shadow:0 0 0 6px color-mix(in srgb,var(--section-accent) 14%,transparent) }
     }
-    .credential-item[open] .credential-body {
-      animation:detailsOpen var(--motion-ui) var(--motion-ease) both
-    }
-    @keyframes detailsOpen {
-      from { opacity:0; transform:translateY(-8px) }
-      to { opacity:1; transform:none }
+    @keyframes statusPulseLive {
+      0%,100% {
+        transform:scale(1);
+        box-shadow:0 0 0 4px color-mix(in srgb,var(--section-accent) 18%,transparent)
+      }
+      50% {
+        transform:scale(1.28);
+        box-shadow:0 0 0 8px color-mix(in srgb,var(--section-accent) 10%,transparent)
+      }
     }
     .motion-ready .hero .eyebrow,.motion-ready .hero .hero-name,.motion-ready .hero .hero-title,
     .motion-ready .hero .hero-copy,.motion-ready .hero .buttons,.motion-ready .hero .facts,
@@ -3399,7 +3025,7 @@
     @keyframes lightboxOut { to { opacity:0; transform:scale(.985) } }
     @keyframes backdropIn { from { opacity:0 } to { opacity:1 } }
     @keyframes backdropOut { to { opacity:0 } }
-    html.theme-changing body,html.theme-changing body::before,html.theme-changing #site-header,
+    html.theme-changing body,html.theme-changing body::before,html.theme-changing body::after,html.theme-changing #site-header,
     html.theme-changing section,html.theme-changing footer,html.theme-changing button,
     html.theme-changing .project-page-shell,html.theme-changing .project-page-section {
       transition:background-color var(--motion-ui) ease,color var(--motion-ui) ease,border-color var(--motion-ui) ease!important
@@ -3444,23 +3070,28 @@
       html {
         scroll-behavior:auto
       }
-      [data-switch-target],.project-feature-image img,.credential-toggle,.media-fade,
+      [data-switch-target],.project-feature-image img,.media-fade,
       [data-flow-reveal],.scroll-progress span,#site-header,.course-tab-indicator,
-      html.motion-ready #employment-content[data-flow-reveal] .employment-timeline>li {
+      .rv-reveal {
         transition:none!important
       }
       [data-flow-reveal],
-      html.motion-ready #employment-content[data-flow-reveal] .employment-timeline>li {
+      .rv-reveal {
         opacity:1!important;
         transform:none!important
       }
       .view-entering,.view-leaving,.panel-entering,.carousel-slide.slide-entering,
-      .is-flow-visible .doodle-dash,.motion-ready .hero .doodle-dash,.is-flow-visible .experience-status span,
-      .credential-item[open] .credential-body,.reveal,
+      .is-flow-visible .doodle-dash,.motion-ready .hero .doodle-dash,.is-flow-visible .experience-status span,.experience-status.is-current span,
+      .is-flow-visible .doodle-accent-line,.motion-ready .hero .doodle-accent-line,
+      .home-accents .accent-star,.home-accents .accent-dot,.home-accents .accent-dash,
+      .reveal,
       .motion-ready .hero .eyebrow,.motion-ready .hero .hero-name,.motion-ready .hero .hero-title,
       .motion-ready .hero .hero-copy,.motion-ready .hero .buttons,.motion-ready .hero .facts,
       .motion-ready .hero>.portrait,#image-lightbox[open] .lightbox-inner,#image-lightbox.is-closing .lightbox-inner {
         animation:none!important
+      }
+      .home-accents .accent-star,.home-accents .accent-dot,.home-accents .accent-dash {
+        opacity:.22!important
       }
       .media-fade,.motion-ready .hero .eyebrow,.motion-ready .hero .hero-name,
       .motion-ready .hero .hero-title,.motion-ready .hero .hero-copy,.motion-ready .hero .buttons,
@@ -3508,11 +3139,17 @@
     .project-thumb-tab small { margin-top:4px }
     .project-spotlight,.project-carousel,#image-lightbox { touch-action:pan-y pinch-zoom }
     .project-feature { position:relative }
+    .project-feature-copy { position:relative; z-index:1 }
+    .project-feature-copy .spotlight-link {
+      position:relative;
+      z-index:2
+    }
+    /* Expand only the text link hit area within the copy column — not the whole card */
     .project-feature-copy .spotlight-link::before {
       content:"";
       position:absolute;
-      inset:0;
-      z-index:1
+      inset:-10px -12px;
+      z-index:-1
     }
     .lightbox-arrow {
       position:absolute;
@@ -3577,12 +3214,11 @@
     a.subpage-link:focus-visible {
       -webkit-text-size-adjust:100%;
       text-size-adjust:100%;
-      font:600 15px/1.45 var(--sans);
-      letter-spacing:0;
-      text-transform:none;
-      text-decoration:underline;
+      font:800 11px/1.45 var(--mono);
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      text-decoration:none;
       text-decoration-thickness:2px;
-      text-underline-offset:5px;
       font-synthesis:none
     }
     a.subpage-link:hover { color:var(--primary) }
@@ -3590,8 +3226,7 @@
       outline:2px solid var(--accent);
       outline-offset:4px
     }
-    .card-date,.spotlight-count,.carousel-meta,.credential-number,.credential-item summary small,
-    .roadmap-track button small,.in-progress-pill,.tag,[data-switch-target] small {
+    .card-date,.spotlight-count,.carousel-meta,.in-progress-pill,.tag,[data-switch-target] small {
       font-size:11px!important
     }
     .form-honeypot {
@@ -3642,10 +3277,6 @@
       .project-sibling-nav { grid-template-columns:1fr }
       .lightbox-arrow.prev { left:8px }
       .lightbox-arrow.next { right:8px }
-      .roadmap-track {
-        -webkit-mask-image:linear-gradient(90deg,#000 0,#000 calc(100% - 28px),transparent 100%);
-        mask-image:linear-gradient(90deg,#000 0,#000 calc(100% - 28px),transparent 100%)
-      }
       .showcase-rail.is-rail-scrollable.is-at-start:not(.is-at-end) {
         -webkit-mask-image:linear-gradient(90deg,#000 0,#000 calc(100% - 36px),transparent 100%);
         mask-image:linear-gradient(90deg,#000 0,#000 calc(100% - 36px),transparent 100%)
@@ -3658,27 +3289,8 @@
         -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 22px,#000 calc(100% - 36px),transparent 100%);
         mask-image:linear-gradient(90deg,transparent 0,#000 22px,#000 calc(100% - 36px),transparent 100%)
       }
-      .spotlight-picker.is-rail-scrollable,
-      .spotlight-picker.is-rail-scrollable.is-at-start:not(.is-at-end),
-      .spotlight-picker.is-rail-scrollable.is-at-end,
-      .spotlight-picker.is-rail-scrollable:not(.is-at-start):not(.is-at-end) {
-        -webkit-mask-image:none;
-        mask-image:none
-      }
-      .spotlight-rail-nav.has-rail-cue,
       .showcase-navigation.has-rail-cue {
         position:relative
-      }
-      .spotlight-rail-nav {
-        display:grid;
-        grid-template-columns:44px minmax(0,1fr) 44px;
-        align-items:center;
-        gap:8px;
-        min-width:0
-      }
-      .spotlight-arrow {
-        display:grid;
-        z-index:1
       }
       .floating-project-back { left:12px; bottom:12px }
     }
@@ -3708,8 +3320,7 @@
         min-width:0;
         max-width:100%
       }
-      .hero-name,.hero-title,.section-head h2,.spotlight-card h3,.project-feature h3,
-      .employment-role h3,.signal-panel h3,.roadmap-panel h3,.project-page-title {
+      .hero-name,.hero-title,.section-head h2,.project-feature h3,.project-page-title {
         overflow-wrap:anywhere
       }
       section.portfolio-section,section.portfolio-section>* {
@@ -3721,8 +3332,7 @@
       .logo-showcase-layout {
         grid-template-columns:1fr
       }
-      .project-spotlight,.project-feature,.project-feature-image,.spotlight-card,
-      .signal-panel,.roadmap-panel {
+      .project-spotlight,.project-feature,.project-feature-image {
         min-height:0
       }
       .project-spotlight,.project-feature {
@@ -3752,16 +3362,10 @@
         overflow:visible;
         -webkit-line-clamp:unset
       }
-      .spotlight-card,.signal-panel,.roadmap-panel {
-        height:auto
-      }
-      .signal-panel h3 {
-        max-width:100%
-      }
-      .showcase-navigation {
+            .showcase-navigation {
         grid-template-columns:44px minmax(0,1fr) 44px
       }
-      .showcase-rail,.course-tabs,.spotlight-picker,.roadmap-track {
+      .showcase-rail,.course-tabs {
         min-width:0
       }
       .project-page-shell,.project-page-details,.project-page-section,
@@ -3803,7 +3407,7 @@
       section.portfolio-section>.section-head .section-doodle {
         width:64px
       }
-      .course-deck,.spotlight-card,.signal-panel,.roadmap-panel {
+      .course-deck {
         padding:20px
       }
       .course-map li {
@@ -3827,24 +3431,7 @@
         min-height:0;
         -webkit-line-clamp:unset
       }
-      .spotlight-card,.signal-panel,.roadmap-panel {
-        min-height:0
-      }
-      .signal-display {
-        padding-top:20px
-      }
-      .credential-item summary {
-        grid-template-columns:24px minmax(0,1fr) 24px;
-        gap:8px;
-        padding:14px 10px
-      }
-      .credential-item summary strong {
-        overflow-wrap:anywhere
-      }
-      .credential-body {
-        padding:0 14px 18px
-      }
-      .project-page-shell {
+            .project-page-shell {
         width:min(100% - 24px,768px);
         padding:34px 0 64px
       }
@@ -3952,10 +3539,13 @@
         padding-inline:8px
       }
       .hero-name {
-        font-size:clamp(36px,11.5vw,44px)
+        font-size:clamp(30px,7.8vw,38px)
       }
       .hero-title {
-        font-size:clamp(24px,7.5vw,30px)
+        font-size:clamp(20px,4.8vw,26px)
+      }
+      .hero>.portrait {
+        --portrait-size:min(300px,86vw)
       }
       .buttons .btn {
         flex:1 1 100%;
@@ -4009,28 +3599,918 @@
     @media print {
       @page { margin:14mm }
       html,body { background:#fff!important; color:#111!important; scroll-behavior:auto!important }
-      body::before { display:none!important }
+      body::before,body::after { display:none!important }
       body { font-size:11pt }
+      .home-accents { display:none!important }
       #site-header,.scroll-progress,.back-to-top,.doodle,.showcase-navigation,.carousel-arrow,
       .carousel-meta,.theme-toggle,.contact-form-panel,.buttons,.skip-link,.floating-project-back { display:none!important }
       #project-page[hidden],[data-portfolio-view][hidden] { display:none!important }
       [data-flow-reveal] { opacity:1!important; transform:none!important }
       [data-switch-panel],[data-switch-panel][hidden] { display:block!important }
-      .course-tabs,.spotlight-picker,.spotlight-arrow,.signal-orbit,.roadmap-track { display:none!important }
-      .employment-timeline::before,.employment-timeline>li::before { display:none!important }
-      .employment-timeline>li,.employment-role { opacity:1!important; transform:none!important; border:0!important; box-shadow:none!important; background:transparent!important; padding-left:0!important }
+      .course-tabs { display:none!important }
+      .rv-timeline::before,.rv-job::before,.rv-future-year .roadmap-year::before,.rv-future-year .roadmap-year::after { display:none!important }
+      .rv-reveal,html.rv-motion .rv-reveal,.rv-job,.rv-card { opacity:1!important; transform:none!important; transition:none!important }
       main,.container,.project-page-shell,.subpage-footer { width:100%!important; max-width:none!important }
       section.portfolio-section { break-inside:avoid; margin:0 0 18pt!important; padding:10pt 0!important; border:0!important }
       .hero { min-height:0!important; padding:0 0 20pt!important }
       .portrait { box-shadow:none!important }
       a { color:#111!important; text-decoration:underline }
-      .project-feature,.spotlight-card,.employment-role,.signal-panel,.roadmap-panel,.credential-item,
+      .project-feature,.rv-card,
       .project-page-cover,.project-page-section,.project-page-highlight { break-inside:avoid; box-shadow:none!important }
       .project-feature { height:auto!important; min-height:0!important; margin-bottom:12pt }
       .project-page-section { margin-top:18pt }
       a[href^="http"]::after { content:" (" attr(href) ")"; font-size:8pt; font-weight:400; overflow-wrap:anywhere }
       footer { break-before:page; border-color:#111!important }
     }
+    /* Revision Nov 2026 */
+    .visually-hidden {
+      position:absolute!important;
+      width:1px!important;
+      height:1px!important;
+      padding:0!important;
+      margin:-1px!important;
+      overflow:hidden!important;
+      clip:rect(0,0,0,0)!important;
+      white-space:nowrap!important;
+      border:0!important
+    }
+    .course-map li > span,
+    .course-tabs [data-switch-target] small {
+      font-size:11px
+    }
+    .contact-form input,
+    .contact-form textarea {
+      border-color:var(--border-strong)
+    }
+    .contact-form-status {
+      min-height:1.4em;
+      margin:10px 0 0;
+      font:650 13px/1.45 var(--mono);
+      letter-spacing:.04em
+    }
+    .contact-form-status.is-success {
+      color:var(--accent)
+    }
+    .contact-form-status.is-error {
+      color:color-mix(in srgb,var(--foreground) 82%,#b00020)
+    }
+    html[data-theme="dark"] .contact-form-status.is-error {
+      color:color-mix(in srgb,#ffb4b4 70%,var(--foreground))
+    }
+    .buttons {
+      flex-wrap:wrap
+    }
+    @media (max-width:420px) {
+      .buttons .btn {
+        flex:1 1 calc(50% - 6px);
+        min-width:min(100%,140px)
+      }
+    }
+    .rv-card {
+      position:relative;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      height:100%;
+      padding:22px 22px 20px;
+      border:2px solid var(--border);
+      border-radius:5px;
+      background:var(--card);
+      box-shadow:var(--tech-shadow);
+      text-align:left;
+      overflow-wrap:anywhere
+    }
+    .rv-card::before {
+      content:"+";
+      position:absolute;
+      top:8px;
+      right:10px;
+      color:color-mix(in srgb,var(--section-accent) 70%,var(--muted-foreground));
+      font:800 12px/1 var(--mono);
+      pointer-events:none
+    }
+    .rv-card h3 {
+      margin:0;
+      font-size:clamp(18px,2.2vw,22px);
+      line-height:1.25;
+      color:var(--foreground)
+    }
+    .rv-card p {
+      margin:0;
+      color:var(--muted-foreground);
+      font-size:14px;
+      line-height:1.6
+    }
+    .rv-card .card-date,
+    .rv-card .experience-status,
+    .rv-cred-meta,
+    .rv-semester-label,
+    .rv-semester-legend,
+    .rv-club-glyph {
+      font-size:11px
+    }
+    .rv-card .spotlight-link,
+    .rv-card .tag,
+    .rv-card .in-progress-pill {
+      align-self:flex-start;
+      margin-top:auto
+    }
+    .rv-card .spotlight-link {
+      display:inline-flex;
+      align-items:center;
+      min-height:44px;
+      text-decoration:none
+    }
+    .rv-card .spotlight-link:focus-visible,
+    .rv-timeline a:focus-visible,
+    .rv-honors-grid a:focus-visible,
+    .rv-credentials-grid a:focus-visible,
+    .rv-clubs-grid a:focus-visible,
+    .rv-future-timeline a:focus-visible {
+      outline:2px solid var(--accent);
+      outline-offset:3px
+    }
+    .rv-card.is-in-progress {
+      border-style:dashed;
+      border-color:color-mix(in srgb,var(--section-accent) 55%,var(--border-strong))
+    }
+    html.rv-motion .rv-reveal {
+      opacity:0;
+      transform:translateY(14px);
+      transition:opacity .55s ease,transform .55s ease
+    }
+    html.rv-motion .rv-reveal.is-in {
+      opacity:1;
+      transform:none
+    }
+
+    /* Employment timeline */
+    .rv-timeline {
+      list-style:none;
+      position:relative;
+      margin:0;
+      padding:4px 0 0;
+      display:grid;
+      gap:28px
+    }
+    .rv-timeline::before {
+      content:"";
+      position:absolute;
+      left:calc(200px + 18px);
+      top:12px;
+      bottom:12px;
+      width:2px;
+      background:color-mix(in srgb,var(--section-accent) 42%,var(--border));
+      pointer-events:none
+    }
+    .rv-job {
+      position:relative;
+      display:grid;
+      grid-template-columns:200px minmax(0,1fr);
+      gap:28px;
+      align-items:start;
+      margin:0
+    }
+    .rv-job::before {
+      content:"";
+      position:absolute;
+      left:calc(200px + 12px);
+      top:18px;
+      width:14px;
+      height:14px;
+      transform:rotate(45deg);
+      background:var(--section-accent);
+      box-shadow:0 0 0 1px color-mix(in srgb,var(--section-accent) 55%,var(--border));
+      pointer-events:none;
+      z-index:1
+    }
+    .rv-job-meta {
+      display:grid;
+      gap:10px;
+      padding-top:8px;
+      text-align:left
+    }
+    .rv-job-meta .card-date {
+      font:750 11px/1.4 var(--mono);
+      letter-spacing:.1em;
+      text-transform:uppercase
+    }
+    .rv-job-bullets {
+      margin:8px 0 0;
+      padding-left:1.15em;
+      display:grid;
+      gap:8px;
+      color:var(--muted-foreground);
+      font-size:14px;
+      line-height:1.55
+    }
+    .rv-job-card .experience-org {
+      margin-top:0
+    }
+    .rv-job-card,
+    .rv-future-plans .rv-card {
+      overflow:hidden
+    }
+    .rv-job-card::before,
+    .rv-future-plans .rv-card::before {
+      content:none
+    }
+    .rv-card-mark {
+      display:none
+    }
+    .rv-job-card::after {
+      content:"";
+      position:absolute;
+      right:-28px;
+      bottom:-34px;
+      width:108px;
+      height:108px;
+      border-radius:50%;
+      border:16px solid color-mix(in srgb,var(--section-accent) 14%,transparent);
+      box-shadow:
+        -42px -48px 0 -34px color-mix(in srgb,var(--section-accent) 10%,transparent),
+        inset 0 0 0 1px color-mix(in srgb,var(--section-accent) 12%,transparent);
+      pointer-events:none;
+      z-index:0
+    }
+    .rv-job:nth-child(even) .rv-job-card::after {
+      border-radius:18px;
+      transform:rotate(16deg);
+      border-width:3px;
+      box-shadow:none
+    }
+    .rv-job-card > * {
+      position:relative;
+      z-index:1
+    }
+    .rv-future-plans .rv-card {
+      min-height:112px;
+      justify-content:center
+    }
+    .rv-future-plans .rv-card::after {
+      content:"";
+      position:absolute;
+      right:-22px;
+      bottom:-26px;
+      width:84px;
+      height:84px;
+      border-radius:18px;
+      transform:rotate(18deg);
+      border:2px solid color-mix(in srgb,var(--section-accent) 24%,transparent);
+      background:color-mix(in srgb,var(--section-accent) 8%,transparent);
+      pointer-events:none;
+      z-index:0
+    }
+    .rv-future-plans li:nth-child(even) .rv-card::after {
+      border-radius:50%;
+      transform:none;
+      border-style:dashed
+    }
+    .rv-future-year:nth-child(2) .rv-future-plans .rv-card::after {
+      border-radius:0;
+      clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);
+      transform:none;
+      border:0;
+      background:color-mix(in srgb,var(--section-accent) 16%,transparent)
+    }
+    .rv-future-plans .rv-card > * {
+      position:relative;
+      z-index:1
+    }
+    .rv-clubs-grid .rv-card {
+      overflow:hidden
+    }
+    .rv-clubs-grid .rv-card::after {
+      content:"";
+      position:absolute;
+      right:-24px;
+      bottom:-28px;
+      width:96px;
+      height:96px;
+      border-radius:50%;
+      background:radial-gradient(circle at center,color-mix(in srgb,var(--section-accent) 18%,transparent),transparent 68%);
+      pointer-events:none;
+      z-index:0
+    }
+    .rv-clubs-grid li:nth-child(1) .rv-card::after {
+      content:"↗";
+      right:8px;
+      bottom:4px;
+      width:auto;
+      height:auto;
+      border-radius:0;
+      background:transparent;
+      color:color-mix(in srgb,var(--section-accent) 18%,transparent);
+      font:800 78px/1 var(--mono)
+    }
+    .rv-clubs-grid li:nth-child(2) .rv-card::after {
+      content:"❄";
+      right:6px;
+      bottom:-4px;
+      width:auto;
+      height:auto;
+      border-radius:0;
+      background:transparent;
+      color:color-mix(in srgb,var(--section-accent) 18%,transparent);
+      font:800 72px/1 var(--mono)
+    }
+    .rv-clubs-grid .rv-card > * {
+      position:relative;
+      z-index:1
+    }
+    .rv-cred-logo {
+      display:inline-grid;
+      place-items:center;
+      width:52px;
+      height:52px;
+      margin-bottom:4px;
+      flex:0 0 auto;
+      border:2px solid color-mix(in srgb,var(--section-accent) 28%,var(--border));
+      background:color-mix(in srgb,var(--card) 88%,var(--section-accent));
+      color:var(--foreground);
+      overflow:hidden
+    }
+    .rv-cred-logo svg {
+      width:34px;
+      height:34px;
+      display:block
+    }
+    .rv-cred-logo.is-google {
+      border-radius:12px;
+      background:#fff
+    }
+    .rv-cred-logo.is-jack {
+      border-radius:10px;
+      padding:0;
+      border:0;
+      background:transparent
+    }
+    .rv-cred-logo.is-jack img {
+      width:52px;
+      height:52px;
+      object-fit:cover;
+      display:block
+    }
+    .rv-cred-logo.is-bloomberg {
+      border-radius:4px;
+      padding:0;
+      border:0;
+      background:transparent
+    }
+    .rv-cred-logo.is-bloomberg svg {
+      width:52px;
+      height:52px
+    }
+    html[data-theme="dark"] .rv-cred-logo.is-bloomberg {
+      background:#0a0a0a;
+      border-color:#333
+    }
+    .rv-credentials-grid .rv-card {
+      overflow:hidden
+    }
+    .rv-credentials-grid .rv-card::after {
+      content:"";
+      position:absolute;
+      pointer-events:none;
+      z-index:0;
+      opacity:.55
+    }
+    .rv-credentials-grid li:nth-child(1) .rv-card::after {
+      right:-18px;
+      top:18px;
+      width:70px;
+      height:70px;
+      border-radius:14px;
+      transform:rotate(14deg);
+      border:2px solid color-mix(in srgb,var(--section-accent) 34%,transparent);
+      background:linear-gradient(145deg,color-mix(in srgb,var(--section-accent) 12%,transparent),transparent)
+    }
+    .rv-credentials-grid li:nth-child(2) .rv-card::after {
+      right:12px;
+      bottom:-26px;
+      width:92px;
+      height:92px;
+      border-radius:50%;
+      border:2px dashed color-mix(in srgb,var(--section-accent) 38%,transparent);
+      background:radial-gradient(circle at 40% 40%,color-mix(in srgb,var(--section-accent) 16%,transparent),transparent 70%)
+    }
+    .rv-credentials-grid li:nth-child(3) .rv-card::after {
+      right:-8px;
+      bottom:18px;
+      width:0;
+      height:0;
+      border-style:solid;
+      border-width:0 0 78px 78px;
+      border-color:transparent transparent color-mix(in srgb,var(--section-accent) 18%,transparent) transparent
+    }
+    .rv-credentials-grid .rv-card > * {
+      position:relative;
+      z-index:1
+    }
+
+    /* Honors grid — same equal card rhythm as credentials/clubs */
+    .rv-honors-grid {
+      list-style:none;
+      margin:0;
+      padding:0;
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:16px
+    }
+    .rv-honors-grid .award-icon {
+      width:44px;
+      height:44px;
+      margin-bottom:2px;
+      border:2px solid color-mix(in srgb,var(--section-accent) 40%,var(--border))
+    }
+    .rv-honors-grid .rv-cred-meta {
+      color:var(--primary)
+    }
+    .rv-honors-grid .rv-semester-chips {
+      margin-top:auto
+    }
+    .rv-honors-grid .rv-card .spotlight-link {
+      margin-top:4px
+    }
+    .rv-honors-grid .rv-card {
+      overflow:hidden
+    }
+    .rv-honors-grid .rv-card::after {
+      content:"✦";
+      position:absolute;
+      right:-8px;
+      bottom:-18px;
+      z-index:0;
+      color:color-mix(in srgb,var(--section-accent) 16%,transparent);
+      font:800 92px/1 var(--mono);
+      pointer-events:none;
+      user-select:none
+    }
+    .rv-honors-grid li:nth-child(2) .rv-card::after {
+      content:"✧";
+      right:auto;
+      left:-10px;
+      bottom:-22px;
+      font-size:84px;
+      transform:rotate(-12deg)
+    }
+    .rv-honors-grid li:nth-child(3) .rv-card::after {
+      content:"★";
+      right:-14px;
+      top:auto;
+      bottom:-26px;
+      font-size:88px
+    }
+    .rv-honors-grid li:nth-child(4) .rv-card::after {
+      content:"✶";
+      right:12px;
+      bottom:-20px;
+      font-size:78px;
+      transform:rotate(8deg)
+    }
+    .rv-honors-grid .rv-card > * {
+      position:relative;
+      z-index:1
+    }
+    @keyframes honorStarPulse {
+      0%,100% { transform:scale(1); opacity:.88 }
+      50% { transform:scale(1.14); opacity:1 }
+    }
+    #honors .rv-semester.is-honors .rv-semester-mark,
+    #honors .rv-semester-legend span,
+    #honors .award-icon.is-star,
+    #honors .award-icon.is-medal {
+      animation:honorStarPulse 2.6s ease-in-out infinite
+    }
+    #honors .rv-semester.is-honors:nth-child(1) .rv-semester-mark { animation-delay:0s }
+    #honors .rv-semester.is-honors:nth-child(2) .rv-semester-mark { animation-delay:.25s }
+    #honors .rv-semester.is-honors:nth-child(3) .rv-semester-mark { animation-delay:.5s }
+    #honors .rv-semester.is-honors:nth-child(4) .rv-semester-mark { animation-delay:.75s }
+    #honors .rv-semester-legend span { animation-delay:.35s }
+    #honors .award-icon.is-star { animation-delay:.2s }
+    #honors .award-icon.is-medal { animation-delay:.45s }
+    @media (prefers-reduced-motion: reduce) {
+      #honors .rv-semester.is-honors .rv-semester-mark,
+      #honors .rv-semester-legend span,
+      #honors .award-icon.is-star,
+      #honors .award-icon.is-medal {
+        animation:none
+      }
+    }
+    .rv-semester-chips {
+      list-style:none;
+      margin:8px 0 0;
+      padding:0;
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px
+    }
+    .rv-semester {
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      min-height:36px;
+      padding:6px 10px;
+      border:1px solid var(--border);
+      border-radius:4px;
+      background:color-mix(in srgb,var(--section-accent) 8%,var(--card));
+      font:750 11px/1.3 var(--mono);
+      letter-spacing:.06em;
+      text-transform:uppercase;
+      color:var(--foreground)
+    }
+    .rv-semester.is-honors {
+      border-color:color-mix(in srgb,var(--section-accent) 45%,var(--border))
+    }
+    .rv-semester-mark {
+      color:var(--section-accent);
+      font-size:12px
+    }
+    .rv-semester-legend {
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      margin:4px 0 0!important;
+      color:var(--muted-foreground)!important;
+      font:750 11px/1.4 var(--mono)!important;
+      letter-spacing:.08em;
+      text-transform:uppercase
+    }
+    .rv-semester-legend span {
+      color:var(--section-accent)
+    }
+
+    /* Credentials */
+    .rv-credentials-grid {
+      list-style:none;
+      margin:0;
+      padding:0;
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:16px
+    }
+    .rv-monogram {
+      display:none
+    }
+    .rv-cred-meta {
+      display:block;
+      font:750 11px/1.4 var(--mono);
+      letter-spacing:.1em;
+      text-transform:uppercase
+    }
+    .rv-progress {
+      display:grid;
+      grid-template-columns:repeat(8,minmax(0,1fr));
+      gap:4px;
+      width:100%;
+      margin-top:8px
+    }
+    .rv-progress-seg {
+      height:8px;
+      border-radius:2px;
+      background:color-mix(in srgb,var(--border-strong) 55%,var(--card));
+    }
+    .rv-progress-seg.is-filled {
+      background:var(--section-accent)
+    }
+
+    /* Future timeline */
+    .rv-future-timeline {
+      list-style:none;
+      margin:0;
+      padding:0;
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:28px;
+      position:relative
+    }
+    .rv-future-year {
+      position:relative;
+      display:grid;
+      gap:14px;
+      margin:0;
+      z-index:1
+    }
+    .rv-future-year .roadmap-year {
+      display:block;
+      margin:0;
+      padding:0;
+      position:relative;
+      z-index:1
+    }
+    .rv-future-plans {
+      list-style:none;
+      margin:0;
+      padding:0;
+      display:grid;
+      gap:12px
+    }
+
+    /* Clubs */
+    .rv-clubs-grid {
+      list-style:none;
+      margin:0;
+      padding:0;
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:16px
+    }
+    .rv-club-glyph {
+      position:relative;
+      top:auto;
+      left:auto;
+      z-index:1;
+      display:grid;
+      place-items:center;
+      width:36px;
+      height:36px;
+      margin:0;
+      border-radius:999px;
+      border:2px solid color-mix(in srgb,var(--section-accent) 40%,var(--border));
+      background:color-mix(in srgb,var(--section-accent) 12%,var(--card));
+      color:var(--section-accent);
+      font:800 14px/1 var(--mono);
+      align-self:flex-start
+    }
+    .rv-clubs-grid .rv-card {
+      padding-top:22px
+    }
+    .rv-clubs-grid .rv-card::before {
+      content:none
+    }
+
+    @media (max-width:900px) {
+      .rv-future-timeline {
+        grid-template-columns:1fr;
+        gap:22px;
+        padding-left:28px
+      }
+      .rv-credentials-grid {
+        grid-template-columns:repeat(2,minmax(0,1fr))
+      }
+    }
+    @media (max-width:720px) {
+      .rv-timeline::before {
+        left:7px
+      }
+      .rv-job {
+        grid-template-columns:1fr;
+        gap:12px;
+        padding-left:28px
+      }
+      .rv-job::before {
+        left:1px;
+        top:10px
+      }
+      .rv-job-meta {
+        padding-top:0
+      }
+      .rv-honors-grid,
+      .rv-credentials-grid,
+      .rv-clubs-grid {
+        grid-template-columns:1fr
+      }
+    }
+    @media (prefers-reduced-motion: reduce){
+      html{scroll-behavior:auto}
+      .reveal,.rv-reveal{animation:none;transition:none}
+      .btn:hover{transform:none}
+      html.rv-motion .rv-reveal,
+      html.rv-motion .rv-reveal.is-in {
+        opacity:1;
+        transform:none;
+        transition:none
+      }
+    }
+
+    /* Revision 2 - Nov 2026 */
+    html:not(.project-view) section.portfolio-section { --section-accent: var(--accent); }
+    html:not(.project-view) #honors { --section-accent: var(--gold); }
+
+    .card-date,
+    .rv-cred-meta,
+    .rv-job-meta .card-date {
+      color: var(--primary);
+    }
+    .experience-status {
+      color: var(--muted-foreground);
+    }
+    .experience-org {
+      color: var(--section-accent);
+    }
+    .rv-monogram,
+    .rv-club-glyph,
+    .rv-semester-mark,
+    .rv-semester-legend span {
+      color: var(--section-accent);
+    }
+    .award-icon {
+      color: var(--section-accent);
+      background: color-mix(in srgb,var(--section-accent) 14%,var(--card));
+    }
+
+    .rv-semester-mark {
+      display: inline-flex;
+      justify-content: center;
+      width: 1em;
+      flex: 0 0 1em;
+      font-size: 12px;
+      line-height: 1;
+    }
+
+    .rv-future-year .roadmap-year {
+      display: block;
+      width: auto;
+      margin: 0 0 22px;
+      padding: 0;
+      background: none;
+      border: 0;
+      outline: none;
+      box-shadow: none;
+      text-align: left;
+      position: relative;
+      z-index: 1;
+    }
+    .rv-future-year .roadmap-year::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: calc(100% + 8px);
+      width: 12px;
+      height: 12px;
+      transform: rotate(45deg);
+      background: var(--section-accent);
+      box-shadow: 0 0 0 1px color-mix(in srgb,var(--section-accent) 55%,var(--border));
+      z-index: 1;
+    }
+    .rv-future-year .roadmap-year::after {
+      content: "";
+      position: absolute;
+      left: 6px;
+      right: 0;
+      top: calc(100% + 13px);
+      height: 2px;
+      background: color-mix(in srgb,var(--section-accent) 42%,var(--border));
+      pointer-events: none;
+    }
+    .rv-future-year:first-child .roadmap-year::after {
+      right: calc(-50% - 14px);
+    }
+    @media (max-width:900px) {
+      .rv-future-timeline {
+        grid-template-columns: 1fr;
+        gap: 22px;
+        padding-left: 28px;
+      }
+      .rv-future-year .roadmap-year {
+        margin: 0;
+        padding: 0;
+      }
+      .rv-future-year .roadmap-year::before {
+        left: -25px;
+        top: 0.45em;
+      }
+      .rv-future-year .roadmap-year::after {
+        left: -20px;
+        right: auto;
+        top: 0.55em;
+        bottom: auto;
+        width: 2px;
+        height: calc(100% + 48px);
+      }
+      .rv-future-year:last-child .roadmap-year::after {
+        height: 0.8em;
+      }
+      .rv-future-year:first-child .roadmap-year::after {
+        right: auto;
+      }
+    }
+
+    @media print {
+      .rv-reveal,html.rv-motion .rv-reveal {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+      .rv-card {
+        box-shadow: none !important;
+        break-inside: avoid;
+      }
+      .rv-timeline::before,
+      .rv-job::before,
+      .rv-future-year .roadmap-year::before,
+      .rv-future-year .roadmap-year::after {
+        display: none !important;
+      }
+    }
+
+    /* Large / ultrawide desktop headshot scale */
+    @media (min-width:1200px) {
+      .hero {
+        grid-template-columns:minmax(0,1fr) minmax(440px,560px);
+        gap:clamp(36px,5vw,72px)
+      }
+      .portrait {
+        --portrait-size:min(500px,100%)
+      }
+    }
+    @media (min-width:1500px) {
+      .container {
+        width:min(1280px,calc(100% - 64px))
+      }
+      .portrait {
+        --portrait-size:min(540px,100%)
+      }
+    }
+
+    /* Press sparkles + send shooting star */
+    .ui-press-burst {
+      position:absolute;
+      left:var(--burst-x,88%);
+      top:var(--burst-y,18%);
+      width:0;
+      height:0;
+      pointer-events:none;
+      overflow:visible;
+      z-index:5
+    }
+    .ui-press-burst span {
+      position:absolute;
+      left:0;
+      top:0;
+      color:var(--section-accent,var(--accent));
+      font:800 12px/1 var(--mono);
+      opacity:0;
+      animation:uiSparkFly .75s ease-out forwards
+    }
+    @keyframes uiSparkFly {
+      0% { opacity:1; transform:translate(-50%,-50%) scale(.7) }
+      100% { opacity:0; transform:translate(calc(-50% + var(--sx,12px)),calc(-50% + var(--sy,-24px))) scale(1.15) }
+    }
+    .course-tabs button,
+    .showcase-arrow,
+    .project-thumb-tab,
+    .rv-credentials-grid .spotlight-link {
+      position:relative;
+      overflow:visible
+    }
+    .course-tabs button.is-sparking,
+    .showcase-arrow.is-sparking,
+    .project-thumb-tab.is-sparking {
+      animation:uiPressRing .55s ease-out
+    }
+    .rv-credentials-grid .spotlight-link.is-sparking {
+      animation:uiPressRing .55s ease-out
+    }
+    @keyframes uiPressRing {
+      0% { box-shadow:0 0 0 0 color-mix(in srgb,var(--section-accent,var(--accent)) 45%,transparent) }
+      100% { box-shadow:0 0 0 14px transparent }
+    }
+    .shooting-star {
+      position:fixed;
+      left:-10%;
+      top:var(--fly-y,28%);
+      z-index:120;
+      pointer-events:none;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      color:var(--accent);
+      font:800 34px/1 var(--mono);
+      text-shadow:0 0 18px color-mix(in srgb,var(--accent) 60%,transparent);
+      animation:shootingStarFly 2.8s cubic-bezier(.22,.65,.2,1) forwards
+    }
+    .shooting-star::after {
+      content:"";
+      position:absolute;
+      right:100%;
+      top:50%;
+      width:86px;
+      height:3px;
+      transform:translateY(-50%);
+      background:linear-gradient(90deg,transparent,color-mix(in srgb,var(--primary) 70%,transparent),var(--accent));
+      opacity:.9
+    }
+    @keyframes shootingStarFly {
+      0% { transform:translate3d(0,0,0) rotate(-8deg); opacity:0 }
+      10% { opacity:1 }
+      100% { transform:translate3d(122vw,-22px,0) rotate(-8deg); opacity:0 }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .ui-press-burst span,
+      .course-tabs button.is-sparking,
+      .showcase-arrow.is-sparking,
+      .project-thumb-tab.is-sparking,
+      .rv-credentials-grid .spotlight-link.is-sparking,
+      .shooting-star {
+        animation:none!important
+      }
+      html:not(.project-view)[data-theme="dark"] body::after {
+        transform:none;
+        will-change:auto
+      }
+    }
+
 </style>
 <script>
 (function(){let theme=null;try{theme=localStorage.getItem('portfolio-theme')}catch(e){}if(theme!=='dark'&&theme!=='light')theme=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.dataset.theme=theme})();
@@ -4059,40 +4539,65 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElem
 </header>
 
 <main id="top" class="container" data-portfolio-view="" tabindex="-1">
+  <div class="home-accents" aria-hidden="true">
+    <span class="accent-star a1">★</span>
+    <span class="accent-star soft a2">★</span>
+    <span class="accent-dot d1"></span>
+    <span class="accent-dash l1" style="--accent-rot:-18deg"></span>
+    <span class="accent-star soft blue a3">★</span>
+    <span class="accent-dot blue d2"></span>
+    <span class="accent-star a4">★</span>
+    <span class="accent-dash l2" style="--accent-rot:14deg"></span>
+    <span class="accent-dot d3"></span>
+    <span class="accent-star soft a5">★</span>
+    <span class="accent-star blue a6">★</span>
+    <span class="accent-dash l3" style="--accent-rot:-8deg"></span>
+    <span class="accent-dot blue d4"></span>
+    <span class="accent-star soft a7">★</span>
+    <span class="accent-star a8">★</span>
+    <span class="accent-star soft blue a9">★</span>
+    <span class="accent-star a10">★</span>
+    <span class="accent-star soft a11">★</span>
+    <span class="accent-star blue a12">★</span>
+    <span class="accent-star soft a13">★</span>
+    <span class="accent-star a14">★</span>
+    <span class="accent-dot d5"></span>
+    <span class="accent-dash l4" style="--accent-rot:22deg"></span>
+  </div>
   <section class="hero">
-    <svg class="doodle hero-star-cluster" viewBox="0 0 82 82" aria-hidden="true"><path class="doodle-line" d="m27 5 3.2 9.1 9.6 2-9.6 2-3.2 9.1-3.2-9.1-9.6-2 9.6-2Z"/><path class="doodle-line doodle-accent-line" d="m59 36 2.4 7 7.1 1.5-7.1 1.5-2.4 7-2.5-7-7-1.5 7-1.5Z"/><circle class="doodle-line doodle-accent-line" cx="15" cy="54" r="3.5"/><path class="doodle-line" d="M35 65c8-8 20-8 28 0"/></svg>
-    <svg class="doodle hero-swirl" viewBox="0 0 172 92" aria-hidden="true"><path class="doodle-line doodle-dash" d="M4 58c22-39 70-46 105-19 23 18 3 44-19 30-20-13 3-35 32-30 20 3 32 16 46 31"/><path class="doodle-line doodle-accent-line" d="m148 64 3 8.5 9 1.8-9 1.9-3 8.5-3-8.5-9-1.9 9-1.8Z"/></svg>
+    <svg class="doodle hero-star-cluster" viewBox="0 0 82 82" aria-hidden="true"><path class="doodle-line" d="M27 4l2.5 7.6h8l-6.5 4.7 2.5 7.6-6.5-4.7-6.5 4.7 2.5-7.6-6.5-4.7h8z"/><path class="doodle-line doodle-accent-line" d="M59 34l1.9 5.8h6.1l-4.9 3.6 1.9 5.8-5-3.6-5 3.6 1.9-5.8-4.9-3.6h6.1z"/><circle class="doodle-line doodle-accent-line" cx="15" cy="54" r="3.5"/><path class="doodle-line" d="M35 65c8-8 20-8 28 0"/></svg>
+    <svg class="doodle hero-swirl" viewBox="0 0 172 92" aria-hidden="true"><path class="doodle-line doodle-dash" d="M4 58c22-39 70-46 105-19 23 18 3 44-19 30-20-13 3-35 32-30 20 3 32 16 46 31"/><path class="doodle-line doodle-accent-line" d="M151 62l2.2 6.6h7l-5.6 4.1 2.1 6.6-5.7-4.1-5.7 4.1 2.1-6.6-5.6-4.1h7z"/></svg>
     <svg class="doodle hero-circuit" viewBox="0 0 240 132" aria-hidden="true"><path class="doodle-line" d="M5 22h42l16 16h54l18-18h98M5 68h68l15-15h43l24 24h78M5 112h34l18-18h62l14 14h100"/><circle class="doodle-line doodle-accent-line" cx="47" cy="22" r="5"/><circle class="doodle-line doodle-accent-line" cx="73" cy="68" r="5"/><circle class="doodle-line" cx="119" cy="94" r="5"/><path class="doodle-line doodle-accent-line" d="m228 15 5 5-5 5M228 72l5 5-5 5M228 103l5 5-5 5"/></svg>
     <div class="reveal">
       <div class="eyebrow"><span class="primary">CLASS OF 2027</span></div>
       <h1><span class="hero-name">Katherine Contreras</span><span class="hero-title">Finance <span class="primary">&amp;</span> Computer Information Systems at <span class="primary">Quinnipiac University</span>.</span></h1>
       <p class="hero-copy"> Bridging finance, new technology, and analytics to build thoughtful solutions for real-world business challenges.</p>
-      <div class="buttons"><a class="btn btn-dark" href="#projects">See my work</a><a class="btn" href="#coursework">Browse coursework</a><a class="btn" href="assets/resume.pdf" target="_blank" rel="noopener">Resume</a></div>
+      <div class="buttons"><a class="btn btn-dark" href="#projects">See my work</a><a class="btn" href="#coursework">Browse coursework</a><a class="btn" href="assets/resume.pdf" download="Contreras_Katherine_Resume.pdf">Resume</a></div>
       <div class="facts"><span>HAMDEN, CONNECTICUT</span><span class="dot"></span><span>GPA: 3.96</span><span class="dot"></span><span>Open to internships</span></div>
     </div>
-    <div class="portrait reveal"><img src="assets/embedded-001.png" alt="Katherine Contreras headshot" width="487" height="455" fetchpriority="high" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><div class="asset-placeholder" style="display:none">Image unavailable</div></div>
+    <div class="portrait reveal"><img src="assets/embedded-001.png?v=2" alt="Katherine Contreras headshot" width="1024" height="731" fetchpriority="high" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><div class="asset-placeholder" style="display:none">Image unavailable</div></div>
   </section>
 
-  <section id="coursework" class="portfolio-section"><div class="section-head"><span class="section-index">01 / Explore</span><h2>Coursework</h2><svg class="doodle section-doodle" viewBox="0 0 112 44" aria-hidden="true"><path class="doodle-line doodle-dash" d="M3 28C21 5 43 41 65 20s34-8 44 4"/><path class="doodle-line doodle-accent-line" d="m82 5 2.4 6.7 6.7 1.4-6.7 1.4-2.4 6.7-2.3-6.7-6.8-1.4 6.8-1.4Z"/></svg></div><div id="coursework-content"></div></section>
-  <section id="honors" class="portfolio-section"><div class="section-head"><span class="section-index">02 / Spotlight</span><h2>Honors &amp; Awards</h2><svg class="doodle section-doodle" viewBox="0 0 112 44" aria-hidden="true"><path class="doodle-line doodle-dash" d="M3 28C21 5 43 41 65 20s34-8 44 4"/><path class="doodle-line doodle-accent-line" d="m82 5 2.4 6.7 6.7 1.4-6.7 1.4-2.4 6.7-2.3-6.7-6.8-1.4 6.8-1.4Z"/></svg></div><div id="honors-content"></div></section>
-  <section id="projects" class="portfolio-section"><div class="section-head"><span class="section-index">03 / Selected work</span><h2>Projects</h2><svg class="doodle section-doodle" viewBox="0 0 112 44" aria-hidden="true"><path class="doodle-line doodle-dash" d="M3 28C21 5 43 41 65 20s34-8 44 4"/><path class="doodle-line doodle-accent-line" d="m82 5 2.4 6.7 6.7 1.4-6.7 1.4-2.4 6.7-2.3-6.7-6.8-1.4 6.8-1.4Z"/></svg></div><div id="projects-content"></div></section>
-  <section id="employment" class="portfolio-section"><div class="section-head"><span class="section-index">04 / Experience</span><h2>Employment</h2><svg class="doodle section-doodle" viewBox="0 0 112 44" aria-hidden="true"><path class="doodle-line doodle-dash" d="M3 28C21 5 43 41 65 20s34-8 44 4"/><path class="doodle-line doodle-accent-line" d="m82 5 2.4 6.7 6.7 1.4-6.7 1.4-2.4 6.7-2.3-6.7-6.8-1.4 6.8-1.4Z"/></svg></div><div id="employment-content"></div></section>
-  <section id="clubs" class="portfolio-section"><div class="section-head"><span class="section-index">05 / Beyond class</span><h2>Club Involvement</h2><svg class="doodle section-doodle" viewBox="0 0 112 44" aria-hidden="true"><path class="doodle-line doodle-dash" d="M3 28C21 5 43 41 65 20s34-8 44 4"/><path class="doodle-line doodle-accent-line" d="m82 5 2.4 6.7 6.7 1.4-6.7 1.4-2.4 6.7-2.3-6.7-6.8-1.4 6.8-1.4Z"/></svg></div><div id="clubs-content"></div></section>
-  <section id="credentials" class="portfolio-section"><div class="section-head"><span class="section-index">06 / Credentials</span><h2>Licenses &amp; Certifications</h2><svg class="doodle section-doodle" viewBox="0 0 112 44" aria-hidden="true"><path class="doodle-line doodle-dash" d="M3 28C21 5 43 41 65 20s34-8 44 4"/><path class="doodle-line doodle-accent-line" d="m82 5 2.4 6.7 6.7 1.4-6.7 1.4-2.4 6.7-2.3-6.7-6.8-1.4 6.8-1.4Z"/></svg></div><div id="credentials-content"></div></section>
-  <section id="future" class="portfolio-section"><div class="section-head"><span class="section-index">07 / Next</span><h2>Future Outlook</h2><svg class="doodle section-doodle" viewBox="0 0 112 44" aria-hidden="true"><path class="doodle-line doodle-dash" d="M3 28C21 5 43 41 65 20s34-8 44 4"/><path class="doodle-line doodle-accent-line" d="m82 5 2.4 6.7 6.7 1.4-6.7 1.4-2.4 6.7-2.3-6.7-6.8-1.4 6.8-1.4Z"/></svg></div><div id="future-content"></div></section>
+  <section id="coursework" class="portfolio-section"><div class="section-head"><span class="section-index">01 / Explore</span><h2>Coursework</h2><svg class="doodle section-doodle" viewBox="0 0 112 44" aria-hidden="true"><path class="doodle-line doodle-dash" d="M3 28C21 5 43 41 65 20s34-8 44 4"/><path class="doodle-line doodle-accent-line" d="M90 4.5l1.9 5.8h6.1l-4.9 3.6 1.9 5.8-5-3.6-5 3.6 1.9-5.8-4.9-3.6h6.1z"/></svg></div><div id="coursework-content"></div></section>
+  <section id="honors" class="portfolio-section"><div class="section-head"><span class="section-index">02 / Spotlight</span><h2>Honors &amp; Awards</h2><svg class="doodle section-doodle" viewBox="0 0 112 44" aria-hidden="true"><path class="doodle-line doodle-dash" d="M3 28C21 5 43 41 65 20s34-8 44 4"/><path class="doodle-line doodle-accent-line" d="M90 4.5l1.9 5.8h6.1l-4.9 3.6 1.9 5.8-5-3.6-5 3.6 1.9-5.8-4.9-3.6h6.1z"/></svg></div><div id="honors-content"></div></section>
+  <section id="projects" class="portfolio-section"><div class="section-head"><span class="section-index">03 / Selected work</span><h2>Projects</h2><svg class="doodle section-doodle" viewBox="0 0 112 44" aria-hidden="true"><path class="doodle-line doodle-dash" d="M3 28C21 5 43 41 65 20s34-8 44 4"/><path class="doodle-line doodle-accent-line" d="M90 4.5l1.9 5.8h6.1l-4.9 3.6 1.9 5.8-5-3.6-5 3.6 1.9-5.8-4.9-3.6h6.1z"/></svg></div><div id="projects-content"></div></section>
+  <section id="employment" class="portfolio-section"><div class="section-head"><span class="section-index">04 / Experience</span><h2>Employment</h2><svg class="doodle section-doodle" viewBox="0 0 112 44" aria-hidden="true"><path class="doodle-line doodle-dash" d="M3 28C21 5 43 41 65 20s34-8 44 4"/><path class="doodle-line doodle-accent-line" d="M90 4.5l1.9 5.8h6.1l-4.9 3.6 1.9 5.8-5-3.6-5 3.6 1.9-5.8-4.9-3.6h6.1z"/></svg></div><div id="employment-content"></div></section>
+  <section id="clubs" class="portfolio-section"><div class="section-head"><span class="section-index">05 / Beyond class</span><h2>Club Involvement</h2><svg class="doodle section-doodle" viewBox="0 0 112 44" aria-hidden="true"><path class="doodle-line doodle-dash" d="M3 28C21 5 43 41 65 20s34-8 44 4"/><path class="doodle-line doodle-accent-line" d="M90 4.5l1.9 5.8h6.1l-4.9 3.6 1.9 5.8-5-3.6-5 3.6 1.9-5.8-4.9-3.6h6.1z"/></svg></div><div id="clubs-content"></div></section>
+  <section id="credentials" class="portfolio-section"><div class="section-head"><span class="section-index">06 / Credentials</span><h2>Licenses &amp; Certifications</h2><svg class="doodle section-doodle" viewBox="0 0 112 44" aria-hidden="true"><path class="doodle-line doodle-dash" d="M3 28C21 5 43 41 65 20s34-8 44 4"/><path class="doodle-line doodle-accent-line" d="M90 4.5l1.9 5.8h6.1l-4.9 3.6 1.9 5.8-5-3.6-5 3.6 1.9-5.8-4.9-3.6h6.1z"/></svg></div><div id="credentials-content"></div></section>
+  <section id="future" class="portfolio-section"><div class="section-head"><span class="section-index">07 / Next</span><h2>Future Outlook</h2><svg class="doodle section-doodle" viewBox="0 0 112 44" aria-hidden="true"><path class="doodle-line doodle-dash" d="M3 28C21 5 43 41 65 20s34-8 44 4"/><path class="doodle-line doodle-accent-line" d="M90 4.5l1.9 5.8h6.1l-4.9 3.6 1.9 5.8-5-3.6-5 3.6 1.9-5.8-4.9-3.6h6.1z"/></svg></div><div id="future-content"></div></section>
 
   <a class="back-to-top" href="#top" aria-label="Back to the top of the portfolio"><span aria-hidden="true">↑</span> Top</a>
 
-  <footer id="contact"><div class="footer-grid"><div><h2>Let’s talk about <span class="primary">what’s next.</span></h2><p class="muted">I’m currently seeking internship opportunities in finance, business technology, analytics, and information systems.</p><svg class="doodle footer-doodle" viewBox="0 0 178 70" aria-hidden="true"><path class="doodle-line doodle-dash" d="M3 48c24-45 68-24 59 2-7 20-31 5-21-12 13-23 52-23 73-1 15 16 34 20 60 3"/><path class="doodle-line doodle-accent-line" d="m129 8 3.1 8.8 8.8 1.9-8.8 1.8-3.1 8.9-3.1-8.9-8.8-1.8 8.8-1.9Z"/><circle class="doodle-line doodle-accent-line" cx="160" cy="19" r="3.5"/></svg></div><div class="contact-block"><details class="contact-form-panel">
+  <footer id="contact"><div class="footer-grid"><div><h2>Let’s talk about <span class="primary">what’s next.</span></h2><p class="muted">I’m currently seeking internship opportunities in finance, business technology, analytics, and information systems.</p><svg class="doodle footer-doodle" viewBox="0 0 178 70" aria-hidden="true"><path class="doodle-line doodle-dash" d="M3 48c24-45 68-24 59 2-7 20-31 5-21-12 13-23 52-23 73-1 15 16 34 20 60 3"/><path class="doodle-line doodle-accent-line" d="M132 6l2.4 7.2h7.6l-6.1 4.5 2.3 7.2-6.2-4.5-6.2 4.5 2.3-7.2-6.1-4.5h7.6z"/><circle class="doodle-line doodle-accent-line" cx="160" cy="19" r="3.5"/></svg></div><div class="contact-cue" aria-hidden="true"><svg class="contact-cue-arrow contact-cue-arrow-h" viewBox="0 0 120 70" fill="none"><path d="M8 34 H86" stroke="currentColor" stroke-width="3.6" stroke-dasharray="7 6" stroke-linecap="round"/><path d="M76 18 L104 34 L76 50" stroke="currentColor" stroke-width="3.8" stroke-linejoin="round" fill="none"/><circle cx="8" cy="34" r="4.5" fill="currentColor"/></svg><svg class="contact-cue-arrow contact-cue-arrow-v" viewBox="0 0 70 120" fill="none"><path d="M35 8 V86" stroke="currentColor" stroke-width="3.6" stroke-dasharray="7 6" stroke-linecap="round"/><path d="M19 76 L35 104 L51 76" stroke="currentColor" stroke-width="3.8" stroke-linejoin="round" fill="none"/><circle cx="35" cy="8" r="4.5" fill="currentColor"/></svg><span class="contact-cue-label">Say hello</span></div><div class="contact-block"><details class="contact-form-panel">
   <summary class="email">Contact me!</summary>
   <form id="contact-form" class="contact-form" action="https://formspree.io/f/xaenpkll" method="POST" aria-describedby="contact-help">
-    <p id="contact-help">Send me a message using the form below. Include a way to reach you if you would like a reply. Submissions are processed by Formspree.</p>
+    <p id="contact-help">Send me a message using the form below. Submissions are processed by Formspree.</p>
+    <label for="contact-email">Email</label>
+    <input id="contact-email" name="email" type="email" autocomplete="email" required maxlength="150">
     <label for="contact-subject">Subject / heading</label>
     <input id="contact-subject" name="subject" type="text" maxlength="150" required>
     <label for="contact-message">Message</label>
     <textarea id="contact-message" name="message" rows="6" maxlength="4000" required></textarea>
-    <label for="contact-info">Additional contact information <span class="muted">(optional)</span></label>
-    <textarea id="contact-info" name="contactInfo" rows="2" maxlength="500" placeholder="Your name, email address, or preferred way to reach you"></textarea>
     <div class="form-honeypot" aria-hidden="true"><label for="contact-website"></label><input id="contact-website" name="_gotcha" type="text" value="" autocomplete="off" tabindex="-1" aria-hidden="true"></div>
     <button class="btn btn-dark" type="submit">Send message</button>
     <p class="contact-form-status" id="contact-status" role="status"></p>
@@ -4132,6 +4637,9 @@ const coursework = [
   }
 ];
 
+const deansListSemesters=[['Spring 2026',true],['Fall 2025',false],['Spring 2025',false],['Fall 2024',true]];
+const awardMedalIcon='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="8" r="5"/><path d="m8 12-2 9 6-3 6 3-2-9"/></svg>';
+const awardStarIcon='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2-5.6-3-5.6 3 1.1-6.2L3 9.6l6.2-.9Z"/></svg>';
 const honors = [
   {
     "slug": "deans-list",
@@ -4435,18 +4943,21 @@ const clubs = [
   {
     "role": "MEMBER / FALL 2025 - PRESENT",
     "org": "Girls that Invest",
-    "body": "Gained additional experience in investing and managing stocks through simulated experiences that reflect actual market behavior."
+    "body": "Gained additional experience in investing and managing stocks through simulated experiences that reflect actual market behavior.",
+    "tag": "Finance"
   },
   {
     "role": "MEMBER / SEPTEMBER 2024 - PRESENT",
     "org": "Quinnipiac University Open Skate Night",
-    "body": "Actively participate in ice skating sessions once a week to improve my performance."
+    "body": "Actively participate in ice skating sessions once a week to improve my performance.",
+    "tag": "Community"
   }
 ];
 
 const credentials = [
   {
     "issuer": "Google",
+    "logo": "google",
     "title": "Google AI Professional Certificate",
     "date": "OCTOBER 2026",
     "body": "Earned after completing the eight-module Google AI Professional Certificate covering the following topics: AI Fundamentals, AI for Brainstorming and Planning, AI for Research and Insights, AI for Writing and Communicating, AI for Data Analysis, AI for App Building, and AI for App Deployment.",
@@ -4454,6 +4965,7 @@ const credentials = [
   },
   {
     "issuer": "JACK.ORG",
+    "logo": "jack",
     "title": "Be There Certificate",
     "date": "DECEMBER 2025",
     "body": "Earned after completing online mental health training focused on recognizing when someone is struggling and providing safe, effective support.",
@@ -4461,12 +4973,18 @@ const credentials = [
   },
   {
     "issuer": "Bloomberg",
+    "logo": "bloomberg",
     "title": "Bloomberg Market Concepts (BMC)",
     "date": "OCTOBER 2025",
     "body": "Earned the Bloomberg Market Concepts certificate.",
     "link": "https://portal.bloombergforeducation.com/certificates/VfgXsFK6Qpvx5SVCmXDFP3wX"
   }
 ];
+const issuerLogos={
+  google:'<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.27-4.74 3.27-8.1Z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23Z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62Z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53Z"/></svg>',
+  jack:'<img src="assets/logos/jack-org.png" alt="" width="64" height="64" decoding="async" loading="lazy">',
+  bloomberg:'<svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" fill="#000"/><path fill="#fff" d="M18 14h16.8c7.4 0 12.2 3.8 12.2 10.1 0 4.2-2.3 7.3-6.1 8.7v.2c4.9 1.2 8 4.8 8 10.1 0 7.1-5.4 11.1-13.6 11.1H18V14Zm8.2 14.6h7c3.2 0 5-1.5 5-4s-1.8-3.9-5-3.9h-7v7.9Zm0 16.7h8.1c3.6 0 5.7-1.7 5.7-4.5s-2.1-4.4-5.7-4.4h-8.1v8.9Z"/></svg>'
+};
 
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));
 const motionPreference=window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -4482,22 +5000,56 @@ const switchPanel=(content,index,prefix,selected=false,className='')=>`<section 
 
 document.getElementById('coursework-content').innerHTML=`<div class="course-explorer" data-switcher><div class="course-tabs" role="tablist" aria-label="Coursework subjects">${coursework.map((c,i)=>switchButton(c.section==='FINANCE'?'Finance':'Computer Information Systems',i,'course',i===0,`${c.courses.length} courses`)).join('')}<span class="course-tab-indicator" aria-hidden="true"></span></div><div class="course-deck">${coursework.map((c,i)=>switchPanel(`<ol class="course-map">${c.courses.map((course,n)=>{const [code,name]=courseParts(course);return `<li><span>${String(n+1).padStart(2,'0')}</span><strong>${esc(code)}</strong><em>${esc(name)}</em></li>`}).join('')}</ol>`,i,'course',i===0,'course-panel')).join('')}</div></div>`;
 
-document.getElementById('honors-content').innerHTML=`<div class="honors-spotlight" data-switcher><div class="spotlight-rail-nav"><button type="button" class="spotlight-arrow" data-switch-prev aria-label="Previous honor" disabled><span aria-hidden="true">‹</span></button><div class="spotlight-picker" role="tablist" aria-label="Choose an honor">${honors.map((h,i)=>switchButton(h.title,i,'honor-spotlight',i===0,h.year)).join('')}</div><button type="button" class="spotlight-arrow" data-switch-next aria-label="Next honor"><span aria-hidden="true">›</span></button></div><div class="spotlight-stage">${honors.map((h,i)=>switchPanel(`<span class="spotlight-count">${String(i+1).padStart(2,'0')} / ${String(honors.length).padStart(2,'0')}</span><span class="card-date">${esc(h.year)}</span><h3>${esc(h.title)}</h3><p>${esc(h.summary)}</p>${h.slug==='deans-list'?'<a class="spotlight-link" href="#honor/deans-list">Explore the semesters <span aria-hidden="true">→</span></a>':''}`,i,'honor-spotlight',i===0,'spotlight-card')).join('')}</div></div>`;
+document.getElementById('honors-content').innerHTML=(()=>{
+  const chips=deansListSemesters.map(([semester,withHonors])=>`<li class="rv-semester${withHonors?' is-honors':''}"><span class="rv-semester-mark" aria-hidden="true">${withHonors?'✦':''}</span><span class="rv-semester-label">${esc(semester)}</span>${withHonors?`<span class="visually-hidden">Dean's List with Honors</span>`:''}</li>`).join('');
+  return `<ul class="rv-honors-grid">${honors.map((h,i)=>{
+    const icon=i<2?awardMedalIcon:awardStarIcon;
+    const meta=`<small class="rv-cred-meta">${esc(h.org)} · ${esc(h.year)}</small>`;
+    let footer='';
+    if(h.slug==='deans-list'){
+      footer=`<ul class="rv-semester-chips" aria-label="Dean's List semesters">${chips}</ul><p class="rv-semester-legend" aria-hidden="true"><span>✦</span> Dean's List with Honors</p><a class="spotlight-link" href="https://www.qu.edu/academics/deans-list/" target="_blank" rel="noopener noreferrer" aria-label="Quinnipiac University Dean's List Website (opens in new tab)">Quinnipiac University Dean's List Website <span aria-hidden="true">↗</span></a>`;
+    }
+    const iconClass=i<2?' is-medal':' is-star';
+    return `<li class="rv-reveal"><article class="rv-card"><span class="award-icon${iconClass}" aria-hidden="true">${icon}</span>${meta}<h3>${esc(h.title)}</h3><p>${esc(h.summary)}</p>${footer}</article></li>`;
+  }).join('')}</ul>`;
+})();
 
-document.getElementById('projects-content').innerHTML=`<div class="project-showcase" data-switcher><div class="project-spotlight">${projects.map((p,i)=>switchPanel(`<a class="project-feature-image" href="#project/${encodeURIComponent(p.slug)}" aria-label="Open ${esc(p.title)} project details">${assetBox(p.asset,'',p.imageContain)}</a><div class="project-feature-copy"><span class="spotlight-count">FEATURE ${String(i+1).padStart(2,'0')} / ${String(projects.length).padStart(2,'0')}</span><span class="card-date">${esc(p.date)}</span><h3>${esc(p.title)}</h3><p>${esc(summaryLead(p.summary))}</p><div class="tags">${p.highlights.slice(0,2).map(t=>`<span class="tag">${esc(t)}</span>`).join('')}</div><a class="spotlight-link" href="#project/${encodeURIComponent(p.slug)}">Open project <span aria-hidden="true">→</span></a></div>`,i,'project-feature',i===0,'project-feature')).join('')}</div><div class="showcase-navigation"><button type="button" class="showcase-arrow" data-switch-prev aria-label="Previous featured project"><span aria-hidden="true">←</span></button><div class="showcase-rail" role="tablist" aria-label="Choose a featured project">${projects.map((p,i)=>projectThumbButton(p,i,i===0)).join('')}</div><button type="button" class="showcase-arrow" data-switch-next aria-label="Next featured project"><span aria-hidden="true">→</span></button></div></div>`;
+document.getElementById('projects-content').innerHTML=`<div class="project-showcase" data-switcher><div class="project-spotlight">${projects.map((p,i)=>switchPanel(`<a class="project-feature-image" href="#project/${encodeURIComponent(p.slug)}" tabindex="-1" aria-hidden="true">${assetBox(p.asset,'',p.imageContain)}</a><div class="project-feature-copy"><span class="spotlight-count">FEATURE ${String(i+1).padStart(2,'0')} / ${String(projects.length).padStart(2,'0')}</span><span class="card-date">${esc(p.date)}</span><h3>${esc(p.title)}</h3><p>${esc(summaryLead(p.summary))}</p><div class="tags">${p.highlights.slice(0,2).map(t=>`<span class="tag">${esc(t)}</span>`).join('')}</div><a class="spotlight-link" href="#project/${encodeURIComponent(p.slug)}">Open project <span aria-hidden="true">→</span></a></div>`,i,'project-feature',i===0,'project-feature')).join('')}</div><div class="showcase-navigation"><button type="button" class="showcase-arrow" data-switch-prev aria-label="Previous featured project"><span aria-hidden="true">←</span></button><div class="showcase-rail" role="tablist" aria-label="Choose a featured project">${projects.map((p,i)=>projectThumbButton(p,i,i===0)).join('')}</div><button type="button" class="showcase-arrow" data-switch-next aria-label="Next featured project"><span aria-hidden="true">→</span></button></div></div>`;
 
-document.getElementById('employment-content').innerHTML=`<ol class="employment-timeline">${employment.map((e,i)=>`<li><article class="employment-role"><div class="experience-status"><span aria-hidden="true"></span>${i===0?'Current role':'Previous role'}</div><span class="card-date">${esc(e.dates)}</span><h3>${esc(e.role)}</h3><p class="experience-org">${esc(e.org)}</p><p class="experience-lead">${esc(e.bullets[0])}</p>${e.bullets.length>1?`<details class="role-details"><summary>More from this role</summary><ul>${e.bullets.slice(1).map(b=>`<li>${esc(b)}</li>`).join('')}</ul></details>`:''}</article></li>`).join('')}</ol>`;
+document.getElementById('employment-content').innerHTML=`<ol class="rv-timeline">${employment.map((e,i)=>`<li class="rv-job rv-reveal"><div class="rv-job-meta"><span class="card-date">${esc(e.dates)}</span><div class="experience-status${i===0?' is-current':''}"><span aria-hidden="true"></span>${i===0?'Current role':'Previous role'}</div></div><article class="rv-card rv-job-card"><h3>${esc(e.role)}</h3><p class="experience-org">${esc(e.org)}</p><ul class="rv-job-bullets">${e.bullets.map(b=>`<li>${esc(b)}</li>`).join('')}</ul></article></li>`).join('')}</ol>`;
 
-document.getElementById('clubs-content').innerHTML=`<div class="club-signal" data-switcher><div class="signal-orbit" role="tablist" aria-label="Choose an activity">${clubs.map((c,i)=>switchButton(c.org,i,'club',i===0,i===0?'Finance':'Community')).join('')}</div><div class="signal-display">${clubs.map((c,i)=>switchPanel(`<span class="signal-icon" aria-hidden="true">${i===0?'↗':'✦'}</span><span class="card-date">${esc(c.role)}</span><h3>${esc(c.org)}</h3><p>${esc(c.body)}</p>`,i,'club',i===0,'signal-panel')).join('')}</div></div>`;
+document.getElementById('clubs-content').innerHTML=`<ul class="rv-clubs-grid">${clubs.map((c,i)=>`<li class="rv-reveal"><article class="rv-card"><span class="rv-club-glyph" aria-hidden="true">${i===0?'↗':'✦'}</span><span class="card-date">${esc(c.role)}</span><h3>${esc(c.org)}</h3><p>${esc(c.body)}</p><span class="tag">${esc(c.tag)}</span></article></li>`).join('')}</ul>`;
 
-document.getElementById('credentials-content').innerHTML=`<div class="credential-stack">${credentials.map((c,i)=>`<details class="credential-item"><summary><span class="credential-number">${String(i+1).padStart(2,'0')}</span><span><small>${esc(c.issuer)} · ${esc(c.date)}</small><strong>${esc(c.title)}</strong></span><span class="credential-toggle" aria-hidden="true">+</span></summary><div class="credential-body"><p>${esc(c.body)}</p>${c.link?`<a class="spotlight-link" href="${esc(c.link)}" target="_blank" rel="noreferrer noopener">View certificate <span aria-hidden="true">↗</span></a>`:'<span class="in-progress-pill">In progress</span>'}</div></details>`).join('')}</div>`;
+document.getElementById('credentials-content').innerHTML=(()=>{
+  const ordered=[...credentials].sort((a,b)=>(a.progress?1:0)-(b.progress?1:0));
+  return `<ul class="rv-credentials-grid">${ordered.map(c=>{
+    const mono=`<small class="rv-cred-meta">${esc(c.issuer)} · ${esc(c.date)}</small>`;
+    const logoClass=c.logo?` is-${esc(c.logo)}`:'';
+    const logoTile=`<span class="rv-cred-logo${logoClass}" aria-hidden="true">${issuerLogos[c.logo]||`<span class="rv-monogram">${esc(c.issuer.charAt(0))}</span>`}</span>`;
+    let footer='';
+    if(c.progress){
+      const {done,total}=c.progress;
+      const segs=Array.from({length:total},(_,i)=>`<span class="rv-progress-seg${i<done?' is-filled':''}"></span>`).join('');
+      footer=`<span class="in-progress-pill">In progress</span><div class="rv-progress" role="progressbar" aria-valuemin="0" aria-valuemax="${total}" aria-valuenow="${done}" aria-label="${esc(c.title)}: ${done} of ${total} modules complete">${segs}</div>`;
+    }else if(c.link){
+      footer=`<a class="spotlight-link" href="${esc(c.link)}" target="_blank" rel="noopener noreferrer" aria-label="View certificate: ${esc(c.title)} (opens in new tab)">View certificate <span aria-hidden="true">↗</span></a>`;
+    }
+    return `<li class="rv-reveal"><article class="rv-card${c.progress?' is-in-progress':''}">${logoTile}${mono}<h3>${esc(c.title)}</h3><p>${esc(c.body)}</p>${footer}</article></li>`;
+  }).join('')}</ul>`;
+})();
 
 const futurePlans=[
   {year:'2027',type:'Undergraduate goal',title:'Bachelor’s Degree in Finance'},
   {year:'2027',type:'Undergraduate goal',title:'Bachelor’s Degree in Computer Information Systems'},
   {year:'2028',type:'Graduate goal',title:'Master of Business Administration'}
 ];
-document.getElementById('future-content').innerHTML=`<div class="future-roadmap" data-switcher><div class="roadmap-track" role="tablist" aria-label="Choose a future milestone">${futurePlans.map((plan,i)=>switchButton(plan.year,i,'future-step',i===0,plan.type,`${plan.year} ${plan.type}: ${plan.title}`)).join('')}</div><div class="roadmap-display">${futurePlans.map((plan,i)=>switchPanel(`<span class="roadmap-year">${esc(plan.year)}</span><span class="card-date">${esc(plan.type)}</span><h3>${esc(plan.title)}</h3><div class="roadmap-progress" aria-hidden="true"><span style="width:${i===2?'100':'72'}%"></span></div>`,i,'future-step',i===0,'roadmap-panel')).join('')}</div></div>`;
+document.getElementById('future-content').innerHTML=(()=>{
+  const years=[...new Set(futurePlans.map(p=>p.year))];
+  return `<ol class="rv-future-timeline">${years.map(year=>{
+    const plans=futurePlans.filter(p=>p.year===year);
+    return `<li class="rv-future-year rv-reveal"><span class="roadmap-year">${esc(year)}</span><ul class="rv-future-plans">${plans.map(plan=>`<li><article class="rv-card"><span class="card-date">${esc(plan.type)}</span><h3>${esc(plan.title)}</h3></article></li>`).join('')}</ul></li>`;
+  }).join('')}</ol>`;
+})();
 
 function initHorizontalSwipe(element,onPrevious,onNext){
   if(!element)return;
@@ -4543,10 +5095,14 @@ function initProjectSpotlightSwipe(spotlight,getCurrent,activate){
     deltaX=0;
     deltaY=0;
   };
+  const releaseCapture=id=>{
+    if(id===null)return;
+    try{if(spotlight.hasPointerCapture(id))spotlight.releasePointerCapture(id)}catch(_){}
+  };
   const abortDrag=event=>{
     if(pointerId===null||(event.pointerId!==undefined&&event.pointerId!==pointerId))return;
     const heldId=pointerId;
-    try{spotlight.releasePointerCapture(heldId)}catch(_){}
+    releaseCapture(heldId);
     resetPointerState();
   };
   const commitDrag=event=>{
@@ -4554,7 +5110,7 @@ function initProjectSpotlightSwipe(spotlight,getCurrent,activate){
     const dx=dragging?deltaX:0;
     const wasHorizontal=axis==='x'&&dragging;
     const heldId=pointerId;
-    try{spotlight.releasePointerCapture(heldId)}catch(_){}
+    releaseCapture(heldId);
     resetPointerState();
     if(!wasHorizontal)return;
     const threshold=Math.max(52,spotlight.clientWidth*0.18);
@@ -4568,9 +5124,9 @@ function initProjectSpotlightSwipe(spotlight,getCurrent,activate){
   spotlight.addEventListener('pointerdown',event=>{
     if(event.pointerType==='mouse'&&event.button!==0)return;
     if(pointerId!==null)return;
+    // Do not capture yet — early capture retargets click away from project links.
     pointerId=event.pointerId;
     startX=event.clientX;startY=event.clientY;deltaX=0;deltaY=0;axis=null;dragging=false;
-    try{spotlight.setPointerCapture(pointerId)}catch(_){}
   });
   spotlight.addEventListener('pointermove',event=>{
     if(event.pointerId!==pointerId)return;
@@ -4580,12 +5136,12 @@ function initProjectSpotlightSwipe(spotlight,getCurrent,activate){
       if(Math.hypot(deltaX,deltaY)<10)return;
       axis=Math.abs(deltaX)>Math.abs(deltaY)*1.15?'x':'y';
       if(axis==='y'){
-        try{spotlight.releasePointerCapture(pointerId)}catch(_){}
         pointerId=null;
         deltaX=0;
         deltaY=0;
         return;
       }
+      try{spotlight.setPointerCapture(pointerId)}catch(_){}
     }
     if(axis!=='x')return;
     if(event.cancelable)event.preventDefault();
@@ -4607,9 +5163,16 @@ function initProjectSpotlightSwipe(spotlight,getCurrent,activate){
   spotlight.addEventListener('click',event=>{
     if(!suppressClick)return;
     const link=event.target.closest('a[href]');
-    if(!link||!spotlight.contains(link))return;
-    event.preventDefault();
-    event.stopPropagation();
+    if(link&&spotlight.contains(link)){
+      event.preventDefault();
+      event.stopPropagation();
+      return;
+    }
+    // Click may land on the spotlight after capture during a swipe.
+    if(spotlight.contains(event.target)){
+      event.preventDefault();
+      event.stopPropagation();
+    }
   },true);
 }
 const runWhenIdle=callback=>'requestIdleCallback' in window?requestIdleCallback(callback,{timeout:900}):setTimeout(callback,120);
@@ -4664,7 +5227,6 @@ function initHomepageInteractions(){
     const buttons=[...switcher.querySelectorAll('[data-switch-target]')];
     const panels=[...switcher.querySelectorAll('[data-switch-panel]')];
     const courseIndicator=switcher.querySelector('.course-tab-indicator');
-    const isHonors=switcher.classList.contains('honors-spotlight');
     const isProjects=switcher.classList.contains('project-showcase');
     const prevControl=switcher.querySelector('[data-switch-prev]');
     const nextControl=switcher.querySelector('[data-switch-next]');
@@ -4675,15 +5237,6 @@ function initHomepageInteractions(){
       if(!activeButton||activeButton.offsetWidth===0)return;
       courseIndicator.style.width=`${activeButton.offsetWidth}px`;
       courseIndicator.style.transform=`translateX(${activeButton.offsetLeft}px)`;
-    };
-    const updateEdgeControls=()=>{
-      if(!isHonors||!prevControl||!nextControl)return;
-      const atStart=current<=0;
-      const atEnd=current>=buttons.length-1;
-      prevControl.disabled=atStart;
-      nextControl.disabled=atEnd;
-      prevControl.setAttribute('aria-disabled',String(atStart));
-      nextControl.setAttribute('aria-disabled',String(atEnd));
     };
     if(courseIndicator){
       courseIndicatorUpdaters.push(updateCourseIndicator);
@@ -4709,7 +5262,6 @@ function initHomepageInteractions(){
       });
       current=safe;
       window.requestAnimationFrame(updateCourseIndicator);
-      updateEdgeControls();
       if(moveFocus)buttons[safe].focus();
       if(ensureVisible&&innerWidth<=1100&&buttons[safe].parentElement?.scrollWidth>buttons[safe].parentElement.clientWidth){
         buttons[safe].scrollIntoView({behavior:reducedMotion.matches?'auto':'smooth',block:'nearest',inline:'center'});
@@ -4721,11 +5273,9 @@ function initHomepageInteractions(){
     };
     buttons.forEach((button,i)=>button.addEventListener('click',()=>activate(i,false,i>=current?1:-1,true)));
     prevControl?.addEventListener('click',()=>{
-      if(isHonors){if(current<=0)return;activate(current-1,false,-1,true);return}
       activate(current-1,false,-1,true);
     });
     nextControl?.addEventListener('click',()=>{
-      if(isHonors){if(current>=buttons.length-1)return;activate(current+1,false,1,true);return}
       activate(current+1,false,1,true);
     });
     switcher.addEventListener('keydown',event=>{
@@ -4801,7 +5351,7 @@ function initScrollRailCue(rail,{affordanceHost=null}={}){
   ['pointerdown','touchstart','wheel','keydown'].forEach(type=>{
     rail.addEventListener(type,onInteract,{passive:true,capture:true});
   });
-  host?.querySelectorAll('.showcase-arrow,.spotlight-arrow,[data-switch-target]').forEach(control=>{
+  host?.querySelectorAll('.showcase-arrow,[data-switch-target]').forEach(control=>{
     // Use pointerup so cue cancellation does not interfere with the subsequent click.
     control.addEventListener('pointerup',onInteract,{passive:true});
     control.addEventListener('keydown',onInteract,{passive:true});
@@ -4877,48 +5427,31 @@ function initScrollRailCue(rail,{affordanceHost=null}={}){
   }
 }
 function initHomepageRailCues(){
-  const honorsRail=document.querySelector('#honors-content .spotlight-picker');
   const projectsRail=document.querySelector('#projects-content .showcase-rail');
-  if(honorsRail)initScrollRailCue(honorsRail,{affordanceHost:honorsRail.closest('.spotlight-rail-nav')||honorsRail.closest('.honors-spotlight')});
   if(projectsRail)initScrollRailCue(projectsRail,{affordanceHost:projectsRail.closest('.showcase-navigation')});
+}
+function initRevisionReveal(){
+  const nodes=[...document.querySelectorAll('.rv-reveal')];
+  if(!nodes.length)return;
+  const allowMotion=!motionPreference.matches && 'IntersectionObserver' in window;
+  if(!allowMotion){
+    nodes.forEach(node=>node.classList.add('is-in'));
+    return;
+  }
+  document.documentElement.classList.add('rv-motion');
+  const observer=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(!entry.isIntersecting)return;
+      entry.target.classList.add('is-in');
+      observer.unobserve(entry.target);
+    });
+  },{threshold:.18,rootMargin:'0px 0px -8% 0px'});
+  nodes.forEach(node=>observer.observe(node));
 }
 initHomepageInteractions();
 initHomepageRailCues();
+initRevisionReveal();
 initImageFades();
-function initCredentialAccordions(){
-  document.querySelectorAll('.credential-item').forEach(details=>{
-    const summary=details.querySelector('summary');
-    summary.addEventListener('click',event=>{
-      if(motionPreference.matches||typeof details.animate!=='function')return;
-      event.preventDefault();
-      if(details.dataset.animating)return;
-      details.dataset.animating='1';
-      const opening=!details.open;
-      const start=details.offsetHeight;
-      if(opening)details.open=true;
-      const end=opening?details.scrollHeight:summary.offsetHeight;
-      details.style.overflow='hidden';
-      const animation=details.animate([{height:`${start}px`,opacity:opening ? .82 : 1},{height:`${end}px`,opacity:opening ? 1 : .86}],{duration:220,easing:'cubic-bezier(.19,1,.22,1)'});
-      animation.onfinish=()=>{
-        if(!opening)details.open=false;
-        details.style.removeProperty('overflow');
-        delete details.dataset.animating;
-      };
-      animation.oncancel=animation.onfinish;
-    });
-  });
-}
-initCredentialAccordions();
-let printDetailsState=[];
-window.addEventListener('beforeprint',()=>{
-  if(printDetailsState.length)return;
-  printDetailsState=[...document.querySelectorAll('details.credential-item,details.role-details')].map(details=>({details,open:details.open}));
-  printDetailsState.forEach(({details})=>{details.open=true});
-});
-window.addEventListener('afterprint',()=>{
-  printDetailsState.forEach(({details,open})=>{details.open=open});
-  printDetailsState=[];
-});
 
 let carouselSeq=0;
 function projectGalleryBlock(title,items,emptyText){
@@ -4936,7 +5469,7 @@ function projectVideoBlock(project){
   if(!project.hasDemoVideo)return '';
   return `<section class="project-page-section"><h2>Demo Video</h2><div style="position:relative;aspect-ratio:16/9;margin-top:18px;border-radius:12px;overflow:hidden;background:#000"><iframe src="https://player.vimeo.com/video/1228981500" title="ReserveQU Project Showcase" loading="lazy" allow="fullscreen; picture-in-picture; encrypted-media" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:0"></iframe></div><p style="margin-top:12px;font-size:13px;line-height:1.6"><a href="https://vimeo.com/1228981500" target="_blank" rel="noopener noreferrer" style="text-decoration:underline;text-underline-offset:3px">Watch the ReserveQU showcase on Vimeo</a></p></section>`;
 }
-const subpageFooter=()=>`<footer class="subpage-footer"><nav class="subpage-links" aria-label="Portfolio links"><a class="subpage-link" href="assets/resume.pdf" target="_blank" rel="noopener">Resume</a><a class="subpage-link" href="https://www.linkedin.com/in/katherinecontreras2/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a class="subpage-link" href="#contact">Contact</a></nav></footer>`;
+const subpageFooter=()=>`<footer class="subpage-footer"><nav class="subpage-links" aria-label="Portfolio links"><a class="subpage-link" href="https://www.linkedin.com/in/katherinecontreras2/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a class="subpage-link" href="https://github.com/katherineC0115" target="_blank" rel="noopener noreferrer">GitHub</a><a class="subpage-link" href="assets/resume.pdf" target="_blank" rel="noopener">Resume</a></nav></footer>`;
 function projectSiblingNav(project){
   const index=projects.indexOf(project);
   const previous=projects[(index-1+projects.length)%projects.length];
@@ -4994,7 +5527,7 @@ try{
     if(Number.isFinite(savedState.scrollY))pendingPageRestore=savedState.scrollY;
   }
 }catch(error){}
-let lastHomeHash=(location.hash.startsWith('#project/')||location.hash==='#honor/deans-list')?'#top':(location.hash||'#top');
+let lastHomeHash=location.hash.startsWith('#project/')?'#top':(location.hash||'#top');
 let homeReturnState={hash:lastHomeHash,scrollY:0};
 if('scrollRestoration' in history)history.scrollRestoration='manual';
 const flowObserver='IntersectionObserver' in window?new IntersectionObserver(entries=>{
@@ -5005,7 +5538,7 @@ const flowObserver='IntersectionObserver' in window?new IntersectionObserver(ent
   });
 },{threshold:.08,rootMargin:'0px 0px -10% 0px'}):null;
 function initFlowMotion(root=document){
-  const targets=[...root.querySelectorAll('section.portfolio-section>.section-head,section.portfolio-section>[id$="-content"],footer#contact,.project-page-cover,.project-page-details,.project-page-section,.project-page-highlight,.deans-award')];
+  const targets=[...root.querySelectorAll('section.portfolio-section>.section-head,section.portfolio-section>[id$="-content"],footer#contact,.project-page-cover,.project-page-details,.project-page-section,.project-page-highlight')];
   targets.forEach((target,index)=>{
     if(target.hasAttribute('data-flow-reveal'))return;
     target.setAttribute('data-flow-reveal','');
@@ -5039,10 +5572,12 @@ function renderProjectPage(p){
   const projectPage=document.getElementById('project-page');
   projectPage.dataset.pageType='project';
   projectPage.dataset.projectSlug=p.slug;
-  projectPage.innerHTML=`<a class="floating-project-back" href="#projects">← Projects</a><div class="project-page-shell"><a class="project-page-back" href="#projects">← Projects</a><p class="project-page-meta">${p.date.includes('IN PROGRESS')?esc(p.date):`Completed ${esc(p.date)}`}</p><h1 class="project-page-title" id="project-page-heading">${esc(p.title)}</h1><p class="project-page-summary">${esc(p.summary)}</p><div class="project-page-cover" data-lightbox-src="${esc(p.asset)}" data-lightbox-caption="${esc(p.title)} project cover" role="button" tabindex="0" aria-label="Enlarge ${esc(p.title)} project cover">${assetBox(p.asset,'',p.imageContain,p.title)}</div><div class="project-page-details">${p.details.map(x=>`<p>${esc(x)}</p>`).join('')}</div>${p.downloadAsset?`<section class="project-page-section"><h2>Project File</h2><p class="project-download-copy">Download the completed Excel workbook to review the linked forecasts, DCF valuation, cash sweep, and sensitivity analysis.</p><a class="project-download" href="${esc(p.downloadAsset)}" download="${esc(p.downloadName||'')}">Download Excel model ↓</a></section>`:''}${projectLogoShowcase(p.logoShowcase)}${p.githubUrl?`<section class="project-page-section"><h2>Project Link</h2><p class="project-download-copy">Visit my GitHub profile to see more of my coursework and development projects.</p><a class="project-download" href="${esc(p.githubUrl)}" target="_blank" rel="noopener noreferrer">View my GitHub profile ↗</a></section>`:''}${projectVideoBlock(p)}${projectGalleryBlock('Website Screenshots',p.websiteGallery)}${projectGalleryBlock('Model Views',p.modelGallery)}${projectGalleryBlock('Event Gallery',p.gallery)}${projectGalleryBlock('Desktop View',p.desktopGallery)}${projectGalleryBlock('Mobile View',p.mobileGallery)}${projectGalleryBlock('Behind the Scenes',p.behindGallery)}${p.highlights.length?`<div class="project-page-highlight"><h2>Highlights</h2><div class="tags">${p.highlights.map(x=>`<span class="tag">${esc(x)}</span>`).join('')}</div></div>`:''}${projectSiblingNav(p)}</div>${subpageFooter()}`;
+  projectPage.innerHTML=`<a class="floating-project-back" href="#projects">← Projects</a><div class="project-page-shell"><a class="project-page-back" href="#projects">← Projects</a><p class="project-page-meta">${p.date.includes('IN PROGRESS')?esc(p.date):`Completed ${esc(p.date)}`}</p><h1 class="project-page-title" id="project-page-heading">${esc(p.title)}</h1><p class="project-page-summary">${esc(p.summary)}</p><div class="project-page-cover" data-lightbox-src="${esc(p.asset)}" data-lightbox-caption="${esc(p.title)} project cover" role="button" tabindex="0" aria-label="Enlarge ${esc(p.title)} project cover">${assetBox(p.asset,'',p.imageContain,'')}</div><div class="project-page-details">${p.details.map(x=>`<p>${esc(x)}</p>`).join('')}</div>${p.downloadAsset?`<section class="project-page-section"><h2>Project File</h2><p class="project-download-copy">Download the completed Excel workbook to review the linked forecasts, DCF valuation, cash sweep, and sensitivity analysis.</p><a class="project-download" href="${esc(p.downloadAsset)}" download="${esc(p.downloadName||'')}">Download Excel model ↓</a></section>`:''}${projectLogoShowcase(p.logoShowcase)}${p.githubUrl?`<section class="project-page-section"><h2>Project Link</h2><p class="project-download-copy">Visit my GitHub profile to see more of my coursework and development projects.</p><a class="project-download" href="${esc(p.githubUrl)}" target="_blank" rel="noopener noreferrer">View my GitHub profile ↗</a></section>`:''}${projectVideoBlock(p)}${projectGalleryBlock('Website Screenshots',p.websiteGallery)}${projectGalleryBlock('Model Views',p.modelGallery)}${projectGalleryBlock('Event Gallery',p.gallery)}${projectGalleryBlock('Desktop View',p.desktopGallery)}${projectGalleryBlock('Mobile View',p.mobileGallery)}${projectGalleryBlock('Behind the Scenes',p.behindGallery)}${p.highlights.length?`<div class="project-page-highlight"><h2>Highlights</h2><div class="tags">${p.highlights.map(x=>`<span class="tag">${esc(x)}</span>`).join('')}</div></div>`:''}${projectSiblingNav(p)}</div>${subpageFooter()}`;
   document.querySelector('[data-portfolio-view]').hidden=true;
   document.getElementById('site-header').hidden=true;
-  document.querySelector('.skip-link').hidden=true;
+  const skipLink=document.querySelector('.skip-link');
+  skipLink.hidden=false;
+  skipLink.href='#project-page-heading';
   projectPage.hidden=false;
   animateView(projectPage);
   document.title=`${p.title} — Katherine Contreras`;
@@ -5268,27 +5803,20 @@ function showPortfolio({restoreScroll=false}={}){
   }
   lastHomeHash=location.hash||'#top';
 }
-function renderDeansList(){
- document.documentElement.classList.add('project-view');
- delete document.documentElement.dataset.projectTheme;
- const page=document.getElementById('project-page');
- page.dataset.pageType='honor';
- delete page.dataset.projectSlug;
- const awards=[['Spring 2026',true],['Fall 2025',false],['Spring 2025',false],['Fall 2024',true]];
- const medal='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="8" r="5"/><path d="m8 12-2 9 6-3 6 3-2-9"/></svg>';
- const star='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2-5.6-3-5.6 3 1.1-6.2L3 9.6l6.2-.9Z"/></svg>';
- page.innerHTML=`<div class="project-page-shell"><a class="project-page-back" href="#honors">&larr; Honors &amp; Awards</a><p class="deans-link"><a href="https://www.qu.edu/academics/deans-list/" target="_blank" rel="noopener noreferrer">Quinnipiac University Dean's List Website</a></p><p class="project-page-meta">Academic recognition</p><h1 class="project-page-title" id="deans-list-heading">Dean's List</h1><p class="project-page-summary">Quinnipiac University &middot; School of Business</p><div class="deans-awards">${awards.map(([semester,h])=>`<article class="deans-award"><span class="award-icon">${h?medal:star}</span><p class="card-date">${semester}</p><h2>Dean's List${h?' with Honors':''}</h2></article>`).join('')}</div></div>${subpageFooter()}`;
- document.querySelector('[data-portfolio-view]').hidden=true;
- document.getElementById('site-header').hidden=true;
- document.querySelector('.skip-link').hidden=true;
- page.hidden=false;animateView(page);initFlowMotion(page);document.title="Dean's List - Katherine Contreras";window.scrollTo(0,0);focusRouteHeading(page);
-}
 function routeNow(){
   const projectPage=document.getElementById('project-page');
   if(location.hash==='#honor/deans-list'){
-    if(!projectPage.hidden&&projectPage.dataset.pageType==='honor')return;
-    if(projectPage.hidden)homeReturnState={hash:lastHomeHash,scrollY};
-    renderDeansList();return;
+    history.replaceState(null,'','#honors');
+    if(!projectPage.hidden)showPortfolio();
+    lastHomeHash='#honors';
+    requestAnimationFrame(()=>{
+      const honors=document.getElementById('honors');
+      if(!honors)return;
+      honors.scrollIntoView({block:'start',behavior:motionPreference.matches?'auto':'smooth'});
+      const heading=honors.querySelector('h2');
+      if(heading){heading.tabIndex=-1;heading.focus({preventScroll:true})}
+    });
+    return;
   }
   let hash;
   try { hash=decodeURIComponent(location.hash.replace(/^#/,'')); }
@@ -5313,7 +5841,7 @@ function routeNow(){
 }
 function route(){
   const projectPage=document.getElementById('project-page');
-  const detailTarget=location.hash==='#honor/deans-list'||location.hash.startsWith('#project/');
+  const detailTarget=location.hash.startsWith('#project/');
   if(projectPage.hidden&&!detailTarget){routeNow();return}
   if(!motionPreference.matches&&document.startViewTransition){
     viewTransitionActive=true;
@@ -5334,7 +5862,7 @@ document.addEventListener('click',event=>{
     if(location.hash==='#contact')setTimeout(()=>document.getElementById('contact')?.scrollIntoView({block:'start',behavior:motionPreference.matches?'auto':'smooth'}),0);
   }
   const projectPage=document.getElementById('project-page');
-  const opensDetail=href.startsWith('#project/')||href==='#honor/deans-list';
+  const opensDetail=href.startsWith('#project/');
   if(opensDetail&&projectPage.hidden)homeReturnState={hash:lastHomeHash,scrollY};
   const closesDetail=!projectPage.hidden&&!opensDetail;
   if((!opensDetail&&!closesDetail)||motionPreference.matches)return;
@@ -5387,7 +5915,9 @@ document.getElementById('contact-form').addEventListener('submit',async function
   const status=document.getElementById('contact-status');
   const button=form.querySelector('button[type="submit"]');
   if(button.disabled)return;
+  status.classList.remove('is-success','is-error');
   if(!form.elements.subject.value.trim()||!form.elements.message.value.trim()){
+    status.classList.add('is-error');
     status.textContent='Please enter a subject and a message.';return;
   }
   if(!form.reportValidity())return;
@@ -5395,20 +5925,86 @@ document.getElementById('contact-form').addEventListener('submit',async function
   button.textContent='Sending...';
   form.setAttribute('aria-busy','true');
   status.textContent='Sending your message...';
+  if(typeof window.launchShootingStar==='function')window.launchShootingStar();
   try{
     const response=await fetch(form.action,{method:'POST',body:new FormData(form),headers:{Accept:'application/json'}});
     if(response.ok){
       form.reset();
+      status.classList.add('is-success');
       status.textContent='Thank you! Your message has been submitted successfully.';
     }else{
+      status.classList.add('is-error');
       status.textContent='Your message could not be submitted. Please try again in a moment. Your entries have been kept.';
     }
   }catch(error){
+    status.classList.add('is-error');
     status.textContent='We could not confirm your submission. Please check your connection before trying again. Your entries have been kept.';
   }finally{
     button.disabled=false;button.textContent='Send message';form.removeAttribute('aria-busy');
   }
 });
+</script>
+<script>
+(()=>{
+  const reduced=matchMedia('(prefers-reduced-motion: reduce)');
+  const sparkChars=['✦','✧','★','·'];
+  const sparkBurst=(target)=>{
+    if(reduced.matches||!target)return;
+    target.classList.add('is-sparking');
+    window.setTimeout(()=>target.classList.remove('is-sparking'),560);
+    const burst=document.createElement('span');
+    burst.className='ui-press-burst';
+    burst.setAttribute('aria-hidden','true');
+    const narrow=innerWidth<=720;
+    const mid=innerWidth<=1100;
+    burst.style.setProperty('--burst-x',narrow?'92%':mid?'90%':'88%');
+    burst.style.setProperty('--burst-y',narrow?'14%':mid?'16%':'18%');
+    for(let i=0;i<5;i++){
+      const chip=document.createElement('span');
+      chip.textContent=sparkChars[i%sparkChars.length];
+      const angle=(-40+i*28)*Math.PI/180;
+      const dist=(narrow?16:22)+i*(narrow?5:7);
+      chip.style.setProperty('--sx',`${Math.cos(angle)*dist}px`);
+      chip.style.setProperty('--sy',`${Math.sin(angle)*dist-(narrow?6:10)}px`);
+      chip.style.animationDelay=`${i*35}ms`;
+      burst.appendChild(chip);
+    }
+    target.appendChild(burst);
+    burst.addEventListener('animationend',()=>burst.remove(),{once:true});
+    window.setTimeout(()=>burst.remove(),800);
+  };
+  document.addEventListener('click',event=>{
+    const control=event.target.closest('#coursework .course-tabs [data-switch-target], #projects .showcase-arrow, #projects .project-thumb-tab, #credentials .spotlight-link');
+    if(!control)return;
+    sparkBurst(control);
+  },true);
+  window.launchShootingStar=()=>{
+    if(reduced.matches)return;
+    const star=document.createElement('div');
+    star.className='shooting-star';
+    star.setAttribute('aria-hidden','true');
+    star.style.setProperty('--fly-y',`${18+Math.random()*46}%`);
+    star.innerHTML='<span>✦</span>';
+    document.body.appendChild(star);
+    star.addEventListener('animationend',()=>star.remove(),{once:true});
+    window.setTimeout(()=>star.remove(),3200);
+  };
+  let starFrame=0;
+  const updateStarfield=()=>{
+    starFrame=0;
+    if(document.documentElement.dataset.theme!=='dark'){
+      document.documentElement.style.setProperty('--starfield-y','0');
+      return;
+    }
+    document.documentElement.style.setProperty('--starfield-y',String(Math.round(scrollY*0.12)));
+  };
+  const requestStarUpdate=()=>{if(!starFrame)starFrame=requestAnimationFrame(updateStarfield)};
+  window.addEventListener('scroll',requestStarUpdate,{passive:true});
+  document.addEventListener('themechange',updateStarfield);
+  const themeObserver=new MutationObserver(updateStarfield);
+  themeObserver.observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
+  updateStarfield();
+})();
 </script>
 
 <script>
