@@ -3086,10 +3086,15 @@
       }
       .spotlight-picker {
         position:relative;
-        padding-right:2px
+        min-width:0;
+        overflow-x:auto;
+        overscroll-behavior-x:contain;
+        padding-right:0
       }
       .spotlight-picker button {
-        flex:0 0 min(82vw,300px);
+        box-sizing:border-box;
+        flex:0 0 calc(100% - 10px);
+        max-width:100%;
         white-space:normal;
         overflow-wrap:anywhere;
         line-height:1.35
@@ -3641,20 +3646,24 @@
         -webkit-mask-image:linear-gradient(90deg,#000 0,#000 calc(100% - 28px),transparent 100%);
         mask-image:linear-gradient(90deg,#000 0,#000 calc(100% - 28px),transparent 100%)
       }
-      .spotlight-picker.is-rail-scrollable.is-at-start:not(.is-at-end),
       .showcase-rail.is-rail-scrollable.is-at-start:not(.is-at-end) {
         -webkit-mask-image:linear-gradient(90deg,#000 0,#000 calc(100% - 36px),transparent 100%);
         mask-image:linear-gradient(90deg,#000 0,#000 calc(100% - 36px),transparent 100%)
       }
-      .spotlight-picker.is-rail-scrollable.is-at-end,
       .showcase-rail.is-rail-scrollable.is-at-end {
         -webkit-mask-image:none;
         mask-image:none
       }
-      .spotlight-picker.is-rail-scrollable:not(.is-at-start):not(.is-at-end),
       .showcase-rail.is-rail-scrollable:not(.is-at-start):not(.is-at-end) {
         -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 22px,#000 calc(100% - 36px),transparent 100%);
         mask-image:linear-gradient(90deg,transparent 0,#000 22px,#000 calc(100% - 36px),transparent 100%)
+      }
+      .spotlight-picker.is-rail-scrollable,
+      .spotlight-picker.is-rail-scrollable.is-at-start:not(.is-at-end),
+      .spotlight-picker.is-rail-scrollable.is-at-end,
+      .spotlight-picker.is-rail-scrollable:not(.is-at-start):not(.is-at-end) {
+        -webkit-mask-image:none;
+        mask-image:none
       }
       .spotlight-rail-nav.has-rail-cue,
       .showcase-navigation.has-rail-cue {
@@ -3664,10 +3673,12 @@
         display:grid;
         grid-template-columns:44px minmax(0,1fr) 44px;
         align-items:center;
-        gap:6px
+        gap:8px;
+        min-width:0
       }
       .spotlight-arrow {
-        display:grid
+        display:grid;
+        z-index:1
       }
       .floating-project-back { left:12px; bottom:12px }
     }
